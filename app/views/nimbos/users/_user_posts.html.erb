@@ -1,0 +1,9 @@
+<div id="personalfeeds">
+  <div id="post-selection">
+    <%= render 'nimbos/posts/postable' %>
+  </div>
+  <div id="feeder-posts">
+    <%= render 'nimbos/posts/postlist', posts: current_user.social_posts %>
+   </div>
+</div>
+

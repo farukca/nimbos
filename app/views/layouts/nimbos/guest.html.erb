@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socialfreight</title>
+  <meta name="description" content="<%= t("web.title.description") %>" />
+  <meta name="keywords" content="<%= t("web.title.keywords") %>" />
+  <meta charset='utf-8'>
+  <meta name="google-site-verification" content="YBxTWCsF7NumqEi-_IkfMvp4F61RxGpQ19ElYC27UEE" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "socialfreight", debug: Rails.env.development? %>
+  <%= javascript_include_tag "socialfreight", debug: Rails.env.development? %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+<body>
+<%#= render 'layouts/topbar' %>
+<%#= render 'shared/site_header' %>
+
+<div id="content" style="padding:0">
+
+  <div class="container"  class="row">
+    <div id="messages">
+      <% flash.each do |name, msg| %>
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </div>
+</div>
+<%#= render 'shared/site_news' %>
+<%#= render 'shared/site_footer' %>
+<%#= link_to t("feedbacks.link.new_feedback"), new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback hidden-phone", title: t("feedbacks.hint.new_feedback") %>
+<div id="default_modal_popup" class="modal fade"></div>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31085255-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</html>
