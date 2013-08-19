@@ -10,6 +10,7 @@ module Nimbos::Concerns::Authentication
 	end
 
   module ClassMethods
+
     def load_from_activation_token(token)
       return nil if token.blank?
       where("activation_token = ?", token).first
@@ -54,9 +55,10 @@ module Nimbos::Concerns::Authentication
     Resque.enqueue(UserMailerWorker, { user_id: self.id, mail_type: "password_reset" })
   end
 
-  def change_password(new_password)
+  def change_password!(new_password)
     clear_password_reset_token
-    self.password_digest = new_password
+    self.password = new_password
+    save
   end
 
   private

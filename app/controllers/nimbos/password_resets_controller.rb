@@ -8,10 +8,9 @@ module Nimbos
 	  end
 
 	  def create
-	    @user = User.find_by_email(params[:email])
+	    @user = Nimbos::User.find_by_email(params[:email])
 	    if @user
-		    #user.send_password_reset_email if user
-		    @user.deliver_reset_password_instructions! if @user
+		    @user.deliver_password_reset_token
 	  	  redirect_to :root, :notice => "Email Sent with password reset instructions"
 	  	else
 				flash[:error] = "Invalid email, check your email address."
@@ -20,14 +19,14 @@ module Nimbos
 	  end
 
 	  def edit
-	    @user = User.load_from_reset_password_token(params[:id])
+	    @user = Nimbos::User.load_from_password_reset_token(params[:id])
 	    @token = params[:id]
 	    not_authenticated unless @user
 	  end
 
 	  def update
 	    @token = params[:token]
-	    @user  = User.load_from_reset_password_token(params[:token])
+	    @user  = Nimbos::User.load_from_password_reset_token(params[:token])
 	    not_authenticated unless @user
 
 	    @user.password_confirmation = params[:user][:password_confirmation]

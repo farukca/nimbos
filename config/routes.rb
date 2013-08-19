@@ -3,6 +3,8 @@ Nimbos::Engine.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "patrons#new", :as => "signup"
+  get "dashboard" => "dashboard#index", :as => "dashboard"
+  get "calendar"  => "dashboard#calendar", :as => "calendar"
 
   resources :sessions
   resources :password_resets
@@ -32,6 +34,6 @@ Nimbos::Engine.routes.draw do
   resources :countries
   resources :currencies
 
-  #root :to => "posts#index"
+  root :to => "posts#index"
   
 end
