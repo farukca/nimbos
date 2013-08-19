@@ -20,11 +20,10 @@ module Nimbos
 	  #has_many :positions
 	  #has_many :loadings
 	  #has_many :activities
-	  #has_many :comments
-	  #has_many :posts
-	  #has_many :contacts
-	  #has_many :tasks
-	  #has_many :reminders
+	  has_many :comments
+	  has_many :posts
+	  has_many :tasks
+	  has_many :reminders
 
 	  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
 	                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id, :user_status
@@ -39,19 +38,6 @@ module Nimbos
 	  scope :active, where(user_status: "active")
 	  scope :online, lambda{ where("last_activity_at > ?", 10.minutes.ago) }
 	  scope :offline, lambda{ where("last_activity_at < ?", 10.minutes.ago) }
-
-	  after_create  :send_activation_mail
-
-	  def send_activation_mail
-	    #Resque.enqueue(UserActivationMailer, self.id)
-	  end
-
-	  #def send_password_reset_email
-	  #  generate_token(:password_reset_token)
-	  #  self.password_reset_email_time = Time.zone.now
-	  #  save!
-	  #  UserMailer.password_reset_email(self).deliver
-	  #end
 
 	  def token_inputs
 	    { id: id, text: to_s }

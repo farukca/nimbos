@@ -60,11 +60,7 @@ module Nimbos
 	  def activate
 	    if @user = Nimbos::User.load_from_activation_token(params[:id])
 	      @user.activate!
-	      if @user.patron_id.nil?
-	        redirect_to(login_path, :notice => 'User activated successfully')
-	      else
-	        redirect_to(activation_user_path(@user))
-	      end
+	      redirect_to(activation_user_path(@user))
 	    else
 	      not_authenticated
 	    end
@@ -85,12 +81,16 @@ module Nimbos
 
 	    if @user.update_attributes(params[:user])
 	      if @user.last_login_at.nil?
-	        login_user = login(@user.email, params[:user][:password], params[:remember_me])
-	        if login_user
-	          session[:patron_id] = login_user.patron_id if login_user.patron_id
+	      	params[:user][:email] = @user.email
+	        #login_user = login(@user.email, params[:user][:password], params[:remember_me])
+	        #if login_user
+	        if warden.authenticate(:scope => :user)
+	          #session[:patron_id] = login_user.patron_id if login_user.patron_id
+	          force_authentication!(current_patron, current_user)
 	          #redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
 	           if @user.firstuser
-	             redirect_to setup_path(:start_wizard)
+	             #redirect_to setup_path(:start_wizard)
+	             redirect_to main_app.root_url, notice: 'Welcome to SocialFreight.'
 	           else
 	             redirect_to new_person_path, notice: 'Welcome to SocialFreight.'
 	           end

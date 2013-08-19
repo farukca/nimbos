@@ -23,12 +23,15 @@ Nimbos::Engine.routes.draw do
       put  :create_coworkers
     end
   end
+  resources :reminders
+  resources :tasks
+  resources :todolists
 
   resources :listheaders
   resources :listitems
   resources :countries
   resources :currencies
 
-  root :to => "posts#index"
-
+  #root :to => "posts#index"
+  
 end

@@ -19,9 +19,9 @@ module Nimbos
 				  redirect_to root_path
 				end
 			else
+				flash[:error] = "Invalid email or password."
 				@user = User.new
 				@user.email = params["user"]["email"]
-				flash[:error] = "Invalid email or password."
 				render :action => "new"
 			end
 		end

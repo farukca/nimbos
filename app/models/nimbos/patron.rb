@@ -1,6 +1,6 @@
 module Nimbos
   class Patron < ActiveRecord::Base
-	  include Nimbos::CustomValidators::Validators
+	  include CustomValidators::Validators
 	 
 	  #mount_uploader :logo, LogoUploader
 

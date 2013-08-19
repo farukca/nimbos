@@ -1,6 +1,6 @@
 class CreateNimbosCountries < ActiveRecord::Migration
   def change
-    create_table :nimbos_countries, :primary_key => :code do |t|
+    create_table :nimbos_countries, :id => false do |t|
       t.string  :code, :limit => 2, :null => false
       t.string  :name, :limit => 40, :null => false
       t.string  :telcode, :limit => 10
@@ -21,7 +21,7 @@ class CreateNimbosCountries < ActiveRecord::Migration
       t.timestamps
     end
 
-    #execute "ALTER TABLE nimbos_countries ADD PRIMARY KEY (code);"
+    execute "ALTER TABLE nimbos_countries ADD PRIMARY KEY (code);"
 
   end
 end

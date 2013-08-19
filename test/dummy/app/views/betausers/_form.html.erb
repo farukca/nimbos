@@ -1,0 +1,41 @@
+<%= form_for(@betauser, :url => main_app.betausers_path) do |f| %>
+  <% if @betauser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@betauser.errors.count, "error") %> prohibited this betauser from being saved:</h2>
+
+      <ul>
+      <% @betauser.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :ipaddr %><br />
+    <%= f.text_field :ipaddr %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

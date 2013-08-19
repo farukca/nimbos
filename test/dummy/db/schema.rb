@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810194053) do
+ActiveRecord::Schema.define(:version => 20130817203017) do
+
+  create_table "betausers", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "company"
+    t.string   "phone"
+    t.string   "country"
+    t.string   "ipaddr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "feedbacks", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "msg"
+    t.integer  "user_id"
+    t.integer  "patron_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "nimbos_activities", :force => true do |t|
     t.integer  "user_id",                   :null => false
