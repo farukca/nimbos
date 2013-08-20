@@ -2,7 +2,7 @@
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |task| %>
-    <%= link_to "Güncelle", edit_task_path(task) %> 
+    <%= link_to "Güncelle", nimbos.edit_task_path(task.todolist, task) %> 
   <% end %>
   <% table.column :task_text, column_html: { scope: "col" } %>
   <% table.column :due_date, column_html: { scope: "col" } %>

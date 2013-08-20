@@ -9,6 +9,6 @@
     <% "#{user.last_activity_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_activity_at %>
   <% end %>
   <% column html: { th: { class: "span1" } } do |user| %>
-    <% link_to "Güncelle", edit_user_path(user) %>
+    <% link_to "Güncelle", nimbos.edit_user_path(user) %>
   <% end %>
 <% end %>

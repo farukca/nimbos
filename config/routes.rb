@@ -25,6 +25,8 @@ Nimbos::Engine.routes.draw do
       put  :create_coworkers
     end
   end
+
+  resources :activities
   resources :reminders
   resources :tasks
   resources :todolists

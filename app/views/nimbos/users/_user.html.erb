@@ -5,6 +5,6 @@
   <td><%= user.created_at.strftime("%m/%d/%Y") %></td>
   <td><%= user.activation_state %></td>
   <td><%= user.last_activity_at.strftime("%m/%d/%Y") if user.last_activity_at %></td>
-  <td><%= link_to 'Reset Password', edit_user_path(user) %></td>
+  <td><%= link_to 'Reset Password', nimbos.edit_user_path(user) %></td>
   <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>

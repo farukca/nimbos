@@ -4,15 +4,15 @@
     <%= f.label :status, task.task_text %>
     <span class="sub-info">
       <% if task.user_id == 0 %>
-        <%= link_to "Not Assigned", edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <%= link_to "Not Assigned", nimbos.edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
       <% else %>
         <%= "#{task.user.to_s}-#{task.due_date}" %>
-        <%= link_to "Change User", edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <%= link_to "Change User", nimbos.edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
       <% end %>
     </span>
     <span class="task-actions">
-      <%= link_to "(edit)", edit_todolist_task_path(task.todolist, task), remote: true %>|
-      <%= link_to "(remove)", todolist_task_path(task.todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+      <%= link_to "(edit)", nimbos.edit_todolist_task_path(task.todolist, task), remote: true %>|
+      <%= link_to "(remove)", nimbos.todolist_task_path(task.todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
         <%#= link_to "Edit", edit_task_path(task) %>
         <%#= link_to "Delete", task, confirm: 'You are deleting the task, are you sure ?', method: :delete, remote: true %>
     </span>

@@ -14,12 +14,10 @@ module Nimbos
 
 	  belongs_to :patron
 
-	  #mount_uploader :avatar, AvatarUploader
+	  mount_uploader :avatar, AvatarUploader
 
 	  #has_one  :person
-	  #has_many :positions
-	  #has_many :loadings
-	  #has_many :activities
+	  has_many :activities
 	  has_many :comments
 	  has_many :posts
 	  has_many :tasks

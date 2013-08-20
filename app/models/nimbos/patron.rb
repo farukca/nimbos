@@ -2,7 +2,7 @@ module Nimbos
   class Patron < ActiveRecord::Base
 	  include CustomValidators::Validators
 	 
-	  #mount_uploader :logo, LogoUploader
+	  mount_uploader :logo, LogoUploader
 
 	  has_many :counters
 	  accepts_nested_attributes_for :counters, :allow_destroy => true
