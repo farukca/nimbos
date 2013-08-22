@@ -4,7 +4,7 @@ module Nimbos
   class PostsController < ApplicationController
 	  #include Twitter::Extractor
 	  before_filter :require_login
-	  #before_filter(:only => [:index]) { |c| c.set_tab "postnavigator" }
+	  before_filter(:only => [:index]) { |c| c.set_tab "postnavigator" }
 	  respond_to :js, :json, :html
 
 	  def show
