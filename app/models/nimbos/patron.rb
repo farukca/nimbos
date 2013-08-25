@@ -53,15 +53,19 @@ module Nimbos
 
 	  def self.generate_counter(ctype, operation, direction)
 	    patron = Nimbos::Patron.find(Nimbos::Patron.current_id)
-	    counter = patron.counters.find_or_initialize_by_operation_and_counter_type(operation, ctype)
-	    if operation.present? && (counter.count == 0)
-	      if ctype == "Loading"
+	    counter = patron.counters.find_or_initialize_by_counter_type(ctype)
+
+	    case ctype
+	      when "Company"
+	      	counter.prefix = "ACC"
+	      when "Loading"
 	        counter.prefix = "BKG"
-	      end
-	      if ctype == "Position"
+	      when "Position"
 	        counter.prefix = "PRJ"
-	      end
+	      when "Ticket"
+	        counter.prefix = "TLP"
 	    end
+
 	    counter.increment(:count, 1)
 	    counter.save!
 	    return counter.get_reference
