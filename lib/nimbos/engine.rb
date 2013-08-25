@@ -27,6 +27,7 @@ module Nimbos
         helper Nimbos::PatronsHelper
         helper Nimbos::BranchesHelper
         helper Nimbos::CountriesHelper
+        helper Nimbos::PostsHelper
       end
     end
 

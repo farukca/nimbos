@@ -72,7 +72,7 @@ module Nimbos
 
 	  def social_posts
 	    ##@social_posts = Nimbos::Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(6).order("created_at desc")
-	    @social_posts = Nimbos::Post.includes(:user).includes(:comments).limit(6).order("updated_at desc")
+	    @social_posts = Nimbos::Post.includes(:user).includes(:comments).limit(6).order("created_at desc")
 	  end
 
 	  #def active_tasks

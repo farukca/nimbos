@@ -2,9 +2,9 @@ jQuery ->
   $(document).on "click", ".replytopost", (ev) ->
     ev.preventDefault()
     postElement = $(this)
-    commentForm = "Post_" + postElement.data("post-id") + "_commentform"
+    commentForm = "Nimbos::Post_" + postElement.data("post-id") + "_commentform"
     $.ajax
-      url: "/nimbos/posts/" + postElement.data("post-id") + "/comments/new"
+      url: "posts/" + postElement.data("post-id") + "/comments/new"
       type: "GET",
       dataType: "json",
       success: (data) ->

@@ -4,7 +4,7 @@ module Nimbos
   class UsersController < ApplicationController
 	  before_filter :require_login
 	  skip_before_filter :require_login, :only => [:new, :create, :activate, :activation, :update]
-	  #before_filter(:only => [:show]) { |c| c.set_tab "homenavigator" }
+	  before_filter(:only => [:show]) { |c| c.set_tab "homenavigator" }
 	    
 	  def index
 	    if params[:q]
