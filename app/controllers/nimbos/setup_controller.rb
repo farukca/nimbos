@@ -26,7 +26,7 @@ module Nimbos
 	          }
 	        end
 	      when :set_users
-	        @users = Array.new(7) { User.new }
+	        @users = Array.new(7) { Nimbos::User.new }
 	    end
 	    render_wizard
 	      
