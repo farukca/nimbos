@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<%= link_to user_small_avatar(current_user), nimbos.user_path(current_user), class: "pull-left" %>
-  <%= form_for [object, Nimbos::Post.new], :url => nimbos.posts_path, remote: true, html: {class: "condensed-form"} do |f| %>
+  <%= form_for [object, Nimbos::Post.new], :url => nimbos.posts_path("#{object.class.name}_id" => object.id), remote: true, html: {class: "condensed-form"} do |f| %>
     <%= render "nimbos/posts/fields", f: f %>
   <% end %>
 </div>

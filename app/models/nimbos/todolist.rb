@@ -1,9 +1,9 @@
 module Nimbos
   class Todolist < ActiveRecord::Base
 
-	  has_many   :tasks
+	  has_many   :tasks, class_name: "Nimbos::Task"
 	  belongs_to :todop, polymorphic: true, touch: true
-    belongs_to :user
+    belongs_to :user, class_name: "Nimbos::User"
 
 	  attr_accessible :name, :user_id, :todop_type, :todop_id, :tasks_attributes
 

@@ -1,9 +1,9 @@
 module Nimbos
   class Task < ActiveRecord::Base
 
-	  belongs_to :todolist, counter_cache: true, touch: true
-	  belongs_to :user
-	  belongs_to :cruser, :class_name => "User", :foreign_key => "cruser_id"
+	  belongs_to :todolist, class_name: "Nimbos::Todolist", counter_cache: true, touch: true
+	  belongs_to :user, class_name: "Nimbos::User"
+	  belongs_to :cruser, class_name: "Nimbos::User", foreign_key: "cruser_id"
 
 	  attr_accessible :user_id, :task_text, :task_code, :due_date, :status, :close_text, :closed_date, :system_task
 
