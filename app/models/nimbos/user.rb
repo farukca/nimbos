@@ -1,7 +1,5 @@
 module Nimbos
   class User < ActiveRecord::Base
-	  #authenticates_with_sorcery!
-	  #has_secure_password
 	  include Nimbos::Concerns::Authentication
 
 	  #rolify
@@ -23,8 +21,9 @@ module Nimbos
 	  has_many :tasks
 	  has_many :reminders
 
+    attr_accessor :remember_me
 	  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
-	                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id, :user_status
+	                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id, :user_status, :remember_me
 	  #attr_protected  :password
 
 	  validates :password, presence: { on: :create }, confirmation: { on: :create }, length: { minimum: 6, maximum: 20, on: :create }

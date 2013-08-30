@@ -36,6 +36,6 @@ Nimbos::Engine.routes.draw do
   resources :countries
   resources :currencies
 
-  root :to => "posts#index"
+  #root :to => "posts#index"
   
 end

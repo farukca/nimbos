@@ -9,7 +9,7 @@
           <fieldset>
             <%= f.input :email, input_html: { class: "input-medium" } %>
             <%= f.input :password, as: :password, input_html: { class: "input-medium" } %>
-            <%#= f.input :remember_me, as: :check_box %>&nbsp;<%#= t("web.label.remember_me") %>
+            <%= f.input :remember_me, as: :boolean, label: false, inline_label: t("web.label.remember_me") %>
           </div>
           <div class="actions pull-right">
               <%= f.submit t("web.label.login"), :class => "btn btn-success" %>
