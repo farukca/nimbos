@@ -16,6 +16,7 @@ module Nimbos
 
     def password_reset_email(user_id)
       @user = User.find(user_id)
+      @url  = "http://www.socialfreight.com/password_resets/#{@user.password_reset_token}/edit"
       mail :to => @user.email, :subject => "SocialFreight Password Reset"
     end
   end
