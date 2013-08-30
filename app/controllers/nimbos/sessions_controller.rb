@@ -16,7 +16,7 @@ module Nimbos
 					session[:return_to_url] = nil
 				else
 					flash[:notice] = "You are now signed in."
-				  redirect_to root_path
+				  redirect_to main_app.root_path
 				end
 			else
 				flash[:error] = "Invalid email or password."
@@ -28,7 +28,7 @@ module Nimbos
 
     def destroy
       warden.logout
-      redirect_to root_url, notice: "Logged out!"
+      redirect_to main_app.root_url, notice: "Logged out!"
     end
   end
 end
