@@ -1,0 +1,30 @@
+    <div class="media-content">
+      <% case post.target_type %>
+        <% when nil %>
+          <%= sanitize(post.message) %>
+        <% when "Nimbos::Comment"%>
+          <div class="submedia">
+            <%= render partial: "nimbos/posts/post_content", locals: { post: post.target.commentable } %>
+          </div>
+        <% else %>
+          <%= post_target_icon %>
+          <div class="post-target-description" style="display:inline">
+            <%#= post.target_name %>
+          </div>
+      <% end %>
+    </div>
+    <div class="sub-info media-meta">
+      <span class="pull-right"><%= post.created_at.to_s(:pretty) %></span>
+      <%# unless post.is_syspost %>
+        <% if post.comments.size == 0 %>
+          <a href="#" class="replytopost" data-post-id="<%= post.id %>">
+            <%= t("defaults.link.new_comment") %>
+          </a>
+        <% end %>
+      <%# end %>
+    </div>
+    <%# unless post.is_syspost %>
+      <div class="row-fluid">
+        <%= render "nimbos/comments/commentable", object: post %>
+      </div>
+    <%# end %>

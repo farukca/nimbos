@@ -1,10 +1,10 @@
 module Nimbos
   class Post < ActiveRecord::Base
 
-	  belongs_to :user
+	  belongs_to :user, class_name: "Nimbos::User"
 	  belongs_to :target, polymorphic: true
 
-	  has_many :comments, as: :commentable, dependent: :destroy
+	  has_many :comments, as: :commentable, class_name: "Nimbos::Comment", dependent: :destroy
 
 	  attr_accessible :message, :post_type, :target_name, :target, :user_id, :is_private, :is_syspost, :related_user_ids
 
@@ -25,8 +25,24 @@ module Nimbos
 	    post
 	  end
 
+	  def self.create_post(user_id, target, target_name, action_text, syspost_flag)
+
+	    private_post = true
+	    post = Nimbos::Post.new(target: target, user_id: user_id, target_name: target_name, message: action_text, is_private: private_post, is_syspost: syspost_flag)
+	    post.save!    
+	    post
+	  end
+
+    def to_s
+    	""
+    end
+
 	  def last_comment
 	    comments.last
+	  end
+
+	  def title
+	  	"#{user}'s post"
 	  end
 
 	private
@@ -38,7 +54,7 @@ module Nimbos
 
 	  def connect_users(userids)
 	    userids.split(",").each do |userid|
-	      @user = User.find(userid)
+	      @user = Nimbos::User.find(userid)
 	      self.mention!(@user) if @user
 	    end
 	  end

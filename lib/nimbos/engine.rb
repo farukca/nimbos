@@ -28,6 +28,7 @@ module Nimbos
         helper Nimbos::BranchesHelper
         helper Nimbos::CountriesHelper
         helper Nimbos::PostsHelper
+        helper Nimbos::CurrenciesHelper
       end
     end
 

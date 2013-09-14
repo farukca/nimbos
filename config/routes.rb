@@ -11,7 +11,10 @@ Nimbos::Engine.routes.draw do
   resources :posts do
     resources :comments
   end
-
+  resources :discussions do
+    resources :comments
+  end
+  resources :comments
   resources :patrons
   resources :branches
   resources :users do

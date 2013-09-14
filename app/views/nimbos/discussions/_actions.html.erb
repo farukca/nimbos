@@ -1,0 +1,13 @@
+<div class="btn-group">
+  <button class="btn"><%= t("defaults.link.action") %></button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to discussion, :data => {:confirm => t("tickets.message.destroy_confirm")}, :method => :delete do %>
+        <i class="icon-remove"></i><%= t("tickets.action.delete") %>
+      <% end %>
+    </li>
+  </ul>
+</div>

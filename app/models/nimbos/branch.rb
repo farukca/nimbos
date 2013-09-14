@@ -9,7 +9,7 @@ module Nimbos
 
 	  validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 100}
 
-	  default_scope { where(patron_id: Patron.current_id) }
+	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
     def to_s
     	name

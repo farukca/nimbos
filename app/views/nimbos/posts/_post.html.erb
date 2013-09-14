@@ -5,17 +5,6 @@
       <%= post_title(post) %>
       <%#= link_to "#{post.target_name} - ", "#", title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
     </h5>
-    <div class="media-content">
-      <%= sanitize(post.message) %>
-    </div>
-    <div class="media-meta">
-      <span class="sub-info"><%= post.created_at.to_s(:pretty) %></span>
-      <% if post.comments.size == 0 %>
-        <a href="#" class="replytopost" data-post-id="<%= post.id %>">
-          <%= t("defaults.link.new_comment") %>
-        </a>
-      <% end %>
-    </div>
-    <%= render "nimbos/comments/commentable", object: post %>
+    <%= render partial: "nimbos/posts/post_content", locals: { post: post } %>
   </div>
 </li>

@@ -4,7 +4,7 @@ jQuery ->
     postElement = $(this)
     commentForm = "Nimbos::Post_" + postElement.data("post-id") + "_commentform"
     $.ajax
-      url: "posts/" + postElement.data("post-id") + "/comments/new"
+      url: "/posts/" + postElement.data("post-id") + "/comments/new"
       type: "GET",
       dataType: "json",
       success: (data) ->

@@ -3,13 +3,29 @@ module Nimbos
 
   	def post_title(post=@post)
   		case post.target_type
-				when "Nimbos::Post"
-				  "#{user_name(post.user)} commented on:"
+				when "Nimbos::Comment"
+				  "#{user_name(post.user)} commented on #{post.target_name}"
 				when nil
 				  "#{user_name(post.user)}"
 				else
-				  "#{user_name(post.user)} #{post.message} #{post.target_type}: #{post.target_name}"
+					if post.is_syspost
+				    "#{user_name(post.user)} #{post.message} #{post.target_type}: #{post.target_name}"
+				  else
+				  	"#{user_name(post.user)}  commented on: #{post.target_name}"
+				  end
 			end
+  	end
+
+  	def post_target_icon(post=@post)
+  		if post.target_type != "Nimbos::Comment"
+  			image_tag("position.png", :height => "32", :width => "32")
+  		else
+        user_mini_avatar(post.target.user)
+  		end
+  	end
+
+  	def post_target_name(post=@post)
+      post.target_name
   	end
 
   end

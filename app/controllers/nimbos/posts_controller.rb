@@ -2,7 +2,8 @@ require_dependency "nimbos/application_controller"
 
 module Nimbos
   class PostsController < ApplicationController
-	  #include Twitter::Extractor
+    include Nimbos::Concerns::FindTarget
+
 	  before_filter :require_login
 	  before_filter(:only => [:index]) { |c| c.set_tab "postnavigator" }
 	  respond_to :js, :json, :html
@@ -36,18 +37,5 @@ module Nimbos
 	    respond_with @post, notice: "Successfully destroyed post"
 	  end
 
-	  private
-	  def find_target
-	    if params[:ticket_id]
-	      return Helpdesk::Ticket.find(params[:ticket_id])
-	    else
-	      params.each do |name, value|
-	        if name =~ /(.+)_id$/
-	          return $1.classify.constantize.find(value)
-	        end
-	      end
-	    end
-	    nil
-	  end
   end
 end
