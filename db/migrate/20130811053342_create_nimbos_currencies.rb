@@ -10,5 +10,6 @@ class CreateNimbosCurrencies < ActiveRecord::Migration
     end
 
     execute "ALTER TABLE nimbos_currencies ADD PRIMARY KEY (code);"
+
   end
 end

@@ -4,7 +4,7 @@ module Nimbos
 	 
 	  mount_uploader :logo, LogoUploader
 
-	  has_many :counters
+	  has_many :counters, class_name: "Nimbos::Counter"
 	  accepts_nested_attributes_for :counters, :allow_destroy => true
 	  
 	  has_many :branches

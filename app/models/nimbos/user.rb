@@ -10,9 +10,10 @@ module Nimbos
 	  #acts_as_mentionable
 	  #include GeneratesNick
 
-	  belongs_to :patron
-
 	  mount_uploader :avatar, AvatarUploader
+
+	  belongs_to :patron
+    has_and_belongs_to_many :roles, :join_table => :nimbos_users_roles
 
 	  #has_one  :person
 	  has_many :activities
@@ -22,8 +23,8 @@ module Nimbos
 	  has_many :reminders
 
     attr_accessor :remember_me
-	  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
-	                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id, :user_status, :remember_me
+	  attr_accessible :email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, 
+	                  :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role_ids, :branch_id, :user_status, :remember_me
 	  #attr_protected  :password
 
 	  validates :password, presence: { on: :create }, confirmation: { on: :create }, length: { minimum: 6, maximum: 20, on: :create }
@@ -35,6 +36,10 @@ module Nimbos
 	  scope :active, where(user_status: "active")
 	  scope :online, lambda{ where("last_activity_at > ?", 10.minutes.ago) }
 	  scope :offline, lambda{ where("last_activity_at < ?", 10.minutes.ago) }
+
+    def self.user_status
+    	%w[active nonactive]
+    end
 
 	  def token_inputs
 	    { id: id, text: to_s }
