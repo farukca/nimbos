@@ -21,7 +21,7 @@ module Nimbos
 	    @comment.user_id  = current_user.id
 
 	    @comment.save!
-	    generate_post(current_user.id, @comment, @commentable.title, "commented", true)
+	    #generate_post(current_user.id, @comment, @commentable.title, "commented", true)
 	    respond_with @comment, :success => "Comment added"
 	  end
 

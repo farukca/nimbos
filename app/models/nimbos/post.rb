@@ -3,12 +3,12 @@ module Nimbos
 
 	  belongs_to :user, class_name: "Nimbos::User"
 	  belongs_to :target, polymorphic: true
+	  belongs_to :parent, polymorphic: true
 
 	  has_many :comments, as: :commentable, class_name: "Nimbos::Comment", dependent: :destroy
 
-	  attr_accessible :message, :post_type, :target_name, :target, :user_id, :is_private, :is_syspost, :related_user_ids
-
 	  attr_accessor :related_user_ids
+	  attr_accessible :message, :is_private, :related_user_ids, :target, :user_id, :target_title, :is_syspost
 
 	  validates_presence_of :user_id, :message
 
@@ -17,25 +17,22 @@ module Nimbos
 
 	  after_create  :set_after_jobs
 
-	  def self.log(user_id, target, target_name, action_text, syspost_flag)
-
-	    private_post = true
-	    post = Nimbos::Post.new(target: target, user_id: user_id, target_name: target_name, message: action_text, is_private: private_post, is_syspost: syspost_flag)
+	  def self.create_post(user_id, message, object, object_title, object_url, parent, parent_title, parent_url, action_type, channel, private_flag, syspost_flag)
+	    post = Nimbos::Post.new(message: message)
+	    post.user_id      = user_id 
+	    post.target       = object
+	    post.target_title = object_title
+	    post.target_url   = object_url
+	    post.parent       = parent
+	    post.parent_title = parent_title
+	    post.parent_url   = parent_url
+	    post.post_action  = action_type
+	    post.channel      = channel
+	    post.is_private   = private_flag
+	    post.is_syspost   = syspost_flag
 	    post.save!    
 	    post
 	  end
-
-	  def self.create_post(user_id, target, target_name, action_text, syspost_flag)
-
-	    private_post = true
-	    post = Nimbos::Post.new(target: target, user_id: user_id, target_name: target_name, message: action_text, is_private: private_post, is_syspost: syspost_flag)
-	    post.save!    
-	    post
-	  end
-
-    def to_s
-    	""
-    end
 
 	  def last_comment
 	    comments.last

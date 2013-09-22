@@ -3,8 +3,25 @@
   <div class="media-body">
     <h5 class="media-heading">
       <%= post_title(post) %>
-      <%#= link_to "#{post.target_name} - ", "#", title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
     </h5>
-    <%= render partial: "nimbos/posts/post_content", locals: { post: post } %>
+    <div class="media-content">
+      <% case post.target_type %>
+        <% when "Nimbos::Comment"%>
+          <%= render post.parent if post.parent %>
+        <% when "Nimbos::Discussion"%>
+          <%= render post.target %>
+        <% else %>
+          <%= sanitize(post.message) %>
+      <% end %>
+    </div>
+    <div class="sub-info media-meta">
+      <span class="pull-right"><%= post.created_at.to_s(:pretty) %></span>
+      <a href="#" class="replytopost" data-post-id="<%= post.id %>">
+        <%= t("defaults.link.new_comment") %>
+      </a>
+    </div>
+    <div class="row-fluid">
+      <%= render "nimbos/comments/commentable", object: post %>
+    </div>		
   </div>
 </li>

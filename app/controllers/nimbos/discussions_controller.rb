@@ -43,7 +43,8 @@ module Nimbos
   
       respond_to do |format|
         if @discussion.save
-          generate_post(current_user.id, @discussion, @discussion.title, "started_discussion", true)
+          engine = @target.class.name.split("::").first.downcase
+          generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
           format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
           format.json { render json: @discussion, status: :created, location: @discussion }
         else

@@ -7,8 +7,11 @@ module Nimbos
   class Engine < ::Rails::Engine
     isolate_namespace Nimbos
 
-    config.autoload_paths << "#{config.root}/lib/validators"
+    config.i18n.default_locale = "en-EN"
+    config.i18n.load_path += Dir[config.root.join('locales', '*.{yml}').to_s]
 
+    config.autoload_paths << "#{config.root}/lib/validators"
+    
 		config.generators do |g|
 			g.test_framework :mini_test, spec: true, fixture: false
 		end

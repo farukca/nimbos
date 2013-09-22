@@ -4,14 +4,14 @@ module Nimbos
   	def post_title(post=@post)
   		case post.target_type
 				when "Nimbos::Comment"
-				  "#{user_name(post.user)} commented on #{post.target_name}"
+				  "#{user_name(post.user)} commented on #{post.target_title}"
 				when nil
 				  "#{user_name(post.user)}"
 				else
 					if post.is_syspost
-				    "#{user_name(post.user)} #{post.message} #{post.target_type}: #{post.target_name}"
+				    "#{user_name(post.user)} #{post.message} #{post.target_type}: #{post.target_title}"
 				  else
-				  	"#{user_name(post.user)}  commented on: #{post.target_name}"
+				  	"#{user_name(post.user)}  commented on: #{post.target_title}"
 				  end
 			end
   	end
@@ -25,7 +25,7 @@ module Nimbos
   	end
 
   	def post_target_name(post=@post)
-      post.target_name
+      post.target_title
   	end
 
   end

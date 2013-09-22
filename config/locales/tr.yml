@@ -1,0 +1,119 @@
+tr:
+  branches:
+    title:
+      branches: "Şubeler"
+      branch_info: "Şube Bilgisi"
+      branch_reports: "Şube Raporları"
+      branch_process: "Şube İşlemleri"
+    label:
+      name: "Şube Adı"
+      tel: "Telefon No"
+      fax: "Faks No"
+    placeholder:
+      city: "Bulunduğu Şehir"
+      country: "Bulunduğu Ülke"
+      district: "Bulunduğu Semt"
+      postcode: "Posta kodu"
+    hint:
+    link:
+      add_branch: "Yeni Şube Ekle"
+      new_branch: "Yeni Şube Oluştur"
+      branch_list: "Şube Listesi"
+    action:
+      save: "Firma Bilgisini Kaydet"
+  todolists:
+    title:
+      new_todolist: "Yeni Yapılacaklar Listesi"
+    placeholder:
+      todolist_name: "Yapılacak maddeler için genel bir başlık giriniz"
+  tasks:
+    title:
+      last_tasks: "Aktif Görevler"
+      task_info: "Görev Bilgisi"
+    label:
+      user: "Kullanıcı"
+      due_date: "Tamamlanma Tarihi"
+      task_text: "Görev Açıklaması"
+    placeholder:
+      user: "Bu işi kim yapacak ?"
+    hint:
+    link:
+      new_task: "Görev Oluştur"
+      task_list: "Görev Listesi"
+  posts:
+    link:
+      new_post: "Mesaj Yaz"
+    placeholder:
+      message: "Çalıştığın konu hakkında yazabilirsin"
+    action:
+      submit: "Mesajı Gönder"
+  patrons:
+    title:
+      patron_info: "Firma Bilgisi"
+      patron_list: "Firma Listesi"
+      address_info: "Adres Bilgileri"
+    label:
+      name: "Firma Kısa Adı"
+      title: "Firma Ünvanı"
+      district: "İlçe & Postakodu"
+      website: "Web siteniz"
+      time_zone: "Zaman Dilimi"
+      language: "Dil Seçimi"
+      currency: "Döviz Seçimi"
+      locale: "Yerel Ayarlar Seçimi"
+      mail_encoding: "Mail Encoding"
+    placeholder:
+      title: "Firmanızın uzun adı, ticari sicil ünvanı"
+      country: "Bulunduğunuz Ülke"
+      district: "İlçe"
+      postcode: "Posta kodu"
+      city: "Bulunduğunuz Şehir"
+    hint:
+    link:
+      user_list: "Kullanıcı Listesi"
+      edit_patron: "Firma Bilgilerini Güncelle"
+      destroy_logo: "Logoyu Sil"
+    action:
+    messages:
+      mailexists: "Bu mail adresi zaten kayıtlı, giriş yapmak mı istiyorsunuz"
+  users:
+    title:
+      user_info: "Kullanıcı Bilgisi"
+      user_settings: "Kullanıcı Ayarları"
+    label:
+      avatar: "Profil Resminiz"
+    placeholder:
+    hint:
+    link:
+    action:
+      change_password: "Şifreyi Değiştir"
+    messages:
+      activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
+  people:
+    defaults:
+      page_header: "Personel"
+      intro_message: "Personel bilgilerinizi takip edebilirsiniz."
+      last_records_title: "En Son Oluşturulmuş Personeller"
+      new_record_label: "Yeni Personel Kaydı Oluştur"
+      fullsearch_placeholder: "Personel adı/firması/mail adresi ile arayabilirsiniz"
+      show_page_header: "Personel Bilgisi"
+      edit_page_header: "Personel Bilgisi Güncelleme"
+      new_page_header: "Yeni Personel Bilgisi"
+      small_form_help: ""
+  counters:
+    title:
+      counter_info: "Operasyonel Sayaç Tanımları"
+    label:
+      air_Loading_reference: "Yük Referans Formatı (Hava Operasyon)"
+      sea_Loading_reference: "Yük Referans Formatı (Deniz Operasyon)"
+      road_Loading_reference: "Yük Referans Formatı (Kara Operasyon)"
+      rail_Loading_reference: "Yük Referans Formatı (Tren Operasyon)"
+      air_Position_reference: "Proje Referans Formatı (Hava Operasyon)"
+      sea_Position_reference: "Proje Referans Formatı (Deniz Operasyon)"
+      road_Position_reference: "Proje Referans Formatı (Kara Operasyon)"
+      rail_Position_reference: "Proje Referans Formatı (Tren Operasyon)"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Sayaç Bilgilerini Kaydet"

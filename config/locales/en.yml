@@ -1,0 +1,119 @@
+en:
+  branches:
+    title:
+      branches: "Branches"
+      branch_info: "Branch Information"
+      branch_reports: "Branch Reports"
+      branch_process: "Branch Actions"
+    label:
+      name: "Branch name"
+      tel: "Phone"
+      fax: "Fax"
+    placeholder:
+      city: "City"
+      country: "Country"
+      district: "District/Area"
+      postcode: "Postcode"
+    hint:
+    link:
+      add_branch: "Add New Branch"
+      new_branch: "Create New Branch"
+      branch_list: "Branch List"
+    action:
+      save: "Save Branch Information"
+  todolists:
+    title:
+      new_todolist: "Todo lists"
+    placeholder:
+      todolist_name: "Add a description to todolist as header"
+  tasks:
+    title:
+      last_tasks: "Last Tasks"
+      task_info: "Task Information"
+    label:
+      user: "User"
+      due_date: "Complete date"
+      task_text: "Task Detail"
+    placeholder:
+      user: "Who will complete this task"
+    hint:
+    link:
+      new_task: "Save Task"
+      task_list: "Task List"
+  posts:
+    link:
+      new_post: "Share and Update"
+    placeholder:
+      message: "What are you working on ?"
+    action:
+      submit: "Share Post"
+  patrons:
+    title:
+      patron_info: "Company Information"
+      patron_list: "Company List"
+      address_info: "Address"
+    label:
+      name: "Company Short Name"
+      title: "Company Full Title"
+      district: "District & Postcode"
+      website: "Website"
+      time_zone: "Timezone"
+      language: "language"
+      currency: "Currency"
+      locale: "Locale Settings"
+      mail_encoding: "Mail Encoding"
+    placeholder:
+      title: "Full/Invoice Name of your company"
+      country: "Country"
+      district: "District"
+      postcode: "Postcode"
+      city: "City"
+    hint:
+    link:
+      user_list: "User List"
+      edit_patron: "Edit Company Information"
+      destroy_logo: "Delete Logo"
+    action:
+    messages:
+      mailexists: "This email already registered, just login"
+  users:
+    title:
+      user_info: "User Information"
+      user_settings: "User Settings"
+    label:
+      avatar: "Profile Picture"
+    placeholder:
+    hint:
+    link:
+    action:
+      change_password: "Change Password"
+    messages:
+      activation_greeting: "Welcome, please set your password for activation your account"
+  people:
+    defaults:
+      page_header: "Staff"
+      intro_message: "You can manage your personel's informations."
+      last_records_title: "Last added Staffs"
+      new_record_label: "Create New Staff"
+      fullsearch_placeholder: "Staff name, phone..."
+      show_page_header: "Staff Profile"
+      edit_page_header: "Edit Staff"
+      new_page_header: "New Staff"
+      small_form_help: ""
+  counters:
+    title:
+      counter_info: "Operation Reference Numbers Definition"
+    label:
+      air_loading_reference: "Air Transportation Booking Reference Format"
+      sea_loading_reference: "Sea Transportation Booking Reference Format"
+      road_loading_reference: "Road Transportation Booking Reference Format"
+      rail_loading_reference: "Rail Transportation Booking Reference Format"
+      air_position_reference: "Air Transportation Project Reference Format"
+      sea_position_reference: "Sea Transportation Project Reference Format"
+      road_position_reference: "Road Transportation Project Reference Format"
+      rail_position_reference: "Rail Transportation Project Reference Format"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Save Reference Format"
