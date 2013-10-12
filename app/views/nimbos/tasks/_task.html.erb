@@ -1,6 +1,6 @@
 <li id="task_<%= task.id %>" class="task_<%= task.status %>">
-  <%= form_for [task.todolist, task], remote: true, html: {class: "edit_task form-search"} do |f| %>
-    <%= f.check_box :status, {}, "C", "A" %>
+  <%= form_for [task.todolist, task], url: nimbos.todolist_task_path(task.todolist, task), remote: true, html: {class: "edit_task form-search"} do |f| %>
+    <%= f.check_box :status, {}, "closed", "active" %>
     <%= f.label :status, task.task_text %>
     <span class="sub-info">
       <% if task.user_id == 0 %>

@@ -31,8 +31,10 @@ Nimbos::Engine.routes.draw do
 
   resources :activities
   resources :reminders
-  resources :tasks
-  resources :todolists
+  #resources :tasks
+  resources :todolists do
+    resources :tasks
+  end
 
   resources :listheaders
   resources :listitems

@@ -1,0 +1,9 @@
+<div id="task_form" class="row-fluid">
+  <%= form_for [todolist, task], url: nimbos.todolist_task_path(todolist, task), html: { class: "form-inline" }, remote: true do |f| %>
+    <%#= f.error_notification %>
+    <%= render 'nimbos/tasks/form_main', :f => f %>
+    <%= f.submit t("defaults.action.save"), class: 'btn btn-info' %>
+	  <%= link_to "Nevermind", nimbos.todolist_task_path(todolist, task), remote: true unless task.id.nil? %>
+  <% end %>
+
+</div>

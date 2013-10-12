@@ -2,11 +2,13 @@ require_dependency "nimbos/application_controller"
 
 module Nimbos
   class TodolistsController < ApplicationController
+    include Nimbos::Concerns::FindTarget
+
 	  before_filter :require_login
 	  respond_to :html, :js, :json
 
 	  def new
-	    @todop = find_todop
+	    @todop = find_target
 	    if @todop
 	      @todolist = @todop.todolists.new
 	    else
@@ -26,14 +28,5 @@ module Nimbos
 	    @todolist = Nimbos::Todolist.find(params[:id])
 	  end
 
-	  private
-	  def find_todop
-	    params.each do |name, value|
-	      if name =~ /(.+)_id$/
-	        return $1.classify.constantize.find(value)
-	      end
-	    end
-	    nil
-	  end
   end
 end

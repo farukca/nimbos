@@ -2,3 +2,14 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.task_actions {
+	display: none;
+}
+.task_active:hover .task_actions {
+	display: inline;
+}
+.task_closed label {
+	color: #888888;
+	font-size: 12px;
+	text-decoration: line-through;
+}

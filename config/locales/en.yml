@@ -1,4 +1,18 @@
 en:
+  defaults:
+    vocabulary:
+      yes: "Yes"
+      no: "No"
+      birthdate: "Birth Date"
+      sumof: "Total"
+      hello: "Hello"
+      cancel: "Cancel"
+    title:
+      last_items: "Last Items"
+      tasks: "Tasks"
+      comments: "Comments"
+      posts: "Posts"
+      activities: "Activities"
   branches:
     title:
       branches: "Branches"
@@ -47,6 +61,15 @@ en:
       message: "What are you working on ?"
     action:
       submit: "Share Post"
+  discussions:
+    label:
+      title: "Subject"
+      content: "Details"
+    placeholder:
+      title: "Type the subject of this message..."
+      content: "Type your message here..."
+    action:
+      submit: "Post this message"
   patrons:
     title:
       patron_info: "Company Information"

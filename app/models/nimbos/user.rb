@@ -1,7 +1,7 @@
 module Nimbos
   class User < ActiveRecord::Base
 	  include Nimbos::Concerns::Authentication
-
+    include Messenger::Concerns::Messagable
 	  #rolify
 
 	  #acts_as_follower

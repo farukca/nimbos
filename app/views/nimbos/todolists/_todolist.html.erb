@@ -4,8 +4,8 @@
 	  <div class="page-header">
       <h5><%= link_to todolist.name, nimbos.todolist_path(todolist) %></h5>
     </div>
-    <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list">
-      <%= render todolist.incomplete_tasks %>
+    <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list" class="unstyled">
+      <%= render partial: "nimbos/tasks/task", collection: todolist.incomplete_tasks %>
     </ul>
     <div id="new_task_div_link" class="row-fluid">
       <%= link_to "Add new task", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
@@ -17,8 +17,8 @@
       <%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
     </div>
 
-    <ul id="todolist_<%= todolist.id %>_completed_tasks_list">
-      <%= render todolist.completed_tasks %>
+    <ul id="todolist_<%= todolist.id %>_completed_tasks_list" class="unstyled">
+      <%= render partial: "nimbos/tasks/task", collection: todolist.completed_tasks %>
     </ul>
   </div>
 

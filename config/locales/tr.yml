@@ -1,4 +1,18 @@
 tr:
+  defaults:
+    vocabulary:
+      yes: "Evet"
+      no: "Hayır"
+      birthdate: "Doğum Tarihi"
+      sumof: "Toplam"
+      hello: "Merhaba"
+      cancel: "Vazgeç"
+    title:
+      last_items: "Son İşlemler"
+      tasks: "Görevler"
+      comments: "Yorumlar"
+      posts: "Bildirimler"
+      activities: "Aktiviteler"
   branches:
     title:
       branches: "Şubeler"
@@ -47,6 +61,15 @@ tr:
       message: "Çalıştığın konu hakkında yazabilirsin"
     action:
       submit: "Mesajı Gönder"
+  discussions:
+    label:
+      title: "Başlık"
+      content: "Mesaj"
+    placeholder:
+      title: "Mesajınız başlığını yazınız..."
+      content: "Mesajınızı yazınız..."
+    action:
+      submit: "Mesaj Paylaş"
   patrons:
     title:
       patron_info: "Firma Bilgisi"

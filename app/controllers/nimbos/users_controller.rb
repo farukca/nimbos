@@ -88,12 +88,12 @@ module Nimbos
 	          #session[:patron_id] = login_user.patron_id if login_user.patron_id
 	          force_authentication!(current_patron, current_user)
 	          #redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
-	           if @user.firstuser
+	          #if @user.firstuser
 	             #redirect_to setup_path(:start_wizard)
-	             redirect_to main_app.root_url, notice: 'Welcome to SocialFreight.'
-	           else
-	             redirect_to new_person_path, notice: 'Welcome to SocialFreight.'
-	           end
+	          redirect_to main_app.root_url, notice: 'Welcome to SocialFreight.'
+	          # else
+	          #   redirect_to new_person_path, notice: 'Welcome to SocialFreight.'
+	          # end
 	        else
 	          render :new, :notice => "Email or password is invalid"
 	        end

@@ -14,6 +14,9 @@ module Nimbos
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
+    def to_param
+    	"#{id}-#{name.parameterize}"
+    end
 
 	  def incomplete_tasks
 	    tasks.where(status: "active")

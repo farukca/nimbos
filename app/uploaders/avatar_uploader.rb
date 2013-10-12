@@ -61,6 +61,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
   
   def public_id
-    return "#{model.slug}-#{model.id}"
+    return "#{model.to_s.parameterize}-#{model.id}"
   end
 end
