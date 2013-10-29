@@ -18,7 +18,7 @@ module Nimbos
 	  end
 
 	  def create
-	    @todolist = Nimbos::Todolist.new(params[:todolist])
+	    @todolist = Nimbos::Todolist.new(todolist_params)
 	    @todolist.user_id  = current_user.id
 	    @todolist.save!
 	    respond_with @todolist, success: "Successfully saved todolist"
@@ -28,5 +28,9 @@ module Nimbos
 	    @todolist = Nimbos::Todolist.find(params[:id])
 	  end
 
+    private
+    def todolist_params
+    	params.require(:todolist).permit(:name, :user_id, :todop_type, :todop_id, :tasks_attributes)
+    end
   end
 end

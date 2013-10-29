@@ -1,23 +1,33 @@
-<div class="row-fluid">
-  <div class="page-header">
-    <h4><%= t("patrons.title.patron_list") %></h4>
-  </div>
+<div id="patrons_index" class="row">
 
-  <div class="row-fluid">
-    <table class="table table-condensed">
-      <tr>
-        <th><%= t("patrons.label.name") %></th>
-        <th><%= t("defaults.label.tel") %></th>
-        <th><%= t("defaults.label.email") %></th>
-        <th><%= t("defaults.label.country") %></th>
-        <th><%= t("defaults.label.city") %></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
+  <%= render "shared/page_title", page_title: "Firmalar", page_small_title: "Kayıtlı firmalar", model_name: "patrons", model_path: "nimbos/patrons" %>
 
-      <%= render @patrons %>
+  <div class="row inbox">
+    <div class="col-md-2">
+      <ul class="inbox-nav margin-bottom-10">
+        <li class="compose-btn">
+          <%= link_to nimbos.new_patron_path, class: "btn green" do %>
+            <i class="icon-edit"></i> Yeni Firma
+          <% end %>
+        </li>
+        <!--li class="inbox active">
+          <a href="javascript:;" class="btn" data-title="Inbox">Inbox(3)</a>
+          <b></b>
+        </li>
+        <li class="sent"><a class="btn" href="javascript:;"  data-title="Sent">Sent</a><b></b></li>
+        <li class="draft"><a class="btn" href="javascript:;" data-title="Draft">Draft</a><b></b></li>
+        <li class="trash"><a class="btn" href="javascript:;" data-title="Trash">Trash</a><b></b></li-->
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="inbox-header">
+        <h1 class="pull-left">Firma Listesi</h1>
+        <%= render "shared/quick_search_form", model_name: "patrons" %>
+      </div>
 
-    </table>
+      <div class="inbox-content">
+        <%= render "nimbos/patrons/list", objects: @patrons, is_paginated: false %>
+      </div>
+    </div>
   </div>
 </div>

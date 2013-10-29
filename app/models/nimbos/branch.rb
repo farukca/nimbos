@@ -5,8 +5,6 @@ module Nimbos
 	  belongs_to :patron	  
 	  belongs_to :country
 
-	  attr_accessible :name, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :patron_id
-
 	  validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 100}
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }

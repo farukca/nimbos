@@ -1,12 +1,13 @@
 <%= table_for objects, html: { class: "table table-condensed table-striped table-fixed" } do -%>
-  <% column :name, html: { th: { class: "span2" } } %>
-  <% column :surname, html: { th: { class: "span2" } } %>
+  <% column title: "Name", html: { th: { class: "span3" } } do |user| %>
+    <% link_to user.name, nimbos.user_path(user) %>
+  <% end %>
   <% column :email, html: { th: { class: "span2" } } %>
-  <% column html: { th: { class: "span2" } } do |user| %>
+  <% column title: "Son Login Tarihi", html: { th: { class: "span2" } } do |user| %>
     <% "#{user.last_login_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_login_at %>
   <% end %>
-  <% column html: { th: { class: "span2" } } do |user| %>
-    <% "#{user.last_activity_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_activity_at %>
+  <% column title: "Şube", html: { th: { class: "span2" } } do |user| %>
+    <% branch_name(user.branch) %>
   <% end %>
   <% column html: { th: { class: "span1" } } do |user| %>
     <% link_to "Güncelle", nimbos.edit_user_path(user) %>

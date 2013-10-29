@@ -1,8 +1,4 @@
 require 'warden'
-require 'simple_form'
-require 'client_side_validations'
-require 'table_for_collection'
-
 module Nimbos
   class Engine < ::Rails::Engine
     isolate_namespace Nimbos

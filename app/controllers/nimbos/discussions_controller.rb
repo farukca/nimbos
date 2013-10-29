@@ -38,7 +38,7 @@ module Nimbos
   
     def create
       @target = find_target
-      @discussion = @target.discussions.build(params[:discussion])
+      @discussion = @target.discussions.build(discussion_params)
       @discussion.user_id  = current_user.id
   
       respond_to do |format|
@@ -58,7 +58,7 @@ module Nimbos
       @discussion = Discussion.find(params[:id])
   
       respond_to do |format|
-        if @discussion.update_attributes(params[:discussion])
+        if @discussion.update_attributes(discussion_params)
           format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
           format.json { head :no_content }
         else
@@ -76,6 +76,11 @@ module Nimbos
         format.html { redirect_to discussions_url }
         format.json { head :no_content }
       end
+    end
+
+    private
+    def discussion_params
+      params.require(:discussion).permit(:title, :content, :target_id, :target_type)
     end
   end
 end

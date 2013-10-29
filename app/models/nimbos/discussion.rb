@@ -5,7 +5,6 @@ module Nimbos
 	  belongs_to :target, polymorphic: true
 	  has_many :comments, as: :commentable, class_name: "Nimbos::Comment", dependent: :destroy
 
-    attr_accessible :title, :content, :target_id, :target_type
 	  attr_accessor :related_user_ids
 
 	  validates_presence_of :user_id, :title

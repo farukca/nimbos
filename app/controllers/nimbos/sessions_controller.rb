@@ -6,6 +6,7 @@ module Nimbos
     def new
     	@user = User.new
     	@user.email = cookies[:socialfreight_mail].to_s
+    	render :layout => "register"
     end
 
     def create
@@ -15,7 +16,7 @@ module Nimbos
 					redirect_to session[:return_to_url]
 					session[:return_to_url] = nil
 				else
-					flash[:notice] = "You are now signed in."
+					#flash[:notice] = "You are now signed in."
 				  redirect_to main_app.root_path
 				end
 			else
@@ -28,7 +29,7 @@ module Nimbos
 
     def destroy
       warden.logout
-      redirect_to main_app.root_url, notice: "Logged out!"
+      redirect_to main_app.root_url#, notice: "Logged out!"
     end
   end
 end

@@ -5,6 +5,7 @@ module Nimbos
 	  skip_before_filter :require_login
 
 	  def new
+	  	render :layout => "register"
 	  end
 
 	  def create
@@ -22,6 +23,7 @@ module Nimbos
 	    @user = Nimbos::User.load_from_password_reset_token(params[:id])
 	    @token = params[:id]
 	    not_authenticated unless @user
+	    render :layout => "register"
 	  end
 
 	  def update

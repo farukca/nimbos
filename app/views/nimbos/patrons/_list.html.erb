@@ -1,0 +1,15 @@
+<div class="row">
+  <table class="table table-condensed">
+    <tr>
+      <th><%= t("patrons.label.name") %></th>
+      <th><%= t("defaults.label.tel") %></th>
+      <th><%= t("defaults.label.email") %></th>
+      <th><%= t("defaults.label.country") %></th>
+      <th><%= t("defaults.label.city") %></th>
+      <th></th>
+    </tr>
+
+    <%= render @patrons %>
+
+  </table>
+</div>

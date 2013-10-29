@@ -3,7 +3,7 @@ require_dependency "nimbos/application_controller"
 module Nimbos
   class ListheadersController < ApplicationController
 	  before_filter :require_login
-	  layout "nimbos/admin"
+	  layout "admin"
 
 	  def index
 	  	@listheaders = Nimbos::Listheader.all
@@ -23,7 +23,7 @@ module Nimbos
 	  end
 
 	  def create
-	    @listheader = Nimbos::Listheader.new(params[:listheader])
+	    @listheader = Nimbos::Listheader.new(listheader_params)
 	    
 	    respond_to do |format|
 	      if @listheader.save
@@ -40,7 +40,7 @@ module Nimbos
 	    @listheader = Nimbos::Listheader.find(params[:id])
 
 	    respond_to do |format|
-	      if @listheader.update_attributes(params[:listheader])
+	      if @listheader.update_attributes(listheader_params)
 	        format.html { redirect_to @listheader, notice: 'listheader was successfully updated.' }
 	        format.json { head :ok }
 	      else
@@ -48,6 +48,11 @@ module Nimbos
 	        format.json { render json: @listheader.errors, status: :unprocessable_entity }
 	      end
 	    end
+	  end
+
+	  private
+	  def listheader_params
+	  	params.require(:listheader).permit(:code, :description, :i18n_code, :name, :listitems_attributes)
 	  end
   end
 end

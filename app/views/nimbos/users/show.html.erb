@@ -1,7 +1,23 @@
-<div id="User_<%= @user.id %>_profile" class="profile">
-  <div class="row-fluid">
-    <%= render 'nimbos/users/profile_content' %>
-  </div>
-  <div class="row-fluid">
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="page-title">
+      User Profile <small>user profile sample</small>
+    </h3>
+    <ul class="page-breadcrumb breadcrumb">
+      <li class="btn-group">
+        <%= render "actions", user: @user %>
+      </li>
+      <li>
+        <i class="icon-home"></i>
+        <a href="index.html">Home</a> 
+        <i class="icon-angle-right"></i>
+      </li>
+      <li>
+        <a href="#">Extra</a>
+        <i class="icon-angle-right"></i>
+      </li>
+      <li><a href="#">User Profile</a></li>
+    </ul>
   </div>
 </div>
+<%= render "profile", user: @user %>

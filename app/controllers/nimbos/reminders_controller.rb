@@ -34,7 +34,7 @@ module Nimbos
 	  end
 
 	  def create
-	    @reminder = Nimbos::Reminder.new(params[:reminder])
+	    @reminder = Nimbos::Reminder.new(reminder_params)
 
 	    respond_to do |format|
 	      if @reminder.save
@@ -51,7 +51,7 @@ module Nimbos
 	    @reminder = Nimbos::Reminder.find(params[:id])
 
 	    respond_to do |format|
-	      if @reminder.update_attributes(params[:reminder])
+	      if @reminder.update_attributes(reminder_params)
 	        format.html { redirect_to @reminder, notice: 'Reminder was successfully updated.' }
 	        format.json { head :no_content }
 	      else
@@ -69,6 +69,11 @@ module Nimbos
 	      format.html { redirect_to reminders_url }
 	      format.json { head :no_content }
 	    end
+	  end
+
+	  private
+	  def reminder_params
+	  	params.require(:reminder).permit(:description, :finish_date, :start_date, :start_hour, :title, :user_id, :calendar_scope, :remindfor_type, :remindfor_id)
 	  end
   end
 end

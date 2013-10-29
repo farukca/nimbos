@@ -1,12 +1,10 @@
-<div class="row-fluid">
-	<%= page_header_helper(t("todolists.title.new_todolist")) %>
+<div class="row">
 
-  <div class="row-fluid">
+  <div class="col-md-12">
     <%= render partial: "#{@todop.to_partial_path}", locals: { :"#{@todop.class.name.split("""::""").last.downcase}" => @todop } %>
   </div>
 
-	<div class="row-fluid profile-content">
-    <legend><%= "Todolist Bilgisi" %></legend>
+	<div class="col-md-12">
     <%= render 'nimbos/todolists/form' %>
   </div>
 

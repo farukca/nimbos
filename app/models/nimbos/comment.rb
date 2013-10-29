@@ -3,8 +3,6 @@ module Nimbos
 	  belongs_to :user, class_name: "Nimbos::User"
 	  belongs_to :commentable, polymorphic: true, touch: true
 
-	  attr_accessible :comment_text, :commenter, :commentable, :user_id
-
 	  validates_presence_of :comment_text, :user_id
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }

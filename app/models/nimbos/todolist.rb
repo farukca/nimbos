@@ -5,8 +5,6 @@ module Nimbos
 	  belongs_to :todop, polymorphic: true, touch: true
     belongs_to :user, class_name: "Nimbos::User"
 
-	  attr_accessible :name, :user_id, :todop_type, :todop_id, :tasks_attributes
-
 	  accepts_nested_attributes_for :tasks
 
 	  validates :name, presence: true, length: { minimum: 2, maximum: 255 }

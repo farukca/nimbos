@@ -13,6 +13,7 @@ module Nimbos
 	  mount_uploader :avatar, AvatarUploader
 
 	  belongs_to :patron
+	  belongs_to :branch
     has_and_belongs_to_many :roles, :join_table => :nimbos_users_roles
 
 	  #has_one  :person
@@ -23,19 +24,19 @@ module Nimbos
 	  has_many :reminders
 
     attr_accessor :remember_me
-	  attr_accessible :email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, 
-	                  :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role_ids, :branch_id, :user_status, :remember_me
+	  #attr_accessible :email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, 
+	  #                :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role_ids, :branch_id, :user_status, :remember_me
 	  #attr_protected  :password
 
 	  validates :password, presence: { on: :create }, confirmation: { on: :create }, length: { minimum: 6, maximum: 20, on: :create }
-	  validates :email, presence: { on: :create }, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
+	  validates :email, presence: { on: :create }, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 	  validates :name, presence: true, on: :update
-	  validates :surname, presence: true, on: :update
+	  #validates :surname, presence: true, on: :update
 	  validates :branch_id, presence: true
 	  #validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
-	  scope :active, where(user_status: "active")
-	  scope :online, lambda{ where("last_activity_at > ?", 10.minutes.ago) }
-	  scope :offline, lambda{ where("last_activity_at < ?", 10.minutes.ago) }
+	  scope :active,  -> { where(user_status: "active") }
+	  scope :online,  -> { where("last_activity_at > ?", 10.minutes.ago) }
+	  scope :offline, -> { where("last_activity_at < ?", 10.minutes.ago) }
 
     def self.user_status
     	%w[active nonactive]
@@ -52,16 +53,26 @@ module Nimbos
 	  end
 
 	  def to_s
-	    "#{name} #{surname}"
+	    name
 	  end
 
 	  def to_param
-      "#{id}-#{to_s.parameterize}"
+      "#{id}-#{name.parameterize}"
     end
 
 	  def social_name
 	    email
 	  end
+
+    def role_names
+    	roles.map(&:name)
+    end
+    #https://github.com/martinrehfeld/role_model/blob/master/lib/role_model/implementation.rb
+    def has_any_role?(role_name)
+      #roles.flatten.map(&:to_sym).any? { |r| self.role_names.include?(r) }
+      self.role_names.include?(role_name.to_s)
+    end
+    alias_method :has_role?, :has_any_role?
 
 	  def generate_temp_password
 	    self.password = "9516284"

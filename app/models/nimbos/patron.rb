@@ -15,11 +15,6 @@ module Nimbos
 
 	  attr_accessor :username
 
-	  attr_accessible :name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :saler_id, 
-	                  :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo,
-	                  :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, 
-	                  :title, :currency, :username, :counters_attributes, :users_attributes, :branches_attributes
-
 	  def self.current_id=(id)
 	    Thread.current[:patron_id] = id
 	  end
@@ -37,7 +32,8 @@ module Nimbos
 	                    uniqueness: { case_sensitive: false, on: :create }, length: { in: 7..60 }, 
 	                    format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
 	  validates :contact_name, presence: true, length: { in: 2..40 }
-	  validates :contact_surname, presence: true, length: { in: 2..40 }
+	  #validates :contact_surname, presence: true, length: { in: 2..40 }
+	  validates :password, presence: { on: :create }, length: { minimum: 6, maximum: 20, on: :create }
 	  validates :tel, presence: true, length: { in: 2..20 }
 	  validates :country_id, presence: true
 	  validates :title, length: { maximum: 60 }
@@ -114,19 +110,17 @@ module Nimbos
 
 	  def create_patron_user
 	    branch = Nimbos::Branch.where(patron_id: self.id).first
-	    user = self.users.new
-	    user.name = self.contact_name
-	    user.surname = self.contact_surname
-	    user.email = self.email
+	    user      = self.users.new
+	    user.name     = self.contact_name
+	    user.surname  = self.contact_surname
+	    user.email    = self.email
 	    user.language = self.language
 	    user.locale   = self.locale
 	    user.mail_encoding = self.mail_encoding
 	    user.time_zone = self.time_zone
-	    user.branch_id  = branch.id
-	    #user.password = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
-	    #user.password_confirmation = user.password
-	    user.password = "123456789"
-	    user.password_confirmation = "123456789"
+	    user.branch_id = branch.id
+	    user.password  = self.password
+	    user.password_confirmation = self.password
 	    user.firstuser = true
 	    user.save!
 	    #user.add_role :admin

@@ -2,9 +2,9 @@ require_dependency "nimbos/application_controller"
 
 module Nimbos
   class UsersController < ApplicationController
-	  before_filter :require_login
-	  skip_before_filter :require_login, :only => [:new, :create, :activate, :activation, :update]
-	  before_filter(:only => [:show]) { |c| c.set_tab "homenavigator" }
+	  before_action :require_login
+	  skip_before_action :require_login, :only => [:new, :create, :activate, :activation, :update]
+	  before_filter(:only => [:index]) { |c| c.set_tab "usersnavigator" }
 	    
 	  def index
 	    if params[:q]
@@ -18,7 +18,7 @@ module Nimbos
 	      end
 	    end
 	    respond_to do |format|
-	      format.html { render :layout => "nimbos/admin" } # index.html.erb
+	      format.html { render :layout => "admin" } # index.html.erb
 	      format.json { render json: @users.map(&:token_inputs) }
 	    end
 	  end
@@ -29,9 +29,9 @@ module Nimbos
 	      @user = current_patron.users.build()
 	    end
 	    if current_user
-	      render layout: "nimbos/admin"
+	      render layout: "admin"
 	    else
-	      render layout: "nimbos/guest"
+	      render layout: "homepage"
 	    end
 	  end
 
@@ -44,7 +44,7 @@ module Nimbos
 	  end
 
 	  def create
-	    @user = Nimbos::User.new(params[:user])
+	    @user = Nimbos::User.new(user_params)
 	    if current_patron
 	      @user.patron_id = current_patron.id
 	      @user.generate_temp_password
@@ -68,21 +68,23 @@ module Nimbos
 
 	  def activation
 	    @user = Nimbos::User.find(params[:id])
-	    render :layout => 'nimbos/guest'# unless current_user
+	    render :layout => 'register'# unless current_user
 	  end
 
 	  def edit
 	    @user = Nimbos::User.find(params[:id])
-	    render :layout => "nimbos/admin"
+	    #if current_user.has_role(:patron_admin) && (current_user.id != @user.id)
+   	    render :layout => "admin"
+
 	  end
 
 	  def update
 	    @user = Nimbos::User.find(params[:id])
 
-	    if @user.update_attributes(params[:user])
+	    if @user.update_attributes(user_params)
 	      if @user.last_login_at.nil?
-	      	params[:user][:email] = @user.email
-	        #login_user = login(@user.email, params[:user][:password], params[:remember_me])
+	      	user_params[:email] = @user.email
+	        #login_user = login(@user.email, user_params[:password], params[:remember_me])
 	        #if login_user
 	        if warden.authenticate(:scope => :user)
 	          #session[:patron_id] = login_user.patron_id if login_user.patron_id
@@ -123,8 +125,8 @@ module Nimbos
 	        @user.email     = email
 	        @user.branch_id = @branch_id
 	        @user.patron_id = current_patron.id
-	        @user.password  = "Deneme2121"
-	        @user.password_confirmation  = "Deneme2121"
+	        @user.password  = "7539518264"
+	        @user.password_confirmation  = "7539518264"
 	        if @user.valid?
 	          @user.save!
 	          @saved_emails << email
@@ -146,8 +148,9 @@ module Nimbos
 	  end
 
 	  private
-	  def find_followable
-	    return params[:model_name].classify.constantize.find(params[:object_id])
+	  def user_params
+	  	params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role_ids, :branch_id, :user_status, :remember_me)
 	  end
+
   end
 end

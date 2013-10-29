@@ -1,7 +1,7 @@
 module Nimbos
   module UsersHelper
 	  def user_name(user = @user)
-	  	user.to_s
+	  	user.name
 	  end
 
 	  def first_name(user = @user)
@@ -10,12 +10,17 @@ module Nimbos
 
 	  def user_small_avatar(user = @user)
 	    #user.avatar_url(:small)
-	    cl_image_tag(user.avatar_url, width: 48, height: 48, crop: :fill, class: "media-object img-circle")
+	    cl_image_tag(user.avatar_url, width: 48, height: 48, crop: :fill, class: "img-circle")
 	  end
 
 	  def user_mini_avatar(user = @user)
 	    #user.avatar_url(:mini)
-	    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill, class: "media-object")
+	    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill)
+	  end
+
+	  def user_avatar(user = @user)
+	    #user.avatar_url(:mini)
+	    cl_image_tag(user.avatar_url, width: 180, height: 180, crop: :fill, class: "img-responsive")
 	  end
 
 	  def users_active_tasks_count(user = @user)

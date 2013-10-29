@@ -27,7 +27,7 @@ module Nimbos
 	  def create
 	    @todolist = Nimbos::Todolist.find(params[:todolist_id])
 
-	  	@task = @todolist.tasks.new(params[:task])
+	  	@task = @todolist.tasks.new(task_params)
 	  	@task.cruser_id = current_user.id
 	    @task.user_id   = 0
 
@@ -39,11 +39,16 @@ module Nimbos
 	  	@task = Nimbos::Task.find(params[:id])
 	    @todolist = @task.todolist
 
-	    @task.update_attributes!(params[:task])
+	    @task.update_attributes!(task_params)
 	    respond_with @task, success: 'task was successfully updated.'
 	  end
 
 	  def destroy
+	  end
+
+	  private
+	  def task_params
+	  	params.require(:task).permit(:user_id, :task_text, :task_code, :due_date, :status, :close_text, :closed_date, :system_task)
 	  end
   end
 end

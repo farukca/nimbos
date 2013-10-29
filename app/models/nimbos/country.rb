@@ -5,8 +5,6 @@ module Nimbos
 	 
 	  #acts_as_gmappable :process_geocoding => false, :validation => false
 	  
-	  attr_accessible :name, :code, :telcode, :locale, :language, :time_zone, :mail_encoding
-	  
 	  validates_presence_of :name, :code
 	  validates_uniqueness_of :name, :case_sensitive => false
 	  validates_uniqueness_of :code, :case_sensitive => false

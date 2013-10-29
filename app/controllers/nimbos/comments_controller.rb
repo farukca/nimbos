@@ -17,7 +17,7 @@ module Nimbos
 
 	  def create
 	    @commentable = find_target
-	    @comment = @commentable.comments.build(params[:comment])
+	    @comment = @commentable.comments.build(comment_params)
 	    @comment.user_id  = current_user.id
 
 	    @comment.save!
@@ -30,6 +30,11 @@ module Nimbos
 	    @comment.destroy
 	    flash[:notice] = "Successfully destroyed comment."
 	    redirect_to comments_url
+	  end
+
+	  private
+	  def comment_params
+	  	params.require(:comment).permit(:comment_text, :commenter, :commentable, :user_id)
 	  end
 
   end

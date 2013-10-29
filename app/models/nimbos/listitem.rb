@@ -7,10 +7,10 @@ module Nimbos
 
 	  belongs_to :listheader
 	  
-	  attr_accessible :code, :i18n_code, :list_code, :name
+	  #attr_accessible :code, :i18n_code, :list_code, :name
 
 	  Nimbos::Listheader.all.each do |header|
-	  	scope "#{header.code}", where(list_code: header.code)
+	  	scope "#{header.code}", -> { where(list_code: header.code) }
 	  end
   end
 end

@@ -1,7 +1,7 @@
 module Nimbos
   class Counter < ActiveRecord::Base
 
-    attr_accessible :confirmed, :count, :counter_type, :period, :prefix, :suffix
+    #attr_accessible :confirmed, :count, :counter_type, :period, :prefix, :suffix
 
 	  validates :counter_type, presence: true
 	  validates :count, numericality: { only_integer: true }

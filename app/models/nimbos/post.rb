@@ -8,7 +8,6 @@ module Nimbos
 	  has_many :comments, as: :commentable, class_name: "Nimbos::Comment", dependent: :destroy
 
 	  attr_accessor :related_user_ids
-	  attr_accessible :message, :is_private, :related_user_ids, :target, :user_id, :target_title, :is_syspost
 
 	  validates_presence_of :user_id, :message
 

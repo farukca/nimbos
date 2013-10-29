@@ -4,8 +4,6 @@ module Nimbos
 
 	  accepts_nested_attributes_for :listitems, :reject_if => lambda { |a| a[:code].blank? }, allow_destroy: true
 
-	  attr_accessible :code, :description, :i18n_code, :name, :listitems_attributes
-
 	  before_save :set_item_code
 
     def to_param

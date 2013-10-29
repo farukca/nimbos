@@ -4,7 +4,7 @@ module Nimbos
   class CountriesController < ApplicationController
 	  before_filter :require_login
 	  #caches_action :index
-	  layout "nimbos/admin"
+	  layout "admin"
 
 	  def new
 	    @country = Nimbos::Country.new
@@ -39,7 +39,7 @@ module Nimbos
 	  end
 
 	  def create
-	    @country = Nimbos::Country.new(params[:country])
+	    @country = Nimbos::Country.new(country_params)
 
 	    respond_to do |format|
 	      if @country.save
@@ -56,7 +56,7 @@ module Nimbos
 	    @country = Nimbos::Country.find(params[:id])
 
 	    respond_to do |format|
-	      if @country.update_attributes(params[:country])
+	      if @country.update_attributes(country_params)
 	        format.html { redirect_to countries_path, notice: 'Country was successfully updated.' }
 	        format.json { head :no_content }
 	      else
@@ -64,6 +64,10 @@ module Nimbos
 	        format.json { render json: @country.errors, status: :unprocessable_entity }
 	      end
 	    end
+	  end
+
+	  def country_params
+	  	params.require(:country).permit(:name, :code, :telcode, :locale, :language, :time_zone, :mail_encoding)
 	  end
   end
 end

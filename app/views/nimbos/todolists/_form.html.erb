@@ -1,11 +1,19 @@
-<div class="row-fluid">
-  <div class="span6">
+<div class="portlet">
+  <%= render "shared/portlet_title", title: t("todolists.title.new_todolist") %>
+
+  <div class="portlet-body form">
+
     <%= simple_form_for @todolist, html: { class: 'form-search' }, validate: true do |f| %>
       <%= f.error_notification %>
-      <%= f.input :name, placeholder: t("todolists.placeholder.todolist_name"), input_html: { class: "input-xxlarge" }, label: false %>
+
+      <div class="form-body">
+      	<%= f.input :name, placeholder: t("todolists.placeholder.todolist_name"), label: false %>
+      </div>
+      <%= f.submit(t("defaults.action.save"), class: 'btn btn-info') %>
+      
 	    <%= f.input :todop_type, as: :hidden %>
 	    <%= f.input :todop_id, as: :hidden %>
-      <%= f.submit(t("defaults.action.save"), class: 'btn btn-info') %>
+      
     <% end %>    
   </div>
 </div>

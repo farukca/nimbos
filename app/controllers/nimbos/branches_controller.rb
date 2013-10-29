@@ -3,10 +3,11 @@ require_dependency "nimbos/application_controller"
 module Nimbos
   class BranchesController < ApplicationController
 	  before_filter :require_login
+	  before_filter(:only => [:index]) { |c| c.set_tab "branchesnavigator" }
+	  layout "admin"
 
 	  def index
 	    @branches = Nimbos::Branch.all
-	    render :layout => "nimbos/admin"
 	  end
 
 	  def new
@@ -18,7 +19,7 @@ module Nimbos
 	  end
 
 	  def create
-	    @branch = Nimbos::Branch.new(params[:branch])
+	    @branch = Nimbos::Branch.new(branch_params)
 
 	    respond_to do |format|
 	      if @branch.save
@@ -29,6 +30,25 @@ module Nimbos
 	        format.json { render json: @branch.errors, status: :unprocessable_entity }
 	      end
 	    end
+	  end
+
+	  def update
+	  	@branch = Nimbos::Branch.find(params[:id])
+
+	    respond_to do |format|
+	      if @branch.update_attributes(branch_params)
+	        format.html { redirect_to nimbos.branches_path, notice: 'Branch was successfully updated.' }
+	        format.json { head :ok }
+	      else
+	        format.html { render action: "edit" }
+	        format.json { render json: @branch.errors, status: :unprocessable_entity }
+	      end
+	    end
+	  end
+
+	  private
+	  def branch_params
+	  	params.require(:branch).permit(:name, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :patron_id)
 	  end
   end
 end
