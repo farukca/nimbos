@@ -28,6 +28,7 @@ module Nimbos
         helper Nimbos::CountriesHelper
         helper Nimbos::PostsHelper
         helper Nimbos::CurrenciesHelper
+        helper Nimbos::CalendarHelper
       end
     end
 

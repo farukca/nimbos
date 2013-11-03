@@ -1,2 +1,3 @@
-$("#<%= @comment.commentable_type %>_<%= @comment.commentable_id %>_commentlist").append('<%= j render(@comment) %>');
-$("#new_comment_<%= @comment.commentable_type %>_<%= @comment.commentable_id %>").each (function(){ this.reset(); });
+<% normalized_model_name = normalize_model_name(@comment.commentable_type) %>
+$("#<%= normalized_model_name %>_<%= @comment.commentable_id %>_commentlist").append('<%= j render(@comment) %>');
+$("#<%= normalized_model_name %>_<%= @comment.commentable_id %>_commentform").each (function(){ this.reset(); });

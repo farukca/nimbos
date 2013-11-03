@@ -10,17 +10,17 @@ module Nimbos
 
 	  def user_small_avatar(user = @user)
 	    #user.avatar_url(:small)
-	    cl_image_tag(user.avatar_url, width: 48, height: 48, crop: :fill, class: "img-circle")
+	    cl_image_tag(user.avatar_url, width: 48, height: 48, crop: :fill, class: "avatar")
 	  end
 
 	  def user_mini_avatar(user = @user)
 	    #user.avatar_url(:mini)
-	    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill)
+	    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill, class: "avatar")
 	  end
 
 	  def user_avatar(user = @user)
 	    #user.avatar_url(:mini)
-	    cl_image_tag(user.avatar_url, width: 180, height: 180, crop: :fill, class: "img-responsive")
+	    cl_image_tag(user.avatar_url, width: 180, height: 180, crop: :fill, class: "avatar")
 	  end
 
 	  def users_active_tasks_count(user = @user)

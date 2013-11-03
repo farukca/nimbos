@@ -1,18 +1,30 @@
-<div id="calendar">
-  <h3 id="month" data-current-date="<%= @date %>">
-    <%= link_to "<", date: @date.prev_month %>
-    <%= @date.strftime("%B %Y") %>
-    <%= link_to ">", date: @date.next_month %>
-    <small class="pull-right"></small>
-  </h3>
-  <%= calendar @date do |date| %>
-    <%= date.day %>
-    <% if @tasks_by_date[date] %>
-      <ul>
-        <% @tasks_by_date[date].each do |task| %>
-          <li><%= link_to task.task_text, "#" %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="page-title">
+      Calendar <small>calendar page</small>
+    </h3>
+  </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box blue calendar">
+      <div class="portlet-title">
+        <div class="caption"><i class="icon-reorder"></i>Calendar</div>
+      </div>
+      <div class="portlet-body light-grey">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div id="calendar" class="has-toolbar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :init_scripts do %>
+  <script>
+    jQuery(document).ready(function() {       
+      Calendar.init();
+    });
+  </script>
+<% end %>

@@ -1,8 +1,9 @@
-<li class="media">
-  <div class="feedline">
-    <%= link_to user_mini_avatar(comment.user), nimbos.user_path(comment.user), class: "pull-left" %>
-    <span><%= link_to comment.user, nimbos.user_path(comment.user) %></span>
-    <span><%= comment.comment_text %></span>
-    <span class="sub-info"><%= comment.created_at.to_s(:pretty) %></span>
+<li class="in">
+  <%= user_small_avatar(comment.user) %>
+  <div class="message">
+    <span class="arrow"></span>
+    <%= link_to comment.user, nimbos.user_path(comment.user), class: "name" %>
+    <span class="datetime"><%= created_time(comment.created_at) %></span>
+    <span class="body"><%= comment.comment_text %></span>
   </div>
 </li>

@@ -1,3 +1,3 @@
-<ul id="<%= object.class.name%>_<%= object.id %>_commentlist" style="margin-top:10px">
+<ul id="<%= normalize_model_name(object.class.name) %>_<%= object.id %>_commentlist" class="chats">
   <%= render partial: "nimbos/comments/comment", collection: object.comments.order("created_at asc") %>
 </ul>

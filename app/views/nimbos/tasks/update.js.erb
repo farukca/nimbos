@@ -4,4 +4,4 @@ $('#task_<%= @task.id %>').replaceWith("<%= j render @task %>");
 <% else %>
   $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_completed_tasks_list');
 <% end %>
-$('#newAgileRecord').modal('hide')
+App.initAjax();

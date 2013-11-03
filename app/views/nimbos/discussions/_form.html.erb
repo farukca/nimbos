@@ -1,5 +1,5 @@
 <div class="portlet">
-  <%= render "shared/portlet_title", title: t("operations.title.new_loading") %>
+  <%#= render "shared/portlet_title", title: t("operations.title.new_loading") %>
 
   <div class="portlet-body form">
 
@@ -8,7 +8,7 @@
 
   		<div class="form-body">
 			  <%= f.input :title, label: t("discussions.label.title"), placeholder: t("discussions.placeholder.title"), input_html: { class: "input-xxlarge" } %>
-			  <%= f.input :content, label: t("discussions.label.content"), placeholder: t("discussions.placeholder.content"), input_html: { rows: "6", class: "input-xxlarge" } %>  			
+			  <%= f.input :content, label: t("discussions.label.content"), placeholder: t("discussions.placeholder.content"), input_html: { rows: "6", class: "wysihtml5" } %>  			
   		</div>
 
   		<div class="form-actions">

@@ -1,9 +1,11 @@
-<div id="task_form" class="row-fluid">
   <%= form_for [todolist, task], url: nimbos.todolist_tasks_path(todolist), html: { class: "form-inline" }, remote: true do |f| %>
     <%#= f.error_notification %>
-    <%= render 'nimbos/tasks/form_main', :f => f %>
+    <!--div class="form-group">
+      <%#= f.check_box :status, {}, "closed", "active" %>
+    </div-->
+    <div class="form-group">
+      <%= f.text_field :task_text, label: false, placeholder: t("tasks.label.task_text"), class: "form-control input-xlarge" %>
+    </div>
     <%= f.submit t("defaults.action.save"), class: 'btn btn-info' %>
-		<%= link_to "Nevermind", nimbos.todolist_task_path(todolist, task), remote: true unless task.id.nil? %>
+		<%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
   <% end %>
-
-</div>

@@ -1,25 +1,24 @@
-<div class="row-fluid">
-
-  <div class="row-fluid">
-	  <div class="page-header">
-      <h5><%= link_to todolist.name, nimbos.todolist_path(todolist) %></h5>
+<div class="row">
+	  <div class="inbox-header">
+      <h4>
+        <%= link_to nimbos.todolist_path(todolist) do %>
+          <i class="icon-tasks"></i>  <%= todolist.name %>
+        <% end %>
+      </h4>
     </div>
-    <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list" class="unstyled">
-      <%= render partial: "nimbos/tasks/task", collection: todolist.incomplete_tasks %>
-    </ul>
-    <div id="new_task_div_link" class="row-fluid">
-      <%= link_to "Add new task", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
-    </div>
-    <div id="new_task_div" class="row-fluid slidingDiv">
-      <div class="row-fluid">
+    <div class="inbox-content">
+      <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list" class="list-unstyled">
+        <%= render partial: "nimbos/tasks/task", collection: todolist.incomplete_tasks %>
+      </ul>
+      <div id="new_task_div_link">
+        <%= link_to "Add new task", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
+      </div>
+      <div id="new_task_div" class="slidingDiv">
         <%= render "nimbos/tasks/form", todolist: todolist, task: Nimbos::Task.new %>
       </div>
-      <%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
+
+      <ul id="todolist_<%= todolist.id %>_completed_tasks_list" class="list-unstyled">
+        <%= render partial: "nimbos/tasks/task", collection: todolist.completed_tasks %>
+      </ul>
     </div>
-
-    <ul id="todolist_<%= todolist.id %>_completed_tasks_list" class="unstyled">
-      <%= render partial: "nimbos/tasks/task", collection: todolist.completed_tasks %>
-    </ul>
-  </div>
-
 </div>
