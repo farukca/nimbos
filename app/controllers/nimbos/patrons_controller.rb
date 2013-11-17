@@ -53,7 +53,7 @@ module Nimbos
 	        format.html { render 'check_mail', notice: 'Patron was successfully created.', layout: 'homepage' }
 	        format.json { render json: @patron, status: :created, location: @patron }
 	      else
-	        format.html { render action: "new" }
+	        format.html { render action: "new", layout: "register" }
 	        format.json { render json: @patron.errors, status: :unprocessable_entity }
 	      end
 	    end
@@ -75,7 +75,7 @@ module Nimbos
 
 	  private
 	  def patron_params
-	  	params.require(:patron).permit(:name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo, :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, :title, :currency, :username, :counters_attributes, :users_attributes, :branches_attributes)
+	  	params.require(:patron).permit(:name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo, :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, :title, :currency, :username, :password, :counters_attributes, :users_attributes, :branches_attributes)
 	  end
 
   end

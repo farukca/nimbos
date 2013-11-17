@@ -12,7 +12,8 @@ module Nimbos
 	       @users = current_patron.users.where("lower(name) like ?", q).order(:name).limit(10)
 	    else
 	      if params[:id].present?
-	        @users = Nimbos::User.find_all_by_id(params[:id])
+	      	query_ids = params[:id].chomp.split(/,/).map { |x| x.to_i }
+	        @users = Nimbos::User.where(id: query_ids)
 	      else
 	        @users = current_patron.users.all
 	      end
@@ -37,10 +38,6 @@ module Nimbos
 
 	  def show
 	    @user = current_patron.users.find(params[:id])
-	    if @user.id != current_user.id
-	      redirect_to @user.person
-	    end
-	    @post = Nimbos::Post.new
 	  end
 
 	  def create
@@ -74,7 +71,7 @@ module Nimbos
 	  def edit
 	    @user = Nimbos::User.find(params[:id])
 	    #if current_user.has_role(:patron_admin) && (current_user.id != @user.id)
-   	    render :layout => "admin"
+   	  render :layout => "admin"
 
 	  end
 
@@ -149,7 +146,11 @@ module Nimbos
 
 	  private
 	  def user_params
-	  	params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role_ids, :branch_id, :user_status, :remember_me)
+	  	if current_user.has_role? :admin
+	  	  params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :branch_id, :user_status, :remember_me, :role_ids => [])
+	  	else
+	  	  params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, :region, :time_zone, :language, :locale, :mail_encoding, :remember_me)
+	  	end  
 	  end
 
   end

@@ -5,6 +5,8 @@ module Nimbos::Concerns::Authentication
 	included do
 		has_secure_password
 
+    attr_accessor :token
+
 		before_create :setup_activation
 		after_create  :send_activation_mail!
 	end
@@ -55,7 +57,7 @@ module Nimbos::Concerns::Authentication
     Resque.enqueue(UserMailerWorker, { user_id: self.id, mail_type: "password_reset" })
   end
 
-  def change_password!(new_password)
+  def change_password(new_password)
     clear_password_reset_token
     self.password = new_password
     save

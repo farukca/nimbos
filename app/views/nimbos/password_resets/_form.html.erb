@@ -21,8 +21,9 @@
     <div class="field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
-      <%= hidden_field_tag :token, @token %>
     </div>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :token %>
   </fieldset>
   <div class="form-actions">
     <%= f.submit "Update Password" %>

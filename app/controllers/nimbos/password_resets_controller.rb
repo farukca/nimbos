@@ -21,23 +21,26 @@ module Nimbos
 
 	  def edit
 	    @user = Nimbos::User.load_from_password_reset_token(params[:id])
-	    @token = params[:id]
+	    @user.token = params[:id]
 	    not_authenticated unless @user
 	    render :layout => "register"
 	  end
 
 	  def update
-	    @token = params[:token]
-	    @user  = Nimbos::User.load_from_password_reset_token(params[:token])
+	    @user  = Nimbos::User.load_from_password_reset_token(params[:user][:token])
 	    not_authenticated unless @user
 
-	    @user.password_confirmation = params[:user][:password_confirmation]
-	    
-	    if @user.change_password!(params[:user][:password])
-	      redirect_to(main_app.root_path, :notice => 'Your password has been changed')
-	    else
-	      render :action => :edit
-	    end
+	    if @user
+	    	@user.token = params[:user][:token]
+	    	@user.password_confirmation = params[:user][:password_confirmation]
+		    if @user.change_password(params[:user][:password])
+		      redirect_to(main_app.root_path, :notice => 'Your password has been changed')
+		    else
+		      render :action => :edit
+		    end
+		  else
+		  	render :action => :edit
+		  end
 	  end
   end
 end
