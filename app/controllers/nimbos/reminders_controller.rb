@@ -7,7 +7,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      format.html # index.html.erb
-	      format.json { render json: @reminders }
+	      format.json #{ render json: @reminders }
 	    end
 	  end
 
@@ -35,6 +35,7 @@ module Nimbos
 
 	  def create
 	    @reminder = Nimbos::Reminder.new(reminder_params)
+	    @reminder.user_id = current_user.id
 
 	    respond_to do |format|
 	      if @reminder.save
