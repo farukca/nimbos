@@ -1,0 +1,6 @@
+$("#modalWindow").html("<%= escape_javascript(render 'nimbos/reminders/form') %>");
+$("#modalWindow").modal();
+jQuery(document).ready(function() {       
+  App.initAjax();
+  FormComponents.init();
+});

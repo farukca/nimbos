@@ -9,8 +9,8 @@ module Nimbos
 	  
 	  #attr_accessible :code, :i18n_code, :list_code, :name
 
-	  #Nimbos::Listheader.all.each do |header|
-	  #	scope "#{header.code}", -> { where(list_code: header.code) }
-	  #end
+	  Nimbos::Listheader.all.each do |header|
+	  	scope "#{header.code}", -> { where(list_code: header.code) }
+	  end
   end
 end

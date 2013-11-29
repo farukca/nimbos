@@ -1,28 +1,22 @@
-<div id="case_form">
-<%= simple_form_for @reminder, html: { class: "form-horizontal" }, validate: true do |f| %>
-  <%= f.error_notification %>
+<div class="modal-dialog">
+  <div class="modal-content">
 
-  <div class="pageBlock">
-
-    <div class="tabbable tabs-below">
-
-      <div id="my-tab-content" class="tab-content">
-        <div id="reminder-main-form" class="tab-pane active">
-          <%= render 'form_main', :f => f %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, t("defaults.action.save"), class: 'btn btn-primary' %>
-          <a href="#" class="btn"><%= t("defaults.link.cancel") %></a>
-        </div>
-        <!--div id="event-detail-form" class="tab-pane form_tab_pane">
-          <%#= render 'form_detail', :f => f %>
-        </div-->
-      </div>
-
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+      <h4 class="modal-title">New Reminder</h4>
     </div>
-    
-    
-  </div>
 
-<% end %>
+    <%= simple_form_for @reminder, html: { class: "horizontal-form" } do |f| %>
+      <%= f.error_notification %>
+      <div class="modal-body">
+        <%= render 'form_main', :f => f %>
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, t("defaults.action.save"), class: 'btn btn-primary' %>
+        <button type="button" class="btn default" data-dismiss="modal">Close</button>
+      </div>
+    <% end %>
+
+  </div>
 </div>
+<h4>adfa sdfa asdfasf</h4>

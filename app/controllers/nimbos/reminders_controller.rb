@@ -25,12 +25,16 @@ module Nimbos
 
 	    respond_to do |format|
 	      format.html # new.html.erb
-	      format.json { render json: @reminder }
+	      format.js
 	    end
 	  end
 
 	  def edit
 	    @reminder = Nimbos::Reminder.find(params[:id])
+	    respond_to do |format|
+	      format.html # new.html.erb
+	      format.js
+	    end
 	  end
 
 	  def create
