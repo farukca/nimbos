@@ -6,7 +6,7 @@
       <h4 class="modal-title">New Reminder</h4>
     </div>
 
-    <%= simple_form_for @reminder, html: { class: "horizontal-form" } do |f| %>
+    <%= simple_form_for @reminder, remote: true, html: { class: "horizontal-form" } do |f| %>
       <%= f.error_notification %>
       <div class="modal-body">
         <%= render 'form_main', :f => f %>

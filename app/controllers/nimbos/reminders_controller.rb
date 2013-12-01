@@ -43,11 +43,14 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @reminder.save
-	        format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
+	      	flash[:notice] = "Reminder was successfully created."
+	        format.html { redirect_to @reminder }
 	        format.json { render json: @reminder, status: :created, location: @reminder }
+	        format.js
 	      else
 	        format.html { render action: "new" }
 	        format.json { render json: @reminder.errors, status: :unprocessable_entity }
+	        format.js
 	      end
 	    end
 	  end
