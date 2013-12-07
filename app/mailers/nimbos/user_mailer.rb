@@ -1,6 +1,6 @@
 module Nimbos
   class UserMailer < ActionMailer::Base
-    default from: "yourfriends@socialfreight.com"
+    default from: "hello@modaltrans.com"
   
     def activation_needed_email(user_id)
       @user = User.find(user_id)
