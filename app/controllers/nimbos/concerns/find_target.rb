@@ -17,6 +17,8 @@ private
 	    return Logistics::Loading.find(params[:loading_id])
 	  elsif params[:transport_id]
 	    return Logistics::Transport.find(params[:transport_id])
+	  elsif params[:document_id]
+	    return Arsiv::Document.find(params[:document_id])
 	  else
 	    params.each do |name, value|
 	      if name =~ /(.+)_id$/

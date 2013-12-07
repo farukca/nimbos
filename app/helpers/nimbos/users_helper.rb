@@ -20,7 +20,7 @@ module Nimbos
 
 	  def user_avatar(user = @user)
 	    #user.avatar_url(:mini)
-	    cl_image_tag(user.avatar_url, width: 180, height: 180, crop: :fill, class: "avatar")
+	    cl_image_tag(user.avatar_url, width: 100, height: 100, crop: :fill, class: "avatar")
 	  end
 
 	  def users_active_tasks_count(user = @user)

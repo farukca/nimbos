@@ -27,7 +27,7 @@
       </div>
       <div class="row">
         <div id="logo_change_div" class="slidingDiv">
-          <%= simple_form_for user, remote: true, html: {multipart: true, class: 'form-inline'} do |f| %>
+          <%= simple_form_for user, html: {multipart: true, class: 'form-inline'} do |f| %>
             <%= f.input :avatar_cache, as: :hidden %>
             <%= f.input :avatar, as: :file, label: false %>
             <%= f.submit "Profil Resmini Değiştir", :class => "btn btn-success" %>
