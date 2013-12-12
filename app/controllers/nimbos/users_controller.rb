@@ -58,7 +58,7 @@ module Nimbos
 	    if @user = Nimbos::User.load_from_activation_token(params[:id])
 	      @user.activate!
 	      cookies[:socialfreight_mail] = @user.email
-	      redirect_to nimbos.new_session_path
+	      redirect_to nimbos.new_session_path, notice: "Perfect, you have activated your account, you can login now..."
 	      #redirect_to(activation_user_path(@user))
 	    else
 	      not_authenticated
@@ -73,8 +73,9 @@ module Nimbos
 	  def edit
 	    @user = Nimbos::User.find(params[:id])
 	    #if current_user.has_role(:patron_admin) && (current_user.id != @user.id)
-   	  render :layout => "admin"
-
+	    if (current_user.id != @user.id)
+   	    render :layout => "admin"
+      end
 	  end
 
 	  def update
