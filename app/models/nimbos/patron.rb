@@ -111,6 +111,7 @@ module Nimbos
 
 	  def create_patron_user
 	    branch = Nimbos::Branch.where(patron_id: self.id).first
+	    role = Nimbos::Role.find_or_create_by(name: "admin")
 	    user      = self.users.new
 	    user.name     = self.contact_name
 	    user.surname  = self.contact_surname
@@ -123,6 +124,7 @@ module Nimbos
 	    user.password  = self.password
 	    user.password_confirmation = self.password
 	    user.firstuser = true
+	    user.role_ids  = [role.id]
 	    user.save!
 	    #user.add_role :admin
 	  end
