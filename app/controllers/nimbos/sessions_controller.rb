@@ -12,6 +12,7 @@ module Nimbos
     def create
 			if warden.authenticate(:scope => :user)
 				force_authentication!(current_patron, current_user)
+				flash.discard(:error)
 				unless session[:return_to_url].blank?
 					redirect_to session[:return_to_url]
 					session[:return_to_url] = nil
