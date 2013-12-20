@@ -1,6 +1,14 @@
-<div class="row-fluid">
+<li class="media">
 	<%= link_to user_small_avatar(current_user), nimbos.user_path(current_user), class: "pull-left" %>
-  <%= form_for Nimbos::Post.new, remote: true, html: {class: "condensed-form"} do |f| %>
-    <%= render "nimbos/posts/fields", f: f %>
-  <% end %>
-</div>
+
+  <div class="media-body">
+    <div class="media-content">
+    	<div class="chat-form" style="margin-top:0px;">
+		  	<%= form_for Nimbos::Post.new, remote: true, html: { role: "form" } do |f| %>
+		    	<%= render "nimbos/posts/fields", f: f %>
+		  	<% end %>
+		  </div>
+    </div>
+  </div>
+
+</li>

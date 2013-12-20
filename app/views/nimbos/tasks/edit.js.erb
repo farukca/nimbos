@@ -1,1 +1,6 @@
-$('#task_<%= @task.id %>').html('<%= j render "nimbos/tasks/edit_form", todolist: @todolist, task: @task %>');
+$("#modalWindow").html("<%= escape_javascript(render 'nimbos/tasks/edit_form') %>");
+$("#modalWindow").modal();
+jQuery(document).ready(function() {       
+  App.initAjax();
+  FormComponents.init();
+});

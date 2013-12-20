@@ -4,10 +4,10 @@
     <%= f.label :status, task.task_text %>
     <span class="sub-info">
       <% if task.user_id == 0 %>
-        <%= link_to "Not Assigned", nimbos.edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <%= link_to "Not Assigned", nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
       <% else %>
         <%= "#{task.user.to_s}-#{task.due_date}" %>
-        <%= link_to "Change User", nimbos.edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <%= link_to "Change User", nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
       <% end %>
     </span>
     <span class="task-actions">

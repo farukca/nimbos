@@ -47,10 +47,9 @@ module Nimbos
 	      @user.generate_temp_password
 	    end
 	    if @user.save
-	      @user.add_role :operator
-	      redirect_to root_url, :notice => "Activation mail has been sent to mail adress!"
+	      redirect_to main_app.root_url, :notice => "Activation mail has been sent to mail adress!"
 	    else
-	      render :new
+	      render :new, layout: "admin"
 	    end
 	  end
 
@@ -58,8 +57,10 @@ module Nimbos
 	    if @user = Nimbos::User.load_from_activation_token(params[:id])
 	      @user.activate!
 	      cookies[:socialfreight_mail] = @user.email
-	      redirect_to nimbos.new_session_path, notice: "Perfect, you have activated your account, you can login now..."
-	      #redirect_to(activation_user_path(@user))
+	      warden.set_user(@user)
+	      force_authentication!(@user.patron, @user)
+	      #redirect_to nimbos.new_session_path, notice: "Perfect, you have activated your account, you can login now..."
+	      redirect_to activation_user_path(@user)
 	    else
 	      not_authenticated
 	    end

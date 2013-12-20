@@ -5,6 +5,8 @@ module Nimbos
   		case post.target_type
 				when "Nimbos::Comment"
 				  "#{user_name(post.user)} commented on #{post.target_title}"
+        when "Nimbos::Discussion"
+          "#{user_name(post.user)} started new discussion"
 				when nil
 				  "#{user_name(post.user)}"
 				else
