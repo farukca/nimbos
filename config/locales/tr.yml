@@ -7,12 +7,15 @@ tr:
       sumof: "Toplam"
       hello: "Merhaba"
       cancel: "Vazgeç"
+      mainpage: "Ana Sayfa"
+      actions: "İşlemler"
     title:
       last_items: "Son İşlemler"
       tasks: "Görevler"
       comments: "Yorumlar"
       posts: "Bildirimler"
       activities: "Aktiviteler"
+      calendar: "Takvim"
   branches:
     title:
       branches: "Şubeler"
@@ -38,6 +41,9 @@ tr:
   todolists:
     title:
       new_todolist: "Yeni Yapılacaklar Listesi"
+      todolists: "Yapılacaklar Listesi"
+    label:
+      add_todolist: "Add new todolist"
     placeholder:
       todolist_name: "Yapılacak maddeler için genel bir başlık giriniz"
   tasks:
@@ -55,6 +61,8 @@ tr:
       new_task: "Görev Oluştur"
       task_list: "Görev Listesi"
   posts:
+    title:
+      posts: "Sosyal"
     link:
       new_post: "Mesaj Yaz"
     placeholder:
@@ -62,7 +70,10 @@ tr:
     action:
       submit: "Mesajı Gönder"
   discussions:
+    title:
+      discussions: "Konuşmalar"
     label:
+      new_discussion: "Yeni sohbet başlat"
       title: "Başlık"
       content: "Mesaj"
     placeholder:
@@ -70,6 +81,9 @@ tr:
       content: "Mesajınızı yazınız..."
     action:
       submit: "Mesaj Paylaş"
+  announcements:
+    title:
+      announcements: "Duyurular"
   patrons:
     title:
       patron_info: "Firma Bilgisi"
@@ -103,6 +117,9 @@ tr:
     title:
       user_info: "Kullanıcı Bilgisi"
       user_settings: "Kullanıcı Ayarları"
+      profile: "Profiliniz"
+      settings: "Ayarlar"
+      inbox: "Mesajlar"
     label:
       avatar: "Profil Resminiz"
     placeholder:

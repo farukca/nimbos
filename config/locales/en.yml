@@ -7,12 +7,15 @@ en:
       sumof: "Total"
       hello: "Hello"
       cancel: "Cancel"
+      mainpage: "Home"
+      actions: "Actions"
     title:
       last_items: "Last Items"
       tasks: "Tasks"
       comments: "Comments"
       posts: "Posts"
       activities: "Activities"
+      calendar: "Calendar"
   branches:
     title:
       branches: "Branches"
@@ -37,7 +40,10 @@ en:
       save: "Save Branch Information"
   todolists:
     title:
-      new_todolist: "Todo lists"
+      new_todolist: "New todolist"
+      todolists: "Todolists"
+    label:
+      add_todolist: "Add new todolist"
     placeholder:
       todolist_name: "Add a description to todolist as header"
   tasks:
@@ -55,6 +61,8 @@ en:
       new_task: "Save Task"
       task_list: "Task List"
   posts:
+    title:
+      posts: "Social"
     link:
       new_post: "Share and Update"
     placeholder:
@@ -62,7 +70,10 @@ en:
     action:
       submit: "Share Post"
   discussions:
+    title:
+      discussions: "Discussions"
     label:
+      new_discussion: "Start new discussion"
       title: "Subject"
       content: "Details"
     placeholder:
@@ -70,6 +81,9 @@ en:
       content: "Type your message here..."
     action:
       submit: "Post this message"
+  announcements:
+    label:
+      title: "Announcements"
   patrons:
     title:
       patron_info: "Company Information"
@@ -103,6 +117,9 @@ en:
     title:
       user_info: "User Information"
       user_settings: "User Settings"
+      profile: "Profile"
+      settings: "Settings"
+      inbox: "Inbox"
     label:
       avatar: "Profile Picture"
     placeholder:
