@@ -3,11 +3,16 @@
   <%= render "shared/page_title", page_title: "Kullanıcılar", page_small_title: "Kullanıcı işlemleri", model_name: "users", model_path: "nimbos/users" %>
 
   <div class="row inbox">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <ul class="inbox-nav margin-bottom-10">
         <li class="compose-btn">
           <%= link_to nimbos.new_user_path, class: "btn green" do %>
-            <i class="icon-edit"></i> Yeni Kullanıcı
+            <i class="icon-edit"></i> <%= t("users.label.new_user") %>
+          <% end %>
+        </li>
+        <li class="compose-btn">
+          <%= link_to nimbos.invite_coworkers_users_path, class: "btn green" do %>
+            <i class="icon-group"></i> <%= t("users.label.invite_users") %>
           <% end %>
         </li>
         <!--li class="inbox active">
@@ -19,7 +24,7 @@
         <li class="trash"><a class="btn" href="javascript:;" data-title="Trash">Trash</a><b></b></li-->
       </ul>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <div class="inbox-header">
         <h1 class="pull-left">Kullanıcı Listesi</h1>
         <%= render "shared/quick_search_form", model_name: "users" %>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <ul id="User_<%= current_user.id %>_posts" class="list-unstyled">
-      <%= render partial: "nimbos/posts/feed", collection: user.social_posts, as: :post %>
+    <ul id="user_<%= current_user.id %>_posts" class="list-unstyled">
+      <%= render partial: "nimbos/posts/feed", collection: user.posts, as: :post %>
     </ul>
   </div>	
 </div>

@@ -57,7 +57,7 @@ module Nimbos
 	  end
 
 	  def to_param
-      "#{id}-#{name.parameterize}"
+      "#{id}-#{name.parameterize if name.present?}"
     end
 
 	  def social_name

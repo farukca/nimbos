@@ -5,8 +5,12 @@ module Nimbos
     include Nimbos::Concerns::FindTarget
 
 	  before_filter :require_login
-	  before_filter(:only => [:index]) { |c| c.set_tab "postnavigator" }
+	  #before_filter(:only => [:index]) { |c| c.set_tab "postnavigator" }
 	  respond_to :js, :json, :html
+
+    def index
+    	@posts = Nimbos::Post.includes(:user).order("created_at desc").page(params[:page]).per(10)
+    end
 
 	  def show
 	    @post = Nimbos::Post.find(params[:id])
@@ -37,10 +41,10 @@ module Nimbos
 	    respond_with @post, notice: "Successfully destroyed post"
 	  end
 
+	  private
+	  def post_params
+	  	params.require(:post).permit(:message, :is_private, :related_user_ids, :target, :user_id, :target_title, :is_syspost)
+	  end
   end
 
-  private
-  def post_params
-  	params.require(:post).permit(:message, :is_private, :related_user_ids, :target, :user_id, :target_title, :is_syspost)
-  end
 end

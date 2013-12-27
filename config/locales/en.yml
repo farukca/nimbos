@@ -121,7 +121,11 @@ en:
       settings: "Settings"
       inbox: "Inbox"
     label:
+      name: "Full Name"
       avatar: "Profile Picture"
+      last_login_at: "Last login time"
+      new_user: "Add new user"
+      invite_users: "Invite your teammates"
     placeholder:
     hint:
     link:

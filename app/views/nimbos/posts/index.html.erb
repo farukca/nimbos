@@ -12,7 +12,9 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <%= render 'nimbos/users/user_posts', user: current_user %>
+          <ul id="user_<%= current_user.id %>_posts" class="list-unstyled">
+            <%= render partial: "nimbos/posts/feed", collection: @posts, as: :post %>
+          </ul>
         </div>
       </div>
     </div>

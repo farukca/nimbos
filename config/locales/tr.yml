@@ -121,7 +121,11 @@ tr:
       settings: "Ayarlar"
       inbox: "Mesajlar"
     label:
+      name: "Adı Soyadı"
       avatar: "Profil Resminiz"
+      last_login_at: "Son giriş tarihi"
+      new_user: "Yeni Kullanıcı Ekle"
+      invite_users: "Ekip arkadaşlarınızı davet edin"
     placeholder:
     hint:
     link:

@@ -8,7 +8,9 @@
       <%= sanitize(discussion.content) %>
     </div>
     <div class="row">
-      <%= render "nimbos/comments/commentable", object: discussion %>
+      <div class="col-md-12">
+        <%= render "nimbos/comments/commentable", object: discussion %>
+      </div>
     </div>
   </div>
 </li>

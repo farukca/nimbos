@@ -4,7 +4,7 @@ module Nimbos
   class UsersController < ApplicationController
 	  before_action :require_login
 	  skip_before_action :require_login, :only => [:new, :create, :activate, :activation]
-	  before_filter(:only => [:index]) { |c| c.set_tab "usersnavigator" }
+	  before_filter(:only => [:index, :invite_coworkers]) { |c| c.set_tab "usersnavigator" }
 
 	  def index
 	    if params[:q]
@@ -112,6 +112,7 @@ module Nimbos
 
 	  def invite_coworkers
 	    @users = Array.new(10) { User.new }
+	    render :layout => "admin"
 	  end
 
 	  def create_coworkers
@@ -137,6 +138,7 @@ module Nimbos
 	        end        
 	      end
 	    end
+	    render :layout => "admin"
 	  end
 	  
 	  def follow

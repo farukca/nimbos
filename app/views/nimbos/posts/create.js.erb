@@ -1,6 +1,2 @@
-<% if @post.target %>
-  $("#<%= @post.target_type %>_<%= @post.target_id %>_posts").prepend('<%= j render(@post) %>');
-<% else %>
-  $("#User_<%= current_user.id %>_posts").prepend('<%= j render(@post) %>');
-<% end %>
+$("#user_<%= current_user.id %>_posts").prepend('<%= j render "nimbos/posts/feed", post: @post %>');
 $('#new_post').each(function() { this.reset(); });
