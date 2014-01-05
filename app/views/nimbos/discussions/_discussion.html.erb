@@ -1,9 +1,9 @@
 <li id="Nimbos::Discussion_<%= discussion.id %>" class="media">
   <%= link_to user_small_avatar(discussion.user), nimbos.user_path(discussion.user), class: "pull-left" %>
   <div class="media-body">
-    <h5 class="media-heading">
+    <h4 class="media-heading">
       <%= link_to discussion.title, nimbos.discussion_path(discussion) %>
-    </h5>    
+    </h4>    
     <div class="media-content">
       <%= sanitize(discussion.content) %>
     </div>
