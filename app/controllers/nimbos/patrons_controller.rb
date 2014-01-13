@@ -50,7 +50,7 @@ module Nimbos
 	    respond_to do |format|
 	      if @patron.save
 	        #format.html { redirect_to @patron, notice: 'Patron was successfully created.' }
-	        format.html { render 'check_mail', notice: 'Patron was successfully created.', layout: 'homepage' }
+	        format.html { render 'check_mail', notice: t("patrons.messages.created"), layout: 'homepage' }
 	        format.json { render json: @patron, status: :created, location: @patron }
 	      else
 	        format.html { render action: "new", layout: "register" }
@@ -64,7 +64,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @patron.update_attributes(patron_params)
-	        format.html { redirect_to @patron, notice: 'Patron was successfully updated.', layout: 'nimbos/admin' }
+	        format.html { redirect_to @patron, notice: t("patrons.messages.updated"), layout: 'nimbos/admin' }
 	        format.json { head :ok }
 	      else
 	        format.html { render action: "edit", layout: 'nimbos/admin' }

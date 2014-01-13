@@ -23,7 +23,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @branch.save
-	        format.html { redirect_to @branch.patron, notice: 'Branch was successfully created.' }
+	        format.html { redirect_to @branch.patron, notice: t("branches.message.created") }
 	        format.json { render json: @branch, status: :created, location: @branch }
 	      else
 	        format.html { render action: "new" }
@@ -37,7 +37,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @branch.update_attributes(branch_params)
-	        format.html { redirect_to nimbos.branches_path, notice: 'Branch was successfully updated.' }
+	        format.html { redirect_to nimbos.branches_path, notice: t("branches.message.updated") }
 	        format.json { head :ok }
 	      else
 	        format.html { render action: "edit" }

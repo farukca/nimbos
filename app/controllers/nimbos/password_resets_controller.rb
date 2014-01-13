@@ -12,9 +12,9 @@ module Nimbos
 	    @user = Nimbos::User.find_by_email(params[:email])
 	    if @user
 		    @user.deliver_password_reset_token
-	  	  redirect_to main_app.root_path, :notice => "Email Sent with password reset instructions"
+	  	  redirect_to main_app.root_path, notice: t("users.messages.send_pasword_reset_instructions")
 	  	else
-				flash[:error] = "Invalid email, check your email address."
+				flash[:error] = t("users.messages.invalid_email")
 				render :action => "new"
 	  	end
 	  end
@@ -34,7 +34,7 @@ module Nimbos
 	    	@user.token = params[:user][:token]
 	    	@user.password_confirmation = params[:user][:password_confirmation]
 		    if @user.change_password(params[:user][:password])
-		      redirect_to(main_app.root_path, :notice => 'Your password has been changed')
+		      redirect_to main_app.root_path, notice: t("users.messages.password_changed")
 		    else
 		      render :action => :edit
 		    end

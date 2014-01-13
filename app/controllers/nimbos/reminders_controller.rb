@@ -43,7 +43,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @reminder.save
-	      	flash[:notice] = "Reminder was successfully created."
+	      	flash[:notice] = t("reminders.message.created")
 	        format.html { redirect_to @reminder }
 	        format.json { render json: @reminder, status: :created, location: @reminder }
 	        format.js
@@ -60,7 +60,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @reminder.update_attributes(reminder_params)
-	        format.html { redirect_to @reminder, notice: 'Reminder was successfully updated.' }
+	        format.html { redirect_to @reminder, notice: t("reminders.message.updated") }
 	        format.json { head :no_content }
 	      else
 	        format.html { render action: "edit" }
@@ -72,6 +72,7 @@ module Nimbos
 	  def destroy
 	    @reminder = Nimbos::Reminder.find(params[:id])
 	    @reminder.destroy
+	    flash[:notice] = t("reminders.message.deleted")
 
 	    respond_to do |format|
 	      format.html { redirect_to reminders_url }

@@ -47,7 +47,7 @@ module Nimbos
 	      @user.generate_temp_password
 	    end
 	    if @user.save
-	      redirect_to main_app.root_url, :notice => "Activation mail has been sent to mail adress!"
+	      redirect_to main_app.root_url, notice: t("users.messages.created")
 	    else
 	      render :new, layout: "admin"
 	    end
@@ -101,10 +101,10 @@ module Nimbos
 	      #     render :new, :notice => "Email or password is invalid"
 	      #   end
 	      # else
-	        redirect_to @user, :notice => "Updated succesfully"
+	        redirect_to @user, notice: t("users.messages.updated")
 	      # end
 	    else
-	      render :new, :error => "Update error, please try again"
+	      render :new#, error: "Update error, please try again"
 	    end
 	    #user = login(params[:email], params[:password], params[:remember_me])
 

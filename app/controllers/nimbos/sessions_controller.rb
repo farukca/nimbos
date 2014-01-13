@@ -15,7 +15,7 @@ module Nimbos
 				force_authentication!(current_patron, current_user)
 				flash.discard(:error)
 				if current_user.user_status != "active"
-					flash[:error] = "Your account has been closed, if you think there is an error, please send a mail to hello@modaltrans.com"
+					flash[:error] = t("users.messages.account_disabled")
           warden.logout
 				  @user = User.new
 			  	render :action => "new"
@@ -32,9 +32,9 @@ module Nimbos
 			else
 				@user = Nimbos::User.find_by(email: params[:user][:email])
 				if @user && (@user.activation_state != "active")
-					flash[:error] = "Your account has not been approved, please check your mail."
+					flash[:error] = t("users.messages.account_not_activated")
 				else
-				  flash[:error] = "Invalid email or password."
+				  flash[:error] = t("users.messages.invalid_email_or_password")
 				end
 				@user = User.new
 				@user.email = params["user"]["email"]

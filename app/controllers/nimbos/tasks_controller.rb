@@ -32,7 +32,7 @@ module Nimbos
 	    @task.user_id   = 0
 
 	    @task.save!
-	    respond_with @task, success: "Successfully saved task"
+	    respond_with @task, success: t("tasks.message.created")
 	  end
 
 	  def update
@@ -40,7 +40,7 @@ module Nimbos
 	    @todolist = @task.todolist
 
 	    @task.update_attributes!(task_params)
-	    respond_with @task, success: 'task was successfully updated.'
+	    respond_with @task, success: t("tasks.message.updated")
 	  end
 
 	  def destroy

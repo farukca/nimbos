@@ -45,7 +45,7 @@ module Nimbos
         if @discussion.save
           engine = @target.class.name.split("::").first.downcase
           generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
-          format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
+          format.html { redirect_to @discussion, notice: t("discussions.message.created") }
           format.json { render json: @discussion, status: :created, location: @discussion }
         else
           format.html { render action: "new" }
@@ -59,7 +59,7 @@ module Nimbos
   
       respond_to do |format|
         if @discussion.update_attributes(discussion_params)
-          format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
+          format.html { redirect_to @discussion, notice: t("discussions.message.updated") }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
@@ -71,6 +71,7 @@ module Nimbos
     def destroy
       @discussion = Discussion.find(params[:id])
       @discussion.destroy
+      flash[:notice] = t("discussions.message.deleted")
   
       respond_to do |format|
         format.html { redirect_to discussions_url }

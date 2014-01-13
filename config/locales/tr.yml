@@ -38,6 +38,9 @@ tr:
       branch_list: "Şube Listesi"
     action:
       save: "Firma Bilgisini Kaydet"
+    message:
+      created: "Şube bilgisi kaydedildi"
+      updated: "Şube bilgisi güncellendi"
   todolists:
     title:
       new_todolist: "Yeni Yapılacaklar Listesi"
@@ -46,6 +49,8 @@ tr:
       add_todolist: "Add new todolist"
     placeholder:
       todolist_name: "Yapılacak maddeler için genel bir başlık giriniz"
+    message:
+      created: "Yapılacaklar listesi kaydedildi"
   tasks:
     title:
       last_tasks: "Aktif Görevler"
@@ -60,6 +65,14 @@ tr:
     link:
       new_task: "Görev Oluştur"
       task_list: "Görev Listesi"
+    message:
+      created: "Görev kaydı oluşturuldu"
+      updated: "Görev kaydı güncellendi"
+  reminders:
+    message:
+      created: "Hatırlatma listenize eklendi"
+      updated: "Hatırlatma kaydı güncellendi"
+      deleted: "Hatırlatma kaydı silindi"
   posts:
     title:
       posts: "Sosyal"
@@ -69,6 +82,13 @@ tr:
       message: "Çalıştığın konu hakkında yazabilirsin"
     action:
       submit: "Mesajı Gönder"
+    message:
+      created: "Mesajınız paylaşıldı"
+      updated: "Mesaj silindi"
+  comments:
+    message:
+      created: "Yorumunuz kaydedildi"
+      deleted: "Yorum bilgisi silindi"
   discussions:
     title:
       discussions: "Konuşmalar"
@@ -81,6 +101,10 @@ tr:
       content: "Mesajınızı yazınız..."
     action:
       submit: "Mesaj Paylaş"
+    message:
+      created: "Mesajınız kaydedildi"
+      updated: "Mesaj bilgisi güncellendi"
+      deleted: "Mesaj silindi"
   announcements:
     title:
       announcements: "Duyurular"
@@ -113,11 +137,13 @@ tr:
     action:
     messages:
       mailexists: "Bu mail adresi zaten kayıtlı, giriş yapmak mı istiyorsunuz"
+      created: "Lütfen mailinizi kontrol edin, ilginiz için teşekkürler"
+      updated: "Hesap bilgileriniz güncellendi"
   users:
     title:
       user_info: "Kullanıcı Bilgisi"
       user_settings: "Kullanıcı Ayarları"
-      profile: "Profiliniz"
+      profile: "Profil"
       settings: "Ayarlar"
       inbox: "Mesajlar"
     label:
@@ -126,6 +152,11 @@ tr:
       last_login_at: "Son giriş tarihi"
       new_user: "Yeni Kullanıcı Ekle"
       invite_users: "Ekip arkadaşlarınızı davet edin"
+      admin_panel: "Admin Panel"
+      profile: "Profil"
+      calendar: "Takvim"
+      inbox: "Mesajlar"
+      settings: "Ayarlar"
     placeholder:
     hint:
     link:
@@ -133,6 +164,14 @@ tr:
       change_password: "Şifreyi Değiştir"
     messages:
       activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
+      send_pasword_reset_instructions: "Şifrenizi değiştirmek için mailinize gerekli bilgiler gönderildi"
+      invalid_email: "Mail adresi geçersiz, kontrol ediniz"
+      password_changed: "Şifreniz değiştirildi"
+      account_disabled: "Hesabınız kapatılmış, eğer bir hata olduğunu düşünüyorsanız lütfen hello@modaltrans.com adresine mail atın"
+      account_not_activated: "Hesabınız henüz aktive edilmemiş, lütfen mailinizi kontrol ediniz"
+      invalid_email_or_password: "Geçersiz mail ve şifre, lütfen tekrar deneyiniz"
+      created: "Aktivasyon için mailinizi kontrol ediniz, ilginiz için teşekkürler"
+      updated: "Kullanıcı bilgileri güncellendi"
   people:
     defaults:
       page_header: "Personel"

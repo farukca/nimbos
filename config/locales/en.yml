@@ -38,6 +38,9 @@ en:
       branch_list: "Branch List"
     action:
       save: "Save Branch Information"
+    message:
+      created: "Branch was successfully created"
+      updated: "Branch was successfully updated"
   todolists:
     title:
       new_todolist: "New todolist"
@@ -46,6 +49,8 @@ en:
       add_todolist: "Add new todolist"
     placeholder:
       todolist_name: "Add a description to todolist as header"
+    message:
+      created: "Todolist successfully created"
   tasks:
     title:
       last_tasks: "Last Tasks"
@@ -60,6 +65,14 @@ en:
     link:
       new_task: "Save Task"
       task_list: "Task List"
+    message:
+      created: "Task successfully created"
+      updated: "Task successfully updated"
+  reminders:
+    message:
+      created: "Reminder successfully created"
+      updated: "Reminder successfully updated"
+      deleted: "Reminder successfully deleted"
   posts:
     title:
       posts: "Social"
@@ -69,6 +82,13 @@ en:
       message: "What are you working on ?"
     action:
       submit: "Share Post"
+    messages:
+      created: "Your message has been posted"
+      updated: "Message has been deleted"
+  comments:
+    message:
+      created: "Comment has been added successfully"
+      deleted: "Comment has been deleted"
   discussions:
     title:
       discussions: "Discussions"
@@ -81,6 +101,10 @@ en:
       content: "Type your message here..."
     action:
       submit: "Post this message"
+    message:
+      created: "Discussion has been created successfully"
+      updated: "Discussion has been updated successfully"
+      deleted: "Discussion has been deleted"
   announcements:
     label:
       title: "Announcements"
@@ -113,6 +137,8 @@ en:
     action:
     messages:
       mailexists: "This email already registered, just login"
+      created: "Thanks for trying, please check your mail"
+      updated: "Account informations updated"
   users:
     title:
       user_info: "User Information"
@@ -126,6 +152,11 @@ en:
       last_login_at: "Last login time"
       new_user: "Add new user"
       invite_users: "Invite your teammates"
+      admin_panel: "Admin Panel"
+      profile: "Profile"
+      calendar: "Calendar"
+      inbox: "Inbox"
+      settings: "Settings"
     placeholder:
     hint:
     link:
@@ -133,6 +164,14 @@ en:
       change_password: "Change Password"
     messages:
       activation_greeting: "Welcome, please set your password for activation your account"
+      send_pasword_reset_instructions: "Email sent with password reset instructions"
+      invalid_email: "Invalid email, check your email address."
+      password_changed: "Your password has been changed"
+      account_disabled: "Your account has been closed, if you think there is an error, please send a mail to hello@modaltrans.com"
+      account_not_activated: "Your account has not been activated, please check your mail"
+      invalid_email_or_password: "Invalid email or password, please try again"
+      created: "Thanks, activation mail has been sent to your email"
+      updated: "User informations updated"
   people:
     defaults:
       page_header: "Staff"

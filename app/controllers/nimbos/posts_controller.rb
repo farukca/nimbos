@@ -32,13 +32,13 @@ module Nimbos
 	    #  @post.mention!(@object.nicknamed) unless @object.nil?
 	    #end if usernames
 	    @post.save!
-	    respond_with @post, success: "Successfully saved post"
+	    respond_with @post, notice: t("posts.message.created")
 	  end
 
 	  def destroy
 	    @post = Nimbos::Post.find(params[:id])
 	    @post.destroy
-	    respond_with @post, notice: "Successfully destroyed post"
+	    respond_with @post, notice: t("posts.message.updated")
 	  end
 
 	  private
