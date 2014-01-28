@@ -17,12 +17,12 @@ module Nimbos
 	        #if counter_size == 0
 	        @operation = params[:operation]
 	        if params[:operation].present?
-	          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Loading")
-	          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Position")
+	          counter = @patron.counters.find_or_initialize_by(operation: params[:operation], counter_type: "Loading")
+	          counter = @patron.counters.find_or_initialize_by(operation: params[:operation], counter_type: "Position")
 	        else      
 	          ["air","sea","road","rail"].each { |o|
-	            counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Loading")
-	            counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Position")
+	            counter = @patron.counters.find_or_initialize_by(operation: o, counter_type: "Loading")
+	            counter = @patron.counters.find_or_initialize_by(operation: o, counter_type: "Position")
 	          }
 	        end
 	      when :set_users

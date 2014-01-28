@@ -50,7 +50,7 @@ module Nimbos
 
 	  def self.generate_counter(ctype, operation, direction)
 	    patron = Nimbos::Patron.find(Nimbos::Patron.current_id)
-	    counter = patron.counters.find_or_initialize_by_counter_type(ctype)
+	    counter = patron.counters.find_or_initialize_by(counter_type: ctype)
 
 	    case ctype
 	      when "Company"
