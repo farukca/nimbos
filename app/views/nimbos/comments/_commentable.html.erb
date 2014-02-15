@@ -1,6 +1,11 @@
 <div class="portlet">
+  <div class="portlet-title line">
+  	<div class="caption">
+  	  <%= t("defaults.title.comments") %>
+  	</div>
+  </div>
   <div class="portlet-body" class="chats">
-    <div class="scroller" data-always-visible="1" data-rail-visible1="1">
+    <div>
       <%= render 'nimbos/comments/comments', object: object %>
     </div>
     <div class="chat-form">

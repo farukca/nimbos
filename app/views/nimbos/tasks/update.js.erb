@@ -4,3 +4,9 @@ $('#task_<%= @task.id %>').replaceWith("<%= j render @task %>");
 <% else %>
   $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_completed_tasks_list');
 <% end %>
+$("#modalWindow").modal('hide');
+$("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
+jQuery(document).ready(function() {       
+  App.initAjax();
+  FormComponents.init();
+});

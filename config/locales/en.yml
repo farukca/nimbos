@@ -59,12 +59,14 @@ en:
       user: "User"
       due_date: "Complete date"
       task_text: "Task Detail"
+      not_assigned: "Not Assigned"
     placeholder:
       user: "Who will complete this task"
     hint:
     link:
       new_task: "Save Task"
       task_list: "Task List"
+      change_user: "Change User"
     message:
       created: "Task successfully created"
       updated: "Task successfully updated"

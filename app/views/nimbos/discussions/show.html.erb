@@ -1,6 +1,10 @@
 <div class="row-fluid">
 
-  <%= page_header_helper(t("tickets.defaults.show_page_header")) %>
+	<%= page_header_with_block(t("discussions.title.discussions")) do %>
+		<span class="text-muted">
+	    <i class="icon-eject"></i> <%= link_to @discussion.target.to_s, resolve_engine_path(@discussion.target) %>
+	  </span>
+  <% end %>
   <%= render partial: "profile", locals: { discussion: @discussion } %>
 
 </div>

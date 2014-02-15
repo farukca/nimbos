@@ -1,3 +1,8 @@
 $('#todolist_<%= @task.todolist_id %>_uncompleted_tasks_list').append("<%= j render @task %>");
 $('#new_task').each(function() { this.reset(); });
 $("#task_task_text").focus();
+$("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
+jQuery(document).ready(function() {       
+  App.initAjax();
+  FormComponents.init();
+});

@@ -29,6 +29,7 @@ module Nimbos
     def new
       @target = find_target
       @discussion = @target.discussions.new
+      @discussion.target_name = @target.to_s
     end
   
     def edit
@@ -37,14 +38,14 @@ module Nimbos
     end
   
     def create
-      @target = find_target
-      @discussion = @target.discussions.build(discussion_params)
+      #@target = find_target
+      @discussion = Discussion.new(discussion_params)
       @discussion.user_id  = current_user.id
   
       respond_to do |format|
         if @discussion.save
-          engine = @target.class.name.split("::").first.downcase
-          generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
+          #engine = @target.class.name.split("::").first.downcase
+          #generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
           format.html { redirect_to @discussion, notice: t("discussions.message.created") }
           format.json { render json: @discussion, status: :created, location: @discussion }
         else

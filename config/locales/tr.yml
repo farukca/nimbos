@@ -59,12 +59,14 @@ tr:
       user: "Kullanıcı"
       due_date: "Tamamlanma Tarihi"
       task_text: "Görev Açıklaması"
+      not_assigned: "Atanmamış"
     placeholder:
       user: "Bu işi kim yapacak ?"
     hint:
     link:
       new_task: "Görev Oluştur"
       task_list: "Görev Listesi"
+      change_user: "Farklı kişiye ata"
     message:
       created: "Görev kaydı oluşturuldu"
       updated: "Görev kaydı güncellendi"

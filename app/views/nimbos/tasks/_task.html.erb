@@ -2,17 +2,19 @@
   <%= form_for [task.todolist, task], url: nimbos.todolist_task_path(task.todolist, task), remote: true, html: {class: "edit_task form-search"} do |f| %>
     <%= f.check_box :status, {}, "closed", "active" %>
     <%= f.label :status, task.task_text %>
-    <span class="sub-info">
-      <% if task.user_id == 0 %>
-        <%= link_to "Not Assigned", nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
-      <% else %>
-        <%= "#{task.user.to_s}-#{task.due_date}" %>
-        <%= link_to "Change User", nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
-      <% end %>
-    </span>
+    <% if task.status == "active" %>
+      <span class="sub-info text-muted">
+        <% if task.user_id == 0 %>
+          <%= link_to t("tasks.label.not_assigned"), nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
+        <% else %>
+          <%= "#{task.user.to_s}-#{task.due_date}" %>
+          <%= link_to "Change User", nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
+        <% end %>
+      </span>
+    <% end %>
     <span class="task-actions">
-      <%= link_to "(edit)", nimbos.edit_todolist_task_path(task.todolist, task), remote: true %>|
-      <%= link_to "(remove)", nimbos.todolist_task_path(task.todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+      <%= link_to "(#{t("defaults.link.edit")})", nimbos.edit_todolist_task_path(task.todolist, task), remote: true %>|
+      <%= link_to "(#{t("defaults.link.destroy")})", nimbos.todolist_task_path(task.todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
         <%#= link_to "Edit", edit_task_path(task) %>
         <%#= link_to "Delete", task, confirm: 'You are deleting the task, are you sure ?', method: :delete, remote: true %>
     </span>

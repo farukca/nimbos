@@ -1,5 +1,15 @@
 Nimbos::Engine.routes.draw do
 
+  concern :commentable do
+    resources :comments
+  end
+  # concern :discussable do
+  #   resources :discussions
+  # end
+  # concern :tasked do
+  #   resources :todolists
+  # end
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "patrons#new", :as => "signup"
@@ -8,13 +18,10 @@ Nimbos::Engine.routes.draw do
 
   resources :sessions
   resources :password_resets
-  resources :posts do
-    resources :comments
-  end
-  resources :discussions do
-    resources :comments
-  end
-  resources :comments
+
+  resources :posts, concerns: :commentable
+  resources :discussions, concerns: :commentable
+
   resources :patrons
   resources :branches
   resources :users do
