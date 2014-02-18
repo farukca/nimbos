@@ -1,4 +1,4 @@
-<div id="User_#{user.id}_profile_header" class="row">
+<div id="User_#{user.id}_profile_header">
   <div class="row">
     <div class="col-md-2">
       <%= link_to user_avatar, "#", id: "user_avatar_change_link", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
@@ -10,16 +10,16 @@
           <!--p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p-->
           <p><a href="#"><%= mail_to user.email, user.email %></a></p>
           <ul class="list-inline">
-            <li><i class="icon-map-marker"></i> <%= branch_name(user.branch) %></li>
-            <!--li><i class="icon-calendar"></i> 18 Jan 1982</li>
-            <li><i class="icon-briefcase"></i> Design</li-->
+            <li><i class="fa fa-map-marker"></i> <%= branch_name(user.branch) %></li>
+            <!--li><i class="fa fa-calendar"></i> 18 Jan 1982</li>
+            <li><i class="fa fa-briefcase"></i> Design</li-->
             <% if user.has_role?(:manager) %>
-              <li><i class="icon-star"></i> <%= "Manager" %></li>
+              <li><i class="fa fa-star"></i> <%= "Manager" %></li>
             <% end %>
             <% if user.has_role?(:patron_admin) %>
-              <li><i class="icon-star"></i> <%= "Admin" %></li>
+              <li><i class="fa fa-star"></i> <%= "Admin" %></li>
             <% end %>
-            <!--li><i class="icon-heart"></i> BASE Jumping</li-->
+            <!--li><i class="fa fa-heart"></i> BASE Jumping</li-->
           </ul>
         </div>
         <div class="col-md-4">

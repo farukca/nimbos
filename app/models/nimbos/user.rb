@@ -75,8 +75,8 @@ module Nimbos
     alias_method :has_role?, :has_any_role?
 
 	  def generate_temp_password
-	    self.password = "9516284"
-	    self.password_confirmation = "9516284"
+	    self.password = generate_random_token#SecureRandom.base64(15).tr('+/=1I0Q','pqrsxyz')#"9516284"
+	    self.password_confirmation = self.password
 	  end
 
 	  #def create_activity(target, target_name, patron_id, patron_token)

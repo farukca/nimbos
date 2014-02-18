@@ -3,12 +3,12 @@
 	  <div class="inbox-header">
       <h4>
         <%= link_to nimbos.todolist_path(todolist) do %>
-          <i class="icon-tasks"></i>  <%= todolist.name %>
+          <i class="fa fa-tasks"></i>  <%= todolist.name %>
         <% end %>
       </h4>
     </div>
     <div class="inbox-content">
-      <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list" class="list-unstyled" style="margin-bottom: 10px;">
+      <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list" class="list-unstyled task-list" style="margin-bottom: 10px;">
         <%= render partial: "nimbos/tasks/task", collection: todolist.incomplete_tasks %>
       </ul>
       <div id="new_task_div_link">

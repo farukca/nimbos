@@ -5,16 +5,16 @@
     </h3>
     <ul class="page-breadcrumb breadcrumb">
       <li>
-        <i class="icon-home"></i>
+        <i class="fa fa-home"></i>
         <a href="index.html">Home</a> 
-        <i class="icon-angle-right"></i>
+        <i class="fa fa-angle-right"></i>
       </li>
       <li><a href="#">Dashboard</a></li>
       <li class="pull-right">
         <div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
-          <i class="icon-calendar"></i>
+          <i class="fa fa-calendar"></i>
           <span></span>
-          <i class="icon-angle-down"></i>
+          <i class="fa fa-angle-down"></i>
         </div>
       </li>
     </ul>
@@ -23,18 +23,18 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= generate_tile(t("users.title.users"), "", "dashboard-stat double blue", "icon-user", nimbos.users_url) %>
-    <%= generate_tile(t("branches.title.branches"), "", "dashboard-stat double purple", "icon-home", nimbos.branches_url) %>
-    <%= generate_tile(t("Groups"), "", "dashboard-stat double yellow", "icon-group", nil) %>
+    <%= generate_tile(t("users.title.users"), "", "dashboard-stat double blue", "fa fa-user", nimbos.users_url) %>
+    <%= generate_tile(t("branches.title.branches"), "", "dashboard-stat double purple", "fa fa-home", nimbos.branches_url) %>
+    <%= generate_tile(t("Groups"), "", "dashboard-stat double yellow", "fa fa-group", nil) %>
   </div>
 </div>
 
 <% if current_user.has_role? :superadmin %>
 <div class="row">
   <div class="col-md-12">
-    <%= generate_tile("Feedbacks", "", "dashboard-stat double green", "icon-comments", surveyor.feedbacks_url) %>   
-    <%= generate_tile("Betausers", "", "dashboard-stat double yellow", "icon-group", surveyor.betausers_url) %>
-    <%= generate_tile("Patrons", "", "dashboard-stat double blue", "icon-cloud", nimbos.patrons_url) %>
+    <%= generate_tile("Feedbacks", "", "dashboard-stat double green", "fa fa-comments", surveyor.feedbacks_url) %>   
+    <%= generate_tile("Betausers", "", "dashboard-stat double yellow", "fa fa-group", surveyor.betausers_url) %>
+    <%= generate_tile("Patrons", "", "dashboard-stat double blue", "fa fa-cloud", nimbos.patrons_url) %>
   </div>
 </div>
 <% end %>

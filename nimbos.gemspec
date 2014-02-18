@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.1.0.beta1"
   # s.add_dependency "jquery-rails"
-  s.add_dependency "bcrypt-ruby", "3.0.1"
+  s.add_dependency "bcrypt-ruby", "~> 3.1.2"
   s.add_dependency "warden", "1.2.3"
   s.add_dependency "carrierwave"
   s.add_dependency "mini_magick"

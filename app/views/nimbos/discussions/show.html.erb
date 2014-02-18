@@ -2,7 +2,7 @@
 
 	<%= page_header_with_block(t("discussions.title.discussions")) do %>
 		<span class="text-muted">
-	    <i class="icon-eject"></i> <%= link_to @discussion.target.to_s, resolve_engine_path(@discussion.target) %>
+	    <i class="fa fa-eject"></i> <%= link_to @discussion.target.to_s, resolve_engine_path(@discussion.target) %>
 	  </span>
   <% end %>
   <%= render partial: "profile", locals: { discussion: @discussion } %>

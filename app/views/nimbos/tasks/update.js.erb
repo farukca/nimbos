@@ -8,5 +8,4 @@ $("#modalWindow").modal('hide');
 $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
 jQuery(document).ready(function() {       
   App.initAjax();
-  FormComponents.init();
 });

@@ -9,11 +9,11 @@
           <h1><%= patron.name %></h1>
           <!--p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p-->
           <ul class="list-inline">
-            <li><i class="icon-envelope"></i> <%= mail_to patron.email, patron.email %></li>
-            <li><i class="icon-phone"></i> <%= patron.tel %></li>
-            <li><i class="icon-print"></i> <%= patron.fax %></li>
+            <li><i class="fa fa-envelope"></i> <%= mail_to patron.email, patron.email %></li>
+            <li><i class="fa fa-phone"></i> <%= patron.tel %></li>
+            <li><i class="fa fa-print"></i> <%= patron.fax %></li>
             <br>
-            <li><i class="icon-map-marker"></i> <%= patron_address(patron) %></li>
+            <li><i class="fa fa-map-marker"></i> <%= patron_address(patron) %></li>
           </ul>
         </div>
         <div class="col-md-4">
