@@ -2,7 +2,7 @@
   <%= form_for [task.todolist, task], url: nimbos.todolist_task_path(task.todolist, task), remote: true, html: {class: "edit_task form-search"} do |f| %>
     <%= f.check_box :status, {}, "closed", "active" %>
     <%#= f.label :status, task.task_text %>
-    <span style="font-size:14px;"><%= task.task_text %></span>
+    <span style="font-size:14px;"><%= link_to  task.task_text, nimbos.todolist_task_path(task.todolist, task) %></span>
     <% if task.status == "active" %>
       <span class="sub-info text-muted">
         <% if task.user_id == 0 %>

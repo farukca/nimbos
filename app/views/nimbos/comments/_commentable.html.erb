@@ -8,7 +8,7 @@
     <div>
       <%= render 'nimbos/comments/comments', object: object %>
     </div>
-    <div class="chat-form">
+    <div id="new_<%= normalize_model_name(object.class.name) %>_comment_div" class="chat-form">
       <%= render partial: 'nimbos/comments/form', locals: { object: object } %>
     </div>
   </div>

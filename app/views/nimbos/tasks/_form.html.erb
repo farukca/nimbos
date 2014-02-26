@@ -7,5 +7,5 @@
       <%= f.text_field :task_text, label: false, placeholder: t("tasks.label.task_text"), class: "form-control input-xlarge" %>
     </div>
     <%= f.submit t("defaults.action.save"), class: 'btn btn-info' %>
-		<%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
+		<%= link_to "Ok, I am done", "#", "data-href" => "#new_todolist_#{todolist.id}_task_div", class: "togglebutton" %>
   <% end %>

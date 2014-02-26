@@ -12,9 +12,9 @@
         <%= render partial: "nimbos/tasks/task", collection: todolist.incomplete_tasks %>
       </ul>
       <div id="new_task_div_link">
-        <%= link_to "Add new task", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
+        <%= link_to "Add new task", "#", "data-href" => "#new_todolist_#{todolist.id}_task_div", class: "togglebutton" %>
       </div>
-      <div id="new_task_div" class="slidingDiv">
+      <div id="new_todolist_<%= todolist.id %>_task_div" class="slidingDiv">
         <%= render "nimbos/tasks/form", todolist: todolist, task: Nimbos::Task.new %>
       </div>
 

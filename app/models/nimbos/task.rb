@@ -5,6 +5,8 @@ module Nimbos
 	  belongs_to :user, class_name: "Nimbos::User"
 	  belongs_to :cruser, class_name: "Nimbos::User", foreign_key: "cruser_id"
 
+	  has_many :comments, as: :commentable, class_name: "Nimbos::Comment", dependent: :destroy
+
 	  validates :task_text, presence: true, length: { minimum: 2, maximum: 1000 }
 	  validates :cruser_id, presence: true
 
