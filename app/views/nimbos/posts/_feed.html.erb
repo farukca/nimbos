@@ -1,6 +1,6 @@
 <li id="Nimbos::Post_<%= post.id %>" class="media" style="border-top:2px solid #eee">
 
-  <span class="text-muted"><%= post_title(post) %><small class="pull-right"><%= post.created_at.to_s(:pretty) %></small></span>
+  <span class="text-muted"><%= post_title(post) %><small class="pull-right"><%= local_date(post.created_at, format: '%B %e, %Y') %></small></span>
 
   <% case post.target_type %>
     <% when "Nimbos::Comment"%>

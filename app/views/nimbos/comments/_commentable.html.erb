@@ -1,15 +1,15 @@
-<div class="portlet">
-  <div class="portlet-title line">
+<div class="portlet well">
+  <!--div class="portlet-title line">
   	<div class="caption">
-  	  <%= t("defaults.title.comments") %>
+  	  <%#= t("defaults.title.comments") %>
   	</div>
-  </div>
+  </div-->
   <div class="portlet-body" class="chats">
-    <div>
-      <%= render 'nimbos/comments/comments', object: object %>
-    </div>
-    <div id="new_<%= normalize_model_name(object.class.name) %>_comment_div" class="chat-form">
-      <%= render partial: 'nimbos/comments/form', locals: { object: object } %>
+    <%= render 'nimbos/comments/comments', object: object %>
+    <div id="new_<%= normalize_model_name(object.class.name) %>_<%= object.id %>_comment_div" class="chat-form">
+      <%# if object.comments.size > 0 %>
+        <%#= render partial: 'nimbos/comments/form', locals: { object: object } %>
+      <%# end %>
     </div>
   </div>
 </div>

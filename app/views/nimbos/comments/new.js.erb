@@ -1,0 +1,4 @@
+$("#new_<%= normalize_model_name(@commentable.class.name) %>_<%= @commentable.id %>_comment_div").html("<%= escape_javascript(render 'nimbos/comments/form', object: @commentable) %>");
+jQuery(document).ready(function() {       
+  App.initAjax();
+});

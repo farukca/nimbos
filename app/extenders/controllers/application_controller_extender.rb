@@ -37,6 +37,11 @@
 		warden.set_user(patron, :scope => :patron)
 	end
 
+	def generate_group(parent, user_ids)
+		#user_ids << current_user.id
+    Nimbos::Group.add_group(current_user.id, parent, user_ids)
+	end
+
 private
 	def not_authenticated
 	  redirect_to nimbos.login_path, :alert => "Please login first."

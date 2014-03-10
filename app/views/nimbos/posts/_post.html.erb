@@ -4,16 +4,7 @@
     <div class="media-content">
       <%= sanitize(post.message) %>
     </div>
-    <div class="sub-info media-meta">
-      <span class="pull-right"><%= post.created_at.to_s(:pretty) %></span>
-      <a href="#" class="replytopost" data-post-id="<%= post.id %>">
-        <%= t("defaults.link.new_comment") %>
-      </a>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= render "nimbos/comments/commentable", object: post %>
-      </div>
-    </div>		
+    <%= render "shared/media_footer", object: post %>
+    <%= render "nimbos/comments/commentable", object: post %>
   </div>
 </li>

@@ -8,3 +8,11 @@
   <%= render partial: "profile", locals: { discussion: @discussion } %>
 
 </div>
+
+<% content_for :init_scripts do %>
+  <script>
+    jQuery(document).ready(function() {
+      $(".discussion-content").readmore('destroy');
+    });
+  </script>
+<% end %>

@@ -19,8 +19,10 @@ Nimbos::Engine.routes.draw do
   resources :sessions
   resources :password_resets
 
+  resources :comments
   resources :posts, concerns: :commentable
   resources :discussions, concerns: :commentable
+  resources :groups
 
   resources :patrons
   resources :branches
@@ -42,6 +44,7 @@ Nimbos::Engine.routes.draw do
   resources :todolists do
     resources :tasks
   end
+  resources :tasks, concerns: :commentable
 
   resources :listheaders
   resources :listitems

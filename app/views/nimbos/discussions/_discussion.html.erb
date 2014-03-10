@@ -5,12 +5,13 @@
       <%= link_to discussion.title, nimbos.discussion_path(discussion) %>
     </h4>    
     <div class="media-content">
-      <%= sanitize(discussion.content) %>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= render "nimbos/comments/commentable", object: discussion %>
+      <div class="discussion-content">
+        <%= sanitize(discussion.content) %>
       </div>
+    </div>
+    <%= render "shared/media_footer", object: discussion %>
+    <div>
+      <%= render "nimbos/comments/commentable", object: discussion %>
     </div>
   </div>
 </li>

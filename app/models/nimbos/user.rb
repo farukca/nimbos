@@ -2,6 +2,7 @@ module Nimbos
   class User < ActiveRecord::Base
 	  include Nimbos::Concerns::Authentication
     include Messenger::Concerns::Messagable
+    include Messenger::Concerns::Notifiable
 	  #rolify
 
 	  #acts_as_follower
@@ -14,7 +15,8 @@ module Nimbos
 
 	  belongs_to :patron
 	  belongs_to :branch
-    has_and_belongs_to_many :roles, :join_table => :nimbos_users_roles
+    has_and_belongs_to_many :roles,  :join_table => :nimbos_users_roles
+    has_and_belongs_to_many :groups, class_name: "Nimbos::Group", join_table: "nimbos_users_groups" #, foreign_key: "user_id"
 
 	  #has_one  :person
 	  has_many :activities
