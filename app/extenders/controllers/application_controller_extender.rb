@@ -1,9 +1,11 @@
 ::ApplicationController.class_eval do
 
+  around_filter :scope_current_patron
+
 	def current_patron
 		if user_signed_in?
 			@current_patron ||= begin
-				patron_id = warden.user(:scope => :patron) || current_user.patron_id
+				patron_id = warden.user(:scope => :patron) #|| (current_user.patron_id if current_user)
 				Nimbos::Patron.find(patron_id)
 			end
 		end
@@ -33,8 +35,8 @@
   end
 
 	def force_authentication!(patron, user)
-		warden.set_user(user, :scope => :user)
-		warden.set_user(patron, :scope => :patron)
+		warden.set_user(user.id, :scope => :user)
+		warden.set_user(patron.id, :scope => :patron)
 	end
 
 	def generate_group(parent, user_ids)
@@ -51,4 +53,10 @@ private
     env['warden']
   end
 
+  def scope_current_patron
+    Nimbos::Patron.current_id = current_patron.id if current_patron
+    yield
+  ensure
+    Nimbos::Patron.current_id = nil
+  end
 end

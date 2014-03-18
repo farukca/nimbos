@@ -171,7 +171,7 @@ tr:
       password_changed: "Şifreniz değiştirildi"
       account_disabled: "Hesabınız kapatılmış, eğer bir hata olduğunu düşünüyorsanız lütfen hello@modaltrans.com adresine mail atın"
       account_not_activated: "Hesabınız henüz aktive edilmemiş, lütfen mailinizi kontrol ediniz"
-      invalid_email_or_password: "Geçersiz mail ve şifre, lütfen tekrar deneyiniz"
+      invalid_email_or_password: "Mail veya şifreniz geçersiz, lütfen tekrar deneyiniz"
       created: "Aktivasyon için mailinizi kontrol ediniz, ilginiz için teşekkürler"
       updated: "Kullanıcı bilgileri güncellendi"
   people:

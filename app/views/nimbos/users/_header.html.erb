@@ -10,7 +10,7 @@
           <!--p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p-->
           <p><a href="#"><%= mail_to user.email, user.email %></a></p>
           <ul class="list-inline">
-            <li><i class="fa fa-map-marker"></i> <%= branch_name(user.branch) %></li>
+            <li><i class="fa fa-map-marker"></i> <%= branch_name(user.branch) if user.branch %></li>
             <!--li><i class="fa fa-calendar"></i> 18 Jan 1982</li>
             <li><i class="fa fa-briefcase"></i> Design</li-->
             <% if user.has_role?(:manager) %>

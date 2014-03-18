@@ -54,12 +54,9 @@ module Nimbos
 	  end
 
 	  def activate
-	    if @user = Nimbos::User.load_from_activation_token(params[:id])
+	  	if @user = Nimbos::User.load_from_activation_token(params[:id])
 	      @user.activate!
-	      cookies[:socialfreight_mail] = @user.email
-	      warden.set_user(@user)
 	      force_authentication!(@user.patron, @user)
-	      #redirect_to nimbos.new_session_path, notice: "Perfect, you have activated your account, you can login now..."
 	      redirect_to activation_user_path(@user)
 	    else
 	      not_authenticated

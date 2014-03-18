@@ -1,8 +1,8 @@
 <p>
-Hi <%= @user.name %>; Welcome to SocialFreight. 
+Hi <%= @user.name %>; Welcome to <%= @app_name %>. 
 </p>
 <p>
-You have successfully signed up to SocialFreight.
+You have successfully signed up to <%= @app_name %>.
 </p>
 <p>
 Your user name is below. Note that it is in the form of an email address:
@@ -18,10 +18,10 @@ Passwords are case sensitive.
 To activate your account please follow this link; <%= link_to @url, @url %>
 </p>
 <p>
-Once again, welcome to SocialFreight.com!
+Once again, welcome to <%= @app_name %>.com!
 <br>
 <br>
 <br>
-SocialFreight.com<br>
+<%= @app_name %>.com<br>
 İstanbul, Türkiye
 </p>

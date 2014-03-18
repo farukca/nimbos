@@ -12,7 +12,7 @@ module Nimbos
     def create
     	current_time = Time.now
 			if warden.authenticate(:scope => :user)
-				force_authentication!(current_patron, current_user)
+				force_authentication!(current_user.patron, current_user)
 				flash.discard(:error)
 				if current_user.user_status != "active"
 					flash[:error] = t("users.messages.account_disabled")
