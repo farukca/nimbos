@@ -143,11 +143,13 @@ tr:
       updated: "Hesap bilgileriniz güncellendi"
   users:
     title:
+      users: "Kullanıcılar"
       user_info: "Kullanıcı Bilgisi"
       user_settings: "Kullanıcı Ayarları"
       profile: "Profil"
       settings: "Ayarlar"
       inbox: "Mesajlar"
+      invited_users: "Davet Maili Gönderilenler"
     label:
       name: "Adı Soyadı"
       avatar: "Profil Resminiz"
@@ -159,11 +161,16 @@ tr:
       calendar: "Takvim"
       inbox: "Mesajlar"
       settings: "Ayarlar"
+      manager: "Yönetici"
+      confirm_password: "Şifreyi Tekrar Giriniz"
     placeholder:
+      email: "Mail adresini giriniz"
     hint:
     link:
     action:
       change_password: "Şifreyi Değiştir"
+      change_avatar: "Profil Resmini Değiştir"
+      save: "Kullanıcı Bilgisini Kaydet"
     messages:
       activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
       send_pasword_reset_instructions: "Şifrenizi değiştirmek için mailinize gerekli bilgiler gönderildi"
@@ -174,6 +181,16 @@ tr:
       invalid_email_or_password: "Mail veya şifreniz geçersiz, lütfen tekrar deneyiniz"
       created: "Aktivasyon için mailinizi kontrol ediniz, ilginiz için teşekkürler"
       updated: "Kullanıcı bilgileri güncellendi"
+      click_to_change_avatar: "Resmi Değiştirmek için Tıklayınız"
+      invite_users: "Seçtiğiniz şubede ki ekip arkadaşlarınızın mail adreslerini giriniz. Her şube için bu işlemi tekrar yapmalısınız."
+      invited_users: "Aşağıdaki mail adreslerine davet mailleri gönderildi, mail kutularına gelen mesajdaki linke tıklayarak sisteme giriş yapabilirler"
+      cant_invite_users: "Davet maili gönderilemedi"
+      maybe_email_is_invalid: "Davet maili gönderilemedi, mail adresleri geçersiz olabilir"
+      invite_other_users: "Başka çalışma arkadaşlarınızı da davet edebilir"
+      return_to_mainpage: "ana sayfaya dönebilirsiniz"
+      cant_find_branch: "Eğer aradığınız şubeyi bulamıyorsanız"
+      click_for_new_branch: "şube kaydı oluşturmak için tıklayın."
+      enter_coworkers_mail: "Mail adreslerini giriniz"
   people:
     defaults:
       page_header: "Personel"

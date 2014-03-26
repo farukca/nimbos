@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-10">
+  	<h5><%= "#{t("defaults.vocabulary.hello")} #{user_name(current_user)}; modaltrans uygulamasına hoş geldiniz." %></h5>
+  	<p>
+      Firmanıza ait bilgileri tamamlamak için kısa süreli bir tura çıkalım. Tabii ki bu işlemi daha sonrada yapabilirsiniz.
+    </p>
+  	<div class="form-actions">
+      <%= link_to "Firma Bilgilerini Güncelleyeceğim", nimbos.edit_patron_path(current_patron), class: 'btn btn-danger' %>
+      <%= link_to "Daha sonra tamamlarım, profil bilgilerime gidelim", nimbos.edit_user_path(current_user), class: "btn pull-right" %>
+    </div>
+
+    <div class="alert alert-info">
+      <p>Herhangi bir öneri veya şikayetiniz olursa, sağ alt kısımda yer alan butonu kullanarak bize iletebilirsiniz.
+    </div>
+
+  </div>
+
+</div>

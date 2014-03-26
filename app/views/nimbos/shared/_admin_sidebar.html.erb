@@ -5,7 +5,7 @@
       <%# if current_user && (current_user.has_role? :admin) %>
         <li><%= link_to nimbos.patron_path(current_patron) do %><i class="fa fa-home"></i> <%= t("dashboard.link.patron_info") %><% end %></li>
         <li><%= link_to nimbos.users_path do %><i class="fa fa-user"></i> <%= t("dashboard.link.user_actions") %><% end %></li>
-        <li><%= link_to nimbos.branches_path do %><i class="fa fa-comment"></i> <%= t("dashboard.link.branch_actions") %><% end %></li>
+        <li><%= link_to nimbos.branches_path do %><i class="fa fa-hospital-o"></i> <%= t("dashboard.link.branch_actions") %><% end %></li>
         <!--li><%#= link_to counters_path do %><i class="fa fa-user"></i> Sayaçlar<%# end %></li-->
         <li class="divider"></li>
       <%# end %>

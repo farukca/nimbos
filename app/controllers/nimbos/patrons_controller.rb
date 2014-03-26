@@ -5,6 +5,7 @@ module Nimbos
 
 	  before_filter :require_login, except: [:new, :create]
 	  before_filter(:only => [:index]) { |c| c.set_tab "patronsnavigator" }
+	  before_filter(:only => [:show]) { |c| c.set_tab "patronnavigator" }
     layout "admin"
 
     def new

@@ -1,33 +1,29 @@
 <div id="branches_index" class="row">
 
-  <%= render "shared/page_title", page_title: "Şubeler", page_small_title: "Firmaya ait şube işlemleri", model_name: "branches", model_path: "nimbos/branches" %>
+  <%= render "shared/page_title", page_title: t("branches.title.branches"), page_small_title: "", model_name: "branches", model_path: "nimbos/branches" %>
 
   <div class="row inbox">
     <div class="col-md-2">
       <ul class="inbox-nav margin-bottom-10">
         <li class="compose-btn">
           <%= link_to nimbos.new_branch_path, class: "btn green" do %>
-            <i class="fa fa-edit"></i> Yeni Şube
+            <i class="fa fa-edit"></i> <%= t("branches.link.new_branch") %>
           <% end %>
         </li>
-        <!--li class="inbox active">
-          <a href="javascript:;" class="btn" data-title="Inbox">Inbox(3)</a>
-          <b></b>
-        </li>
-        <li class="sent"><a class="btn" href="javascript:;"  data-title="Sent">Sent</a><b></b></li>
-        <li class="draft"><a class="btn" href="javascript:;" data-title="Draft">Draft</a><b></b></li>
-        <li class="trash"><a class="btn" href="javascript:;" data-title="Trash">Trash</a><b></b></li-->
       </ul>
     </div>
     <div class="col-md-10">
       <div class="inbox-header">
-        <h1 class="pull-left">Şube Listesi</h1>
-        <%= render "shared/quick_search_form", model_name: "branches" %>
+        <h1 class="pull-left"><%= t("branches.title.branches") %></h1>
+        <%#= render "shared/quick_search_form", model_name: "branches" %>
       </div>
 
       <div class="inbox-content">
         <%= render "nimbos/branches/list", objects: @branches %>
       </div>
+      <%= link_to nimbos.invite_coworkers_users_path, class: "btn blue btn-block margin-bottom-20" do %>
+        <i class="fa fa-group"></i> <%= t("users.label.invite_users") %>
+      <% end %>
     </div>
   </div>
 </div>

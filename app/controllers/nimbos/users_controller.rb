@@ -10,6 +10,8 @@ module Nimbos
 	    if params[:q]
 	       q = "%#{params[:q]}%"
 	       @users = current_patron.users.where("lower(name) like ?", q).order(:name).limit(10)
+	     elsif params[:all]
+	     	@users = User.all
 	    else
 	      if params[:id].present?
 	      	query_ids = params[:id].chomp.split(/,/).map { |x| x.to_i }
@@ -57,7 +59,11 @@ module Nimbos
 	  	if @user = Nimbos::User.load_from_activation_token(params[:id])
 	      @user.activate!
 	      force_authentication!(@user.patron, @user)
-	      redirect_to activation_user_path(@user)
+	      if @user.firstuser
+	      	redirect_to nimbos.setup_path
+	      else
+	        redirect_to activation_user_path(@user)
+	      end
 	    else
 	      not_authenticated
 	    end

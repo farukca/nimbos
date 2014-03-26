@@ -10,11 +10,12 @@ Nimbos::Engine.routes.draw do
   #   resources :todolists
   # end
 
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login"  => "sessions#new", :as => "login"
-  get "signup" => "patrons#new", :as => "signup"
-  get "dashboard" => "dashboard#index", :as => "dashboard"
-  get "calendar"  => "dashboard#calendar", :as => "calendar"
+  get "logout" => "sessions#destroy", as: "logout"
+  get "login"  => "sessions#new", as: "login"
+  get "signup" => "patrons#new", as: "signup"
+  get "dashboard" => "dashboard#index", as: "dashboard"
+  get "calendar"  => "dashboard#calendar", as: "calendar"
+  get "setup" => "setup#new", as: "setup"
 
   resources :sessions
   resources :password_resets

@@ -1,7 +1,7 @@
 <div id="User_#{user.id}_profile_header">
   <div class="row">
     <div class="col-md-2">
-      <%= link_to user_avatar, "#", id: "user_avatar_change_link", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+      <%= link_to user_avatar, "#", id: "user_avatar_change_link", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => t("users.messages.click_to_change_avatar"), "data-href" => "#logo_change_div" %>
     </div>
     <div class="col-md-10">
       <div class="row">
@@ -14,10 +14,10 @@
             <!--li><i class="fa fa-calendar"></i> 18 Jan 1982</li>
             <li><i class="fa fa-briefcase"></i> Design</li-->
             <% if user.has_role?(:manager) %>
-              <li><i class="fa fa-star"></i> <%= "Manager" %></li>
+              <li><i class="fa fa-star"></i> <%= t("users.label.manager") %></li>
             <% end %>
             <% if user.has_role?(:patron_admin) %>
-              <li><i class="fa fa-star"></i> <%= "Admin" %></li>
+              <li><i class="fa fa-star"></i> Admin</li>
             <% end %>
             <!--li><i class="fa fa-heart"></i> BASE Jumping</li-->
           </ul>
@@ -31,8 +31,8 @@
             <%= simple_form_for user, html: {multipart: true, class: 'form-inline'} do |f| %>
               <%= f.input :avatar_cache, as: :hidden %>
               <%= f.input :avatar, as: :file, label: false %>
-              <%= f.submit "Profil Resmini Değiştir", :class => "btn btn-success" %>
-              <%= link_to "Vazgeç", "#", class: "togglebutton btn", "data-href" => "#logo_change_div" %>
+              <%= f.submit t("users.action.change_avatar"), :class => "btn btn-success" %>
+              <%= link_to t("defaults.link.cancel"), "#", class: "togglebutton btn", "data-href" => "#logo_change_div" %>
               <%#if user.avatar? %>
                 <%#= f.input :remove_avatar, as: :check_boxes %><!--&nbsp;Resmi Sil-->
               <%# end %>

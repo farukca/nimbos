@@ -4,12 +4,12 @@
   <% end %>
   <li>
     <i class="fa fa-group"></i>
-    <%= link_to "Home", main_app.root_url %> 
+    <%= link_to t("defaults.link.home"), main_app.root_url %> 
     <i class="fa fa-angle-right"></i>
   </li>
   <li>
     <%= link_to "Admin", nimbos.dashboard_path %> 
     <i class="fa fa-angle-right"></i>
   </li>
-  <li><%= link_to "Kullanıcılar", nimbos.users_path %></li>
+  <li><%= link_to t("users.title.users"), nimbos.users_path %></li>
 </ul>

@@ -1,13 +1,12 @@
-<div id="Patron_#{patron.id}_profile_header" class="row">
+<div id="patron_#{patron.id}_profile_header" class="row">
   <div class="row">
     <div class="col-md-3">
-      <%= link_to patron_logo, "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+      <%= link_to patron_logo, "#", id: "patron_logo_change_link", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Logoyu Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
     </div>
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-8 profile-info">
           <h1><%= patron.name %></h1>
-          <!--p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p-->
           <ul class="list-inline">
             <li><i class="fa fa-envelope"></i> <%= mail_to patron.email, patron.email %></li>
             <li><i class="fa fa-phone"></i> <%= patron.tel %></li>
@@ -34,3 +33,12 @@
     </div>
   </div>
 </div>
+<% if patron.logo_url ==  "/assets/patron.png" %>
+  <% content_for :init_scripts do %>
+    <script>
+      jQuery(document).ready(function() {       
+        $('#patron_logo_change_link').click();
+      });
+    </script>
+  <% end %>
+<% end %>

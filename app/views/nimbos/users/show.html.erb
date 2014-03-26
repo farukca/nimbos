@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <h3 class="page-title">
-      User Profile <small>user profile sample</small>
+      <%= t("users.title.user_info") %> <!--small>user profile sample</small-->
     </h3>
     <ul class="page-breadcrumb breadcrumb">
       <li class="btn-group">
@@ -9,14 +9,16 @@
       </li>
       <li>
         <i class="fa fa-home"></i>
-        <a href="index.html">Home</a> 
+        <%= link_to t("defaults.link.home"), main_app.root_url %> 
         <i class="fa fa-angle-right"></i>
       </li>
       <li>
-        <a href="#">Extra</a>
+        <%= link_to "Admin", nimbos.dashboard_path %> 
         <i class="fa fa-angle-right"></i>
       </li>
-      <li><a href="#">User Profile</a></li>
+      <li>
+        <a href="#"><%= t("users.title.user_info") %></a>
+      </li>
     </ul>
   </div>
 </div>

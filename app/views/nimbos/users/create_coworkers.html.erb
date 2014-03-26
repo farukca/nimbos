@@ -1,15 +1,15 @@
 <div class="row-fluid">
 
 	<div class="page-header">
-		<h4>Ekip arkadaşlarınızı davet edin</h4>
+		<h4><%= t("users.label.invite_users") %></h4>
 	</div>
 
 	<div class="row-fluid">
 		<% unless @saved_emails.empty? %>
 			<div class="page-header">
-				<h5>Davet Maili Gönderilenler</h5>
+				<h5><%= t("users.title.invited_users") %></h5>
 			</div>
-			<p>Aşağıdaki mail adreslerine davet mailleri gönderildi, mail kutularına gelen mesajdaki linke tıklayarak sisteme giriş yapabilirler<br>
+			<p><%= t("users.messages.invited_users") %><br>
         <% @saved_emails.each do |email| %>
           <%= email %>;&nbsp;
         <% end %>
@@ -18,9 +18,9 @@
 
 		<% unless @rejected_emails.empty? %>
 			<div class="page-header">
-				<h5>Email adresi geçersiz olanlar</h5>
+				<h5><%= t("users.messages.cant_invite_users") %></h5>
 			</div>
-      <p>Aşağıdaki mail adresleri geçersiz olduğu için herhangi bir davet maili gönderilmedi<br>
+      <p><%= t("users.messages.maybe_email_is_invalid") %><br>
         <% @rejected_emails.each_with_index do |email, index| %>
           <%= email %>&nbsp;(<%= @reject_reasons[index] %>)<br>
         <% end %>
@@ -28,7 +28,7 @@
 		<% end %>
 
     <div class="page-header">
-			<h5><%= link_to "Başka çalışma arkadaşlarınızı da davet edebilir", nimbos.invite_coworkers_users_path %>, veya <%= link_to "ana sayfaya dönebilirsiniz", main_app.root_url %></h5>
+			<h5><%= link_to t("users.messages.invite_other_users"), nimbos.invite_coworkers_users_path %>, veya <%= link_to t("users.messages.return_to_mainpage"), main_app.root_url %></h5>
 		</div>
 	</div>
 </div>

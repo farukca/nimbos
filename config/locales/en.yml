@@ -143,11 +143,13 @@ en:
       updated: "Account informations updated"
   users:
     title:
+      users: "Users"
       user_info: "User Information"
       user_settings: "User Settings"
       profile: "Profile"
       settings: "Settings"
       inbox: "Inbox"
+      invited_users: "Invited users"
     label:
       name: "Full Name"
       avatar: "Profile Picture"
@@ -159,11 +161,16 @@ en:
       calendar: "Calendar"
       inbox: "Inbox"
       settings: "Settings"
+      manager: "Manager"
+      confirm_password: "Confirm Password"
     placeholder:
+      email: "Enter mail address"
     hint:
     link:
     action:
       change_password: "Change Password"
+      change_avatar: "Change profile picture"
+      save: "Save User Info"
     messages:
       activation_greeting: "Welcome, please set your password for activation your account"
       send_pasword_reset_instructions: "Email sent with password reset instructions"
@@ -174,6 +181,16 @@ en:
       invalid_email_or_password: "Invalid email or password, please try again"
       created: "Thanks, activation mail has been sent to your email"
       updated: "User informations updated"
+      click_to_change_avatar: "Resmi Değiştirmek için Tıklayınız"
+      invite_users: "Invite your teammates for the selected branch. For every branch this process must be done."
+      invited_users: "Invitation mails sent to users below, It has an activation link in ther mailboxes"
+      cant_invite_users: "Can't send invitation mail, mail addresses can be invalid"
+      maybe_email_is_invalid: "Can't send invitation mail, mail addresses can be invalid"
+      invite_other_users: "You can invite other teammates"
+      return_to_mainpage: "return to main page"
+      cant_find_branch: "If you can't find the branch you are looking"
+      click_for_new_branch: "click here to add new branches"
+      enter_coworkers_mail: "Enter mail addresses"
   people:
     defaults:
       page_header: "Staff"

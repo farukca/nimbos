@@ -16,7 +16,7 @@
             <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
           </div>
           <div class="col-md-6">
-            <%= f.input :time_zone, selected: current_user.time_zone %>
+            <%= f.input :time_zone, selected: current_user.time_zone, input_html: { class: "country_select" } %>
             <%= f.input :language, as: :select, collection: Nimbos::Listitem.languages.map { |t| [t.name, t.code] }, include_blank: false, selected: current_user.language %>
           </div>
         </div>
@@ -32,12 +32,12 @@
         <% end %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Kullanıcı Bilgisini Kaydet", class: "btn btn-info" %>
-        <a href="#" class="btn">Vazgeç</a>
+        <%= f.button :submit, t("users.action.save"), class: "btn btn-info" %>
+        <a href="#" class="btn"><%= t("defaults.link.cancel") %></a>
       </div>
 
       <!--div class="page-header">
-        <h5><%= t("users.title.user_settings") %></h5>
+        <h5><%#= t("users.title.user_settings") %></h5>
       </div-->
           <!--div class="row">
             <fieldset>

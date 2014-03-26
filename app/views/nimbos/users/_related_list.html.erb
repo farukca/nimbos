@@ -1,5 +1,5 @@
-<%= table_for objects, html: { class: "table table-condensed table-striped table-hover" } do -%>
-  <% column title: t("users.label.name"), html: { th: { class: "col-md-3" } } do |user| %>
+<%= table_for objects, html: { class: "table table-bordered table-striped table-hover" } do -%>
+  <% column title: t("users.label.name"), html: { th: { class: "col-md-2" } } do |user| %>
     <% link_to user.name, nimbos.user_path(user) %>
   <% end %>
   <% column :email, html: { th: { class: "col-md-2" } } %>
@@ -7,7 +7,7 @@
     <% "#{user.last_login_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_login_at %>
   <% end %>
   <% column title: t("defaults.label.branch"), html: { th: { class: "col-md-2" } } do |user| %>
-    <% branch_name(user.branch) %>
+    <% branch_name(user.branch) if user.branch %>
   <% end %>
   <% column :user_status, title: t("defaults.label.status"), html: { th: { class: "col-md-1" } } %>
   <% column title: "", html: { th: { class: "col-md-1" } } do |user| %>

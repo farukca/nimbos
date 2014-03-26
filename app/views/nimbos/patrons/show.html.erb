@@ -1,23 +1,36 @@
 <div class="row">
   <div class="col-md-12">
     <h3 class="page-title">
-      Patron Profile <small>patron profile sample</small>
+      <%= t("patrons.title.patron_info") %> <small></small>
     </h3>
     <ul class="page-breadcrumb breadcrumb">
       <li class="btn-group">
         <%= render "actions", patron: @patron %>
       </li>
-      <li>
-        <i class="fa fa-home"></i>
-        <a href="index.html">Home</a> 
-        <i class="fa fa-angle-right"></i>
-      </li>
-      <li>
-        <a href="#">Extra</a>
-        <i class="fa fa-angle-right"></i>
-      </li>
-      <li><a href="#">Patron Profile</a></li>
+      <li><a href="#"><%= t("patrons.title.patron_info") %></a></li>
     </ul>
   </div>
 </div>
 <%= render "profile", patron: @patron %>
+<% if @patron.logo_url ==  "/assets/patron.png" %>
+  <div>
+    <div class="portlet">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="fa fa-comment"></i> Notification
+        </div>
+        <div class="tools">
+          <a href="javascript:;" class="remove"></a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <blockquote>
+        <p class="text-success">
+          Hi, it seems that you did not upload your company logo, 
+          <%= link_to "to change your picture click here", nimbos.edit_patron_path(@patron) %>
+        </p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+<% end %>

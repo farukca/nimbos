@@ -4,8 +4,7 @@ module Nimbos
   class DashboardController < ApplicationController
 
 	  before_filter :require_login
-
-	  #before_filter(only: [:index]) { |c| c.set_tab "adminnavigator" }
+	  before_filter(only: [:index]) { |c| c.set_tab "dashboardnavigator" }
 
 	  def index
 	    render layout: "admin"
