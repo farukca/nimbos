@@ -15,6 +15,8 @@ private
 	    return Logistics::Position.find(params[:position_id])
 	  elsif params[:loading_id]
 	    return Logistics::Loading.find(params[:loading_id])
+	  elsif params[:lead_id]
+	    return Logistics::Lead.find(params[:lead_id])
 	  elsif params[:transport_id]
 	    return Logistics::Transport.find(params[:transport_id])
 	  elsif params[:vehicle_id]
