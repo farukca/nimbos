@@ -19,7 +19,7 @@ module Nimbos
 	    @commentable = find_target
 	    @comment = @commentable.comments.build(comment_params)
 	    @comment.user_id  = current_user.id
-	    group_id = @commentable.group.id if @commentable.group
+	    #group_id = @commentable.group.id if @commentable.group
 
 	    @comment.save!
 	    #generate_notification('commented', @commentable.to_s, @commentable, nil, nil)

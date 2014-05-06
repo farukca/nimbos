@@ -46,7 +46,7 @@ tr:
       new_todolist: "Yeni Yapılacaklar Listesi"
       todolists: "Yapılacaklar Listesi"
     label:
-      add_todolist: "Add new todolist"
+      add_todolist: "Yeni Yapılacaklar Listesi Oluştur"
     placeholder:
       todolist_name: "Yapılacak maddeler için genel bir başlık giriniz"
     message:

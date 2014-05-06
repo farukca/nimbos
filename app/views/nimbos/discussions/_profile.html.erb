@@ -2,14 +2,8 @@
   <%= render partial: "header", locals: { discussion: discussion } %>
 </div>
 
-<div class="row">
-
-  <div class="row" style="margin-top:20px;">
-    <div class="row">
-      <div class="col-md-11 col-md-offset-1">
-        <%= render "nimbos/comments/commentable", object: discussion %>
-      </div>
-    </div>
+<div class="row" style="margin-top:20px;">
+  <div class="col-md-11 col-md-offset-1">
+    <%= render "nimbos/comments/commentable", object: discussion %>
   </div>
-
 </div>

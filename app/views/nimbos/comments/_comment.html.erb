@@ -3,7 +3,7 @@
   <div class="message">
     <span class="arrow"></span>
     <%= link_to comment.user, nimbos.user_path(comment.user), class: "name" %>
-    <span class="datetime text-muted"><%= created_time(comment.created_at) %></span>
+    <span class="text-muted"><%= local_time_ago(comment.created_at) %></span>
     <span class="body"><%= comment.comment_text %></span>
   </div>
 </li>

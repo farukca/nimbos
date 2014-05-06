@@ -9,8 +9,8 @@ module Nimbos
 	  	patron.title
 	  end
 
-	  def patron_logo(patron = @patron)
-	    cl_image_tag(patron.logo_url, width: 152, height: 60, crop: :fill, class: "media-object")
+	  def patron_logo(patron = @patron, logo_class="media-object")
+	    cl_image_tag(patron.logo_url, width: 152, height: 60, crop: :fill, class: :logo_class)
 	  end
 
 	  def patron_address(patron = @patron)

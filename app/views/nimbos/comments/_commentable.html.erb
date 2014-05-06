@@ -1,10 +1,11 @@
+<%= render "shared/media_footer", object: object %>
 <div class="portlet well">
   <div class="portlet-body" class="chats">
     <%= render 'nimbos/comments/comments', object: object %>
     <div id="new_<%= normalize_model_name(object.class.name) %>_<%= object.id %>_comment_div" class="chat-form">
-      <%# if object.comments.size > 0 %>
+      <% if object.comments.size > 0 %>
         <%= render partial: 'nimbos/comments/form', locals: { object: object } %>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 </div>
