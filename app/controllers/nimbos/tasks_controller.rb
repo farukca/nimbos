@@ -44,6 +44,15 @@ module Nimbos
 	  end
 
 	  def destroy
+	  	@task = Task.find(params[:id])
+      @task.destroy
+      flash[:notice] = t("task.message.deleted")
+
+      respond_to do |format|
+        format.html { redirect_to tasks_url }
+        format.json { head :ok }
+        format.js
+      end
 	  end
 
 	  private

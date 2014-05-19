@@ -27,6 +27,8 @@ private
 	  	return Nimbos::Post.find(params[:post_id])
 	  elsif params[:task_id]
 	    return Nimbos::Task.find(params[:task_id])
+	  elsif params[:invoice_id]
+	  	return Financor::Invoice.find(params[:invoice_id])
 	  else
 	    params.each do |name, value|
 	      if name =~ /(.+)_id$/

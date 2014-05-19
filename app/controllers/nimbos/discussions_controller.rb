@@ -44,7 +44,7 @@ module Nimbos
   
       respond_to do |format|
         if @discussion.save
-          generate_notification('started_discussion', @discussion.title, @discussion.target, nil, @discussion.target.group.id)
+          #generate_notification('started_discussion', @discussion.title, @discussion.target, nil, @discussion.target.group.id)
           #engine = @target.class.name.split("::").first.downcase
           #generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
           format.html { redirect_to @discussion, notice: t("discussions.message.created") }

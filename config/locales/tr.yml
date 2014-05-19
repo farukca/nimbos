@@ -70,6 +70,7 @@ tr:
     message:
       created: "Görev kaydı oluşturuldu"
       updated: "Görev kaydı güncellendi"
+      deleted: "Görev kaydı silindi"
   reminders:
     message:
       created: "Hatırlatma listenize eklendi"

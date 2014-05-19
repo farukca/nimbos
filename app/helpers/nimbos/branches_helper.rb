@@ -6,7 +6,7 @@ module Nimbos
 	  end
 
 		def branches_list_table(branches=@branches, options={})
-			content = content_tag :div, class: "row-fluid", id: "branches_list_div" do
+			content = content_tag :div, class: "row", id: "branches_list_div" do
 				table_for branches, html: {class: "table table-bordered table-striped table-hover", id: "branches_list_table"} do
 					column title: t("branches.label.name"), html: { th: { class: "span2" }  } do |branch|
 	          link_to branch_name(branch), nimbos.edit_branch_path(branch)

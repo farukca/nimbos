@@ -1,0 +1,2 @@
+$('#task_<%= @task.id %>').remove();
+$("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
