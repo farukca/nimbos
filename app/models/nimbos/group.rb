@@ -9,15 +9,16 @@ module Nimbos
 
 	  validates :title, length: { maximum: 255 }
 
-	  def self.add_group(user_id, parent, user_ids)
+	  def self.add_group(user_id, parent, grp_user_ids)
 	  	#remove blank ve double user ids
-	  	user_ids << user_id.to_s
-	  	user_ids.compact
-	    user_ids.reject! { |uid| uid.empty? }
-      Rails.logger.info("Group users ids #{user_ids}")
+	  	Rails.logger.info("Group users ids as input #{grp_user_ids}")
+	  	grp_user_ids << user_id.to_s
+	  	grp_user_ids.compact
+	    grp_user_ids.reject! { |uid| uid.empty? }
+      Rails.logger.info("Group users ids #{grp_user_ids}")
 
 	    group = Nimbos::Group.new(grouped: parent, admin_id: user_id, title: parent.to_s[0..250], hidden: true)
-	    group.users << Nimbos::User.find(user_ids)
+	    group.users << Nimbos::User.find(grp_user_ids)
 	    group.save!
 	    group
 	  end
