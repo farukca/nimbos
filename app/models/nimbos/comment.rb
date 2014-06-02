@@ -1,7 +1,7 @@
 module Nimbos
   class Comment < ActiveRecord::Base
 	  belongs_to :user, class_name: "Nimbos::User"
-	  belongs_to :commentable, polymorphic: true, touch: true
+	  belongs_to :commentable, polymorphic: true, touch: true, counter_cache: true
 
 	  validates_presence_of :comment_text, :user_id
 

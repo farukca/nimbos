@@ -4,7 +4,7 @@
   <% end %>
   <% column :email, html: { th: { class: "col-md-2" } } %>
   <% column title: t("users.label.last_login_at"), html: { th: { class: "col-md-2" } } do |user| %>
-    <% "#{user.last_login_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_login_at %>
+    <% local_time(user.last_login_at) if user.last_login_at %>
   <% end %>
   <% column title: t("defaults.label.branch"), html: { th: { class: "col-md-2" } } do |user| %>
     <% branch_name(user.branch) if user.branch %>
