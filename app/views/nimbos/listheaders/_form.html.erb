@@ -1,4 +1,4 @@
-<div id="listheader_form" class="row-fluid">
+<div id="listheader_form" class="">
 <%= simple_form_for @listheader, validate: true, html: { class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
   <%= f.error :base, error_method: :to_sentence %>
@@ -9,34 +9,35 @@
         <h4>Parametre Bilgisi<small class="pull-right"></small></h4>
       </div>
       
-      <div id="listheader-main-form" class="row-fluid">
-        <div class="span5">
-          <legend>Liste Başlık Bilgileri</legend>
-          <div class="row-fluid">
-            <fieldset>
-              <%= f.input :code  %>
-              <%= f.input :name %>
-              <%= f.input :i18n_code %>
-              <%= f.input :description %>
-            </fieldset>
-            <div class="form-actions">
-              <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-info', :accesskey => "s" %>
-              <button type="button" class="btn">Vazgeç</button>
-            </div>
+      <div id="listheader-main-form" class="row">
+        <div class="col-md-3">
+          <%= f.input :code  %>
+          <%= f.input :name %>
+          <%= f.input :i18n_code %>
+          <%= f.input :description %>
+          <div class="form-actions">
+            <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-info', :accesskey => "s" %>
           </div>
         </div>
-        <div class="span7">
+        <div class="col-md-8 col-md-offset-1">
           <legend>Liste Elemanları</legend>
-          <div class="row-fluid">
-            <div id="listitems-form" class="row-fluid">
+          <div class="row">
+            <div id="listitems-form" class="">
+              <div class="">
+                <div class="col-md-3">Code</div>
+                <div class="col-md-3">Name</div>
+                <div class="col-md-3">i18n</div>
+                <div class="col-md-3">&nbsp;</div>
+              </div>
               <%= f.fields_for :listitems do |subf| %>
                 <%= render 'listitem_fields', :f => subf %>
               <% end %>
+            </div>
+          </div>
               <div class="form-actions">
                 <%= link_to_add_fields "Yeni Satır Ekle", f, :listitems %>
               </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

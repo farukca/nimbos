@@ -8,7 +8,7 @@ module Nimbos
 
 	  def index
 	    if params[:q]
-	       q = "%#{params[:q]}%"
+	       q = "%#{params[:q]}%".to_s.downcase
 	       @users = current_patron.users.where("lower(name) like ?", q).order(:name).limit(10)
 	     elsif params[:all]
 	     	@users = User.all
