@@ -2,4 +2,5 @@ $("#modalWindow").html("<%= escape_javascript(render 'nimbos/tasks/edit_form') %
 $("#modalWindow").modal();
 jQuery(document).ready(function() {       
   App.initAjax();
+  ComponentsPickers.init();
 });
