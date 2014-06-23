@@ -17,11 +17,11 @@ module Nimbos
     end
 
 	  def incomplete_tasks
-	    tasks.where(status: "active")
+	    tasks.where(status: "active").order(:created_at)
 	  end
 
 	  def completed_tasks
-	    tasks.where(status: "closed")
+	    tasks.where(status: "closed").order(:created_at)
 	  end
   end
 end
