@@ -39,6 +39,13 @@ module Nimbos
 	  	@task = Nimbos::Task.find(params[:id])
 	    @todolist = @task.todolist
 
+	    if params[:task][:status] == "closed"
+	    	@task.closed_date = Time.zone.today
+	    	@task.user_id     = current_user.id
+	    else
+	    	@task.closed_date = nil
+	    end
+
 	    @task.update_attributes!(task_params)
 	    respond_with @task, notice: t("tasks.message.updated")
 	  end
