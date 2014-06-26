@@ -14,7 +14,7 @@
       </span>
     <% else %>
       <span class="sub-info text-muted">
-        <%= task.user.to_s if task.user_id > 0 %> - <%= local_time(task.closed_date) %>
+        <%= task.user.to_s if task.user_id > 0 %> - <%= local_time(task.closed_date) if task.closed_date %>
       </span>
     <% end %>
     <span class="text-muted"><%= "Comments(#{task.comments_count})" if task.comments_count > 0 %></span>
