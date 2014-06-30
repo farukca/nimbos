@@ -29,6 +29,8 @@ private
 	    return Nimbos::Task.find(params[:task_id])
 	  elsif params[:invoice_id]
 	  	return Financor::Invoice.find(params[:invoice_id])
+	  elsif params[:memo_id]
+	  	return Messenger::Memo.find(params[:memo_id])
 	  else
 	    params.each do |name, value|
 	      if name =~ /(.+)_id$/
