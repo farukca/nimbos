@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "mini_magick"
   s.add_dependency "cloudinary"
   s.add_dependency "resque"
-  s.add_dependency "simple_form", "~> 3.0.0"
+  #s.add_dependency "simple_form", "~> 3.0.0"
   s.add_dependency "execjs"
   s.add_dependency "therubyracer"
   s.add_dependency "sass-rails",   "~> 4.0.0"
