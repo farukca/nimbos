@@ -10,15 +10,33 @@
             <div class="col-md-6">
               <%= f.input :name, label: t("patrons.label.name") %>
               <%= f.input :title, label: t("patrons.label.title") %>
-              <%= f.input :tel, as: :tel, input_html: { class: "mask_phone" } %>
-              <%= f.input :fax, as: :tel, input_html: { class: "mask_phone" } %>
-              <%#= f.input :website, as: :url %>
-              <%= f.input :email, as: :email %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :tel, as: :tel, input_html: { class: "mask_phone" } %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :fax, as: :tel, input_html: { class: "mask_phone" } %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :email, as: :email %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :website, as: :url %>
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
               <%= f.input :logo, as: :file, label: t("patrons.label.logo") %>
-              <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, label: t("defaults.label.country"), placeholder: t("patrons.placeholder.country"), input_html: { class: "country_select" } %>
-              <%= f.input :city, label: t("defaults.label.city"), placeholder: t("patrons.placeholder.city") %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, label: t("defaults.label.country"), placeholder: t("patrons.placeholder.country"), input_html: { class: "country_select" } %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :city, label: t("defaults.label.city"), placeholder: t("patrons.placeholder.city") %>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-6">
                   <%= f.input :district, label: t("patrons.label.district"), placeholder: t("patrons.placeholder.district") %>
