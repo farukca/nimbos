@@ -16,7 +16,7 @@
 		if user_signed_in?
 			@current_user ||= begin
 				user_id = warden.user(:scope => :user)
-				Nimbos::User.find(user_id)
+				Nimbos::User.unscoped.find(user_id)
 			end
 		end
 	end
@@ -31,6 +31,12 @@
     unless user_signed_in?
     	session[:return_to_url] = request.url if request.get?
     	not_authenticated
+    else
+    	if current_user.is_guest
+    		session[:return_to_url] = nil
+    		warden.logout
+    		redirect_to main_app.root_url
+    	end
     end
   end
 
