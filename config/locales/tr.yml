@@ -220,3 +220,50 @@ tr:
     link:
     action:
       save: "Sayaç Bilgilerini Kaydet"
+  activerecord:
+    models:
+      nimbos/user:
+        one: "Kullanıcı"
+        other: "Kullanıcılar"
+      nimbos/branch:
+        one: "Şube"
+        other: "Şubeler"
+      nimbos/patron:
+        one: "Patron"
+        other: "Patronlar"
+      nimbos/comment:
+        one: "Yorum"
+        other: "Yorumlar"
+      nimbos/country:
+        one: "Ülke"
+        other: "Ülkeler"
+      nimbos/counter:
+        one: "Sayaç"
+        other: "Sayaçlar"
+      nimbos/currency:
+        one: "Döviz"
+        other: "Dövizler"
+      nimbos/discussion:
+        one: "Sohbet"
+        other: "Sohbetler"
+      nimbos/group:
+        one: "Grup"
+        other: "Gruplar"
+      nimbos/listheader:
+        one: "Parametre Listesi"
+        other: "Parametre Listeleri"
+      nimbos/listitem:
+        one: "Parametre"
+        other: "Parametreler"
+      nimbos/post:
+        one: "Paylaşım"
+        other: "Paylaşımlar"
+      nimbos/reminder:
+        one: "Hatırlatma"
+        other: "Hatırlatmalar"
+      nimbos/task:
+        one: "Görev"
+        other: "Görevler"
+      nimbos/todolist:
+        one: "Yapılacaklar Listesi"
+        other: "Yapılacaklar Listeleri"

@@ -74,13 +74,19 @@ module Nimbos
 	    Nimbos::Activity.log(self, target, action, creator_id, action_text, user_name, self.patron_token)
 	  end
 
+	  def create_guest_user
+	  	branch = self.branches.first
+	  	guest_user_email = ("guest@" + self.email.split("@").last)
+	  	guest_user = self.users.create!(name: "Guest", email: guest_user_email, branch_id: branch.id, password: "68542397657765", password_confirmation: "68542397657765", is_guest: true)
+	  	guest_user
+	  end
+
 	  private
 	  def set_initials
 	    self.title = self.name
 	    self.patron_token = SecureRandom.urlsafe_base64[0,40]
 	  end
 
-	  private
 	  def create_head_office
 	    Nimbos::Patron.current_id = self.id
 	    branch = self.branches.new

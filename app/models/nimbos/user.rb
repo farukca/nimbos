@@ -36,6 +36,8 @@ module Nimbos
 	  #validates :surname, presence: true, on: :update
 	  validates :branch_id, presence: true
 	  #validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
+
+	  default_scope { where(is_guest: false) }
 	  scope :active,  -> { where(user_status: "active") }
 	  scope :online,  -> { where("last_activity_at > ?", 10.minutes.ago) }
 	  scope :offline, -> { where("last_activity_at < ?", 10.minutes.ago) }

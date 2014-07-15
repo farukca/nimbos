@@ -220,3 +220,50 @@ en:
     link:
     action:
       save: "Save Reference Format"
+  activerecord:
+    models:
+      nimbos/user:
+        one: "User"
+        other: "Users"
+      nimbos/branch:
+        one: "Branch"
+        other: "Branches"
+      nimbos/patron:
+        one: "Patron"
+        other: "Patrons"
+      nimbos/comment:
+        one: "Comment"
+        other: "Comments"
+      nimbos/country:
+        one: "Country"
+        other: "Countries"
+      nimbos/counter:
+        one: "Counter"
+        other: "Counters"
+      nimbos/currency:
+        one: "Currency"
+        other: "Currencies"
+      nimbos/discussion:
+        one: "Discussion"
+        other: "Discussions"
+      nimbos/group:
+        one: "Group"
+        other: "Groups"
+      nimbos/listheader:
+        one: "Parameter Group"
+        other: "Parameter Groups"
+      nimbos/listitem:
+        one: "Parameter"
+        other: "Parameters"
+      nimbos/post:
+        one: "Post"
+        other: "Posts"
+      nimbos/reminder:
+        one: "Reminder"
+        other: "Reminders"
+      nimbos/task:
+        one: "Task"
+        other: "Tasks"
+      nimbos/todolist:
+        one: "Todolist"
+        other: "Todolists"
