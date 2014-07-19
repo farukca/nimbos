@@ -9,7 +9,7 @@
       <div class="form-body">
       	<%= f.input :name, placeholder: t("todolists.placeholder.todolist_name"), label: false %>
       </div>
-      <%= f.submit(t("defaults.action.save"), class: 'btn btn-info') %>
+      <%= f.submit(t("simple_form.helpers.submit.defaults.create"), class: 'btn btn-info') %>
       
 	    <%= f.input :todop_type, as: :hidden %>
 	    <%= f.input :todop_id, as: :hidden %>

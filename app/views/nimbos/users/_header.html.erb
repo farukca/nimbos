@@ -32,7 +32,7 @@
               <%= f.input :avatar_cache, as: :hidden %>
               <%= f.input :avatar, as: :file, label: false %>
               <%= f.submit t("users.action.change_avatar"), :class => "btn btn-success" %>
-              <%= link_to t("defaults.link.cancel"), "#", class: "togglebutton btn", "data-href" => "#logo_change_div" %>
+              <%= link_to t("simple_form.helpers.defaults.cancel"), "#", class: "togglebutton btn", "data-href" => "#logo_change_div" %>
               <%#if user.avatar? %>
                 <%#= f.input :remove_avatar, as: :check_boxes %><!--&nbsp;Resmi Sil-->
               <%# end %>

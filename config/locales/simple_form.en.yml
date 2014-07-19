@@ -1,52 +1,14 @@
 en:
   simple_form:
-    defaults:
-      "yes": 'Yes'
-      "no": 'No'
-      required:
-        text: 'required'
-        mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
-    error_notification:
-      defaults:
-        default_message: "Some errors were found, please take a look:"
-    # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
     labels:
-      defaults:
-        branch_id: "Branch"
-        website: "Website"
-        country: "Country"
-        district: "District"
-        tel: "Phone"
-        fax: "Fax"
-        address: "Address"
-        email: "E-Mail"
-        name: "Name & Surname"
-        department: "Department"
-        sector: "Sector"
-      company:
-        name: "Company Name"
-        title: "Invoice Title"
-        company_type: "Company Type"
-      contact:
-        jobtitle: "Job Title"
-      position:
-        defaults:
-          contract_no: "Contract"
-          notes:       "Notlar"
-          agent_price:  "Agent told Price"
-          load_date:    "Departure Date"
-          unload_date:  "Arrival Date"
-          waybill_no:   "Konşimento No"
+      branch:
+        branches: "Branches"
+        name: "Branch Name"
+      user:
+        name: "User Full Name"
+        avatar: "Profile Picture"
+        last_login_at: "Last login time"
+        confirm_password: "Confirm Password"
+    helpers:
+      user:
+        invite_users: "Invite your teammates"

@@ -1,20 +1,20 @@
 <div id="branches_index" class="row">
 
-  <%= render "shared/page_title", page_title: t("branches.title.branches"), page_small_title: "", model_name: "branches", model_path: "nimbos/branches" %>
+  <%= render "shared/page_title", page_title: Nimbos::Branch.model_name.human(count: 2) , page_small_title: "", model_name: "branches", model_path: "nimbos/branches" %>
 
   <div class="row inbox">
     <div class="col-md-2">
       <ul class="inbox-nav margin-bottom-10">
         <li class="compose-btn">
           <%= link_to nimbos.new_branch_path, class: "btn green" do %>
-            <i class="fa fa-edit"></i> <%= t("branches.link.new_branch") %>
+            <i class="fa fa-edit"></i> <%= t("simple_form.helpers.defaults.new", model: Nimbos::Branch.model_name.human) %>
           <% end %>
         </li>
       </ul>
     </div>
     <div class="col-md-10">
       <div class="inbox-header">
-        <h1 class="pull-left"><%= t("branches.title.branches") %></h1>
+        <h1 class="pull-left"><%= t("simple_form.labels.defaults.list", model: Nimbos::Branch.model_name.human) %></h1>
         <%#= render "shared/quick_search_form", model_name: "branches" %>
       </div>
 

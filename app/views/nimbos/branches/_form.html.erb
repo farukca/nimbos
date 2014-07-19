@@ -1,5 +1,5 @@
 <div class="portlet box green">
-  <%= render "shared/portlet_title", title: t("branches.title.branch_info") %>
+  <%= render "shared/portlet_title", title: t("simple_form.labels.branch.branch_info") %>
 
   <div class="portlet-body form">
     <%= simple_form_for @branch, html: { class: 'horizontal-form'}, validate: true do |f| %>
@@ -8,29 +8,21 @@
       <div class="form-body">
         <div class="row">
           <div class="col-md-6">
-            <%= f.input :name, label: t("branches.label.name") %>
-            <%= f.input :tel, label: t("branches.label.tel"), input_html: { class: "mask_phone" } %>
-            <%= f.input :fax, label: t("branches.label.fax"), input_html: { class: "mask_phone" } %>
-            <%= f.input :email, label: t("branches.label.email") %>
+            <%= f.input :name %>
+            <%= f.input :tel, input_html: { class: "mask_phone" } %>
+            <%= f.input :fax, input_html: { class: "mask_phone" } %>
+            <%= f.input :email %>
           </div>
           <div class="col-md-6">
-            <%= f.input :country_id, as: :select, label: t("defaults.label.city"), collection: Nimbos::Country.all, include_blank: false, placeholder: t("branches.placeholder.city"), input_html: { class: "country_select" } %>
-            <%= f.input :city, placeholder: t("branches.placeholder.city") %>
-            <div class="row">
-              <div class="col-md-6">
-                <%= f.input :district, label: t("patrons.label.district"), placeholder: t("patrons.placeholder.district") %>
-              </div>
-              <div class="col-md-6">
-                <%= f.input :postcode, label: t("patrons.placeholder.postcode"), placeholder: t("patrons.placeholder.postcode") %>
-              </div>
-            </div>
+            <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, input_html: { class: "country_select" } %>
+            <%= f.input :city %>
             <%= f.input :address, as: :text %>
           </div>
         </div>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Şube Bilgisini Kaydet", class: 'btn btn-info' %>
-        <%= link_to t("defaults.link.cancel"), "#", class: 'btn' %>
+        <%= f.button :submit, t("simple_form.helpers.defaults.save"), class: 'btn btn-info' %>
+        <%= link_to t("simple_form.helpers.defaults.cancel"), "#", class: 'btn' %>
       </div>
     <% end %>
   </div>

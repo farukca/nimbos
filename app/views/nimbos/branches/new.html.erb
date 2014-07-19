@@ -1,6 +1,6 @@
 <div class="row">
 
-  <%= render "shared/page_title", page_title: "Şubeler", page_small_title: "Firmaya ait şube işlemleri", model_name: "branches", model_path: "nimbos/branches" %>
+  <%= render "shared/page_title", page_title: Nimbos::Branch.model_name.human(count: 2) , page_small_title: "", model_name: "branches", model_path: "nimbos/branches" %>
 
   <%= render 'form' %>
 

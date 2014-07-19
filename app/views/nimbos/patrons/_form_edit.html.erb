@@ -31,10 +31,10 @@
               <%= f.input :logo, as: :file, label: t("patrons.label.logo") %>
               <div class="row">
                 <div class="col-md-6">
-                  <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, label: t("defaults.label.country"), placeholder: t("patrons.placeholder.country"), input_html: { class: "country_select" } %>
+                  <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, label: t("simple_form.labels.defaults.country_id"), placeholder: t("patrons.placeholder.country"), input_html: { class: "country_select" } %>
                 </div>
                 <div class="col-md-6">
-                  <%= f.input :city, label: t("defaults.label.city"), placeholder: t("patrons.placeholder.city") %>
+                  <%= f.input :city, label: t("simple_form.labels.defaults.city"), placeholder: t("patrons.placeholder.city") %>
                 </div>
               </div>
               <div class="row">

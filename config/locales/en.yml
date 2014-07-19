@@ -158,11 +158,7 @@ en:
       new_user: "Add new user"
       invite_users: "Invite your teammates"
       admin_panel: "Admin Panel"
-      profile: "Profile"
-      calendar: "Calendar"
-      inbox: "Inbox"
-      settings: "Settings"
-      manager: "Manager"
+
       confirm_password: "Confirm Password"
     placeholder:
       email: "Enter mail address"

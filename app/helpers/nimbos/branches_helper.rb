@@ -16,14 +16,14 @@ module Nimbos
 				  column title: t("branches.label.email"), html: { th: { class: "span2" } } do |branch|
 				  	mail_to branch.email, branch.email
 				  end
-				  column :city, title: t("defaults.label.city"), html: { th: { class: "span1" } }
-				  column title: t("defaults.label.country"), html: { th: { class: "span1" }  } do |branch|
+				  column :city, title: t("simple_form.labels.defaults.city"), html: { th: { class: "span1" } }
+				  column title: t("simple_form.labels.defaults.country_id"), html: { th: { class: "span1" }  } do |branch|
 				  	country_name(branch.country_id)
 				  end
 				  #column title: "", html: { th: { class: "span1" } } do |branch|
-				  #	concat link_to t("defaults.link.edit"), nimbos.edit_branch_path(branch) unless options[:hide_edit_link]
+				  #	concat link_to t("simple_form.helpers.defaults.edit"), nimbos.edit_branch_path(branch) unless options[:hide_edit_link]
 				  #	concat "|"
-				  #	concat link_to t("defaults.link.destroy"), branch, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm") } if options[:show_delete_link]
+				  #	concat link_to t("simple_form.helpers.defaults.delete"), branch, method: :delete, data: {confirm: t("simple_form.messages.defaults.destroy_confirm") } if options[:show_delete_link]
 				  #end
 				end
 			end

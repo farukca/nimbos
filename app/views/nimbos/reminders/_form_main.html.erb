@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <%= f.input :title, label: t("companies.label.event_title") %>
+    <%= f.input :title, label: t("simple_form.labels.company.event_title") %>
     <div class="row">
       <div class="col-md-6">
           <%= f.input :start_date, label: "Başlama Tarihi" do %>
@@ -19,7 +19,7 @@
         <%= f.input :finish_date, as: :string, label: "Bitiş Tarihi", input_html: {class: "datepicker" } %>
       </div>
     </div>
-    <%= f.input :description, label: t("companies.label.event_description"), input_html: { rows: "3" }  %>
+    <%= f.input :description, label: t("simple_form.labels.company.event_description"), input_html: { rows: "3" }  %>
     <%= f.input :remindfor_type, as: :hidden %>
     <%= f.input :remindfor_id, as: :hidden %>
   </div>
