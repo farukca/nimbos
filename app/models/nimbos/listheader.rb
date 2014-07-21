@@ -1,7 +1,7 @@
 module Nimbos
   class Listheader < ActiveRecord::Base
-	  has_many :listitems
 
+	  has_many :listitems
 	  accepts_nested_attributes_for :listitems, :reject_if => lambda { |a| a[:code].blank? }, allow_destroy: true
 
 	  before_save :set_item_code

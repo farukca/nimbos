@@ -36,7 +36,7 @@ module Nimbos
 	  #validates :contact_surname, presence: true, length: { in: 2..40 }
 	  validates :password, presence: { on: :create }, length: { minimum: 6, maximum: 20, on: :create }
 	  #validates :tel, presence: true, length: { in: 2..20 }
-	  #validates :country_id, presence: true
+	  validates :country_id, presence: true
 	  validates :title, length: { maximum: 60 }
 	  validates :username, absence: true
 

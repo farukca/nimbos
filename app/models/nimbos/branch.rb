@@ -5,7 +5,7 @@ module Nimbos
 	  belongs_to :patron	  
 	  belongs_to :country
 
-	  validates :name, presence: true, length: { maximum: 100}
+	  validates :name, presence: true, length: { maximum: 100 }
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
