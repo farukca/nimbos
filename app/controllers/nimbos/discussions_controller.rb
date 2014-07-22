@@ -47,7 +47,7 @@ module Nimbos
           #generate_notification('started_discussion', @discussion.title, @discussion.target, nil, @discussion.target.group.id)
           #engine = @target.class.name.split("::").first.downcase
           #generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
-          format.html { redirect_to @discussion, notice: t("discussions.message.created") }
+          format.html { redirect_to @discussion, notice: t("simple_form.messages.defaults.created", model: Nimbos::Discussion.model_name.human) }
           format.json { render json: @discussion, status: :created, location: @discussion }
         else
           format.html { render action: "new" }
@@ -61,7 +61,7 @@ module Nimbos
   
       respond_to do |format|
         if @discussion.update_attributes(discussion_params)
-          format.html { redirect_to @discussion, notice: t("discussions.message.updated") }
+          format.html { redirect_to @discussion, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Discussion.model_name.human) }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
@@ -73,7 +73,7 @@ module Nimbos
     def destroy
       @discussion = Discussion.find(params[:id])
       @discussion.destroy
-      flash[:notice] = t("discussions.message.deleted")
+      flash[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Discussion.model_name.human)
   
       respond_to do |format|
         format.html { redirect_to discussions_url }

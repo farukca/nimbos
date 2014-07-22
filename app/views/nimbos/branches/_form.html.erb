@@ -4,7 +4,8 @@
   <div class="portlet-body form">
     <%= simple_form_for @branch, html: { class: 'horizontal-form'}, validate: true do |f| %>
       <%= f.error_notification %>
-      <%= f.error :base %>
+      <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+
       <div class="form-body">
         <div class="row">
           <div class="col-md-6">

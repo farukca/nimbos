@@ -21,7 +21,7 @@ module Nimbos
 	    @todolist = Nimbos::Todolist.new(todolist_params)
 	    @todolist.user_id  = current_user.id
 	    @todolist.save!
-	    respond_with @todolist, notice: t("todolists.message.created")
+	    respond_with @todolist, notice: t("simple_form.messages.defaults.created", model: Nimbos::Todolist.model_name.human)
 	  end
 
 	  def show

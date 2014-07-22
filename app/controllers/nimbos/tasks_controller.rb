@@ -32,7 +32,7 @@ module Nimbos
 	    @task.user_id   = 0
 
 	    @task.save!
-	    respond_with @task, notice: t("tasks.message.created")
+	    respond_with @task, notice: t("simple_form.messages.defaults.created", model: Nimbos::Task.model_name.human)
 	  end
 
 	  def update
@@ -47,13 +47,13 @@ module Nimbos
 	    end
 
 	    @task.update_attributes!(task_params)
-	    respond_with @task, notice: t("tasks.message.updated")
+	    respond_with @task, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Task.model_name.human)
 	  end
 
 	  def destroy
 	  	@task = Task.find(params[:id])
       @task.destroy
-      flash[:notice] = t("task.message.deleted")
+      flash[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human)
 
       respond_to do |format|
         format.html { redirect_to tasks_url }

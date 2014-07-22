@@ -11,7 +11,7 @@ module Nimbos
 	  validates :cruser_id, presence: true
 	  validates :todolist_id, presence: true
 	  validates :task_code, :i18n_code, length: { maximum: 50 }
-	  validates_associated :todolist
+	  #validates_associated :todolist
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 	  scope :active, where(status: "active")

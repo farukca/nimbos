@@ -24,13 +24,13 @@ module Nimbos
 	    @comment.save!
 	    #generate_notification('commented', @commentable.to_s, @commentable, nil, nil)
 	    #generate_post(current_user.id, @comment, @commentable.title, "commented", true)
-	    respond_with @comment, notice: t("comments.message.created")
+	    respond_with @comment, notice: t("simple_form.messages.defaults.commented")
 	  end
 
 	  def destroy
 	    @comment = Nimbos::Comment.find(params[:id])
 	    @comment.destroy
-	    flash[:notice] = t("comments.message.deleted")
+	    flash[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Comment.model_name.human)
 	    redirect_to comments_url
 	  end
 

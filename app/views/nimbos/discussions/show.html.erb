@@ -1,6 +1,6 @@
 <div class="row-fluid">
 
-	<%= page_header_with_block(t("Nimbos::Discussion.model_name.human(count: 2)")) do %>
+	<%= page_header_with_block(Nimbos::Discussion.model_name.human(count: 2)) do %>
 		<span class="text-muted">
 	    <i class="fa fa-eject"></i> <%= link_to @discussion.target.to_s, resolve_engine_path(@discussion.target) %>
 	  </span>
