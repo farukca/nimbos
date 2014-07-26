@@ -43,10 +43,9 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @reminder.save
-	      	flash[:notice] = t("simple_form.messages.defaults.created", model: Nimbos::Reminder.model_name.human)
-	        format.html { redirect_to @reminder }
+	        format.html { redirect_to @reminder, notice: t("simple_form.messages.defaults.created", model: Nimbos::Reminder.model_name.human) }
 	        format.json { render json: @reminder, status: :created, location: @reminder }
-	        format.js
+	        format.js {  flash.now[:notice] = t("simple_form.messages.defaults.created", model: Nimbos::Reminder.model_name.human) }
 	      else
 	        format.html { render action: "new" }
 	        format.json { render json: @reminder.errors, status: :unprocessable_entity }
@@ -62,6 +61,7 @@ module Nimbos
 	      if @reminder.update_attributes(reminder_params)
 	        format.html { redirect_to @reminder, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Reminder.model_name.human) }
 	        format.json { head :no_content }
+	        format.js { flash.now[:notice] = t("simple_form.messages.defaults.updated", model: Nimbos::Reminder.model_name.human) }
 	      else
 	        format.html { render action: "edit" }
 	        format.json { render json: @reminder.errors, status: :unprocessable_entity }
@@ -72,11 +72,11 @@ module Nimbos
 	  def destroy
 	    @reminder = Nimbos::Reminder.find(params[:id])
 	    @reminder.destroy
-	    flash[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Reminder.model_name.human)
 
 	    respond_to do |format|
-	      format.html { redirect_to reminders_url }
+	      format.html { redirect_to nimbos.reminders_url, notice: t("simple_form.messages.defaults.deleted", model: Nimbos::Reminder.model_name.human) }
 	      format.json { head :no_content }
+	      format.js { flash.now[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Reminder.model_name.human) }
 	    end
 	  end
 

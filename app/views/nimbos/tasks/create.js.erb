@@ -1,7 +1,18 @@
-$('#todolist_<%= @task.todolist_id %>_uncompleted_tasks_list').append("<%= j render @task %>");
-$('#new_task').each(function() { this.reset(); });
-$("#task_task_text").focus();
-$("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
+<% if @task.errors.present? %>
+  toastr.error('<%= j error_messages_for(@task) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@task) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $('#todolist_<%= @task.todolist_id %>_uncompleted_tasks_list').append("<%= j render @task %>");
+  $('#new_task').each(function() { this.reset(); });
+  $("#task_task_text").focus();
+  
+  toastr.info('<%= j flash[:notice] %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');
+  $("#messages").fadeOut(5000);
+<% end %>
 jQuery(document).ready(function() {       
   App.initAjax();
 });

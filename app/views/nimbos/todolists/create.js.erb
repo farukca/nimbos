@@ -1,5 +1,16 @@
-$("#<%= @todolist.todop_type %>_<%= @todolist.todop_id %>_todolists").prepend('<%= j render(@todolist) %>');
-$('#new_todolist').each(function() { this.reset(); });
+<% if @todolist.errors.present? %>
+  toastr.error('<%= j error_messages_for(@todolist) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@todolist) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $("#<%= @todolist.todop_type %>_<%= @todolist.todop_id %>_todolists").prepend('<%= j render(@todolist) %>');
+  $('#new_todolist').each(function() { this.reset(); });
+  toastr.info('<%= j flash[:notice] %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');
+  $("#messages").fadeOut(5000);
+<% end %>
 jQuery(document).ready(function() {       
   App.initAjax();
 });

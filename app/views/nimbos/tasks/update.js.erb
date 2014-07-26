@@ -1,11 +1,21 @@
-$('#task_<%= @task.id %>').replaceWith("<%= j render @task %>");
-<% if @task.status == "active" %>
-  $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_uncompleted_tasks_list');
+<% if @task.errors.present? %>
+  toastr.error('<%= j error_messages_for(@task) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@task) %></div>');
+  $("#messages").fadeOut(4000);
 <% else %>
-  $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_completed_tasks_list');
+  $('#task_<%= @task.id %>').replaceWith("<%= j render @task %>");
+  <% if @task.status == "active" %>
+    $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_uncompleted_tasks_list');
+  <% else %>
+    $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_completed_tasks_list');
+  <% end %>
+  $("#modalWindow").modal('hide');
+  toastr.info('<%= j flash[:notice] %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');
+  $("#messages").fadeOut(5000);
 <% end %>
-$("#modalWindow").modal('hide');
-$("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
 jQuery(document).ready(function() {       
   App.initAjax();
 });

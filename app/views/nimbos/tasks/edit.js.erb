@@ -1,5 +1,12 @@
-$("#modalWindow").html("<%= escape_javascript(render 'nimbos/tasks/edit_form') %>");
-$("#modalWindow").modal();
+<% if @task.errors.present? %>
+  toastr.error('<%= j error_messages_for(@task) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@task) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $("#modalWindow").html("<%= escape_javascript(render 'nimbos/tasks/edit_form') %>");
+  $("#modalWindow").modal();
+<% end %>
 jQuery(document).ready(function() {       
   App.initAjax();
   ComponentsPickers.init();

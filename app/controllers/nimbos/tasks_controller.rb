@@ -52,13 +52,13 @@ module Nimbos
 
 	  def destroy
 	  	@task = Task.find(params[:id])
+	  	@todolist = @task.todolist
       @task.destroy
-      flash[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human)
 
       respond_to do |format|
-        format.html { redirect_to tasks_url }
+        format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
         format.json { head :ok }
-        format.js
+        format.js { flash.now[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
       end
 	  end
 

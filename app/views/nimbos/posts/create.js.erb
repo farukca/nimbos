@@ -1,2 +1,9 @@
-$("#user_<%= current_user.id %>_posts").prepend('<%= j render "nimbos/posts/feed", post: @post %>');
-$('#new_post').each(function() { this.reset(); });
+<% if @post.errors.present? %>
+  toastr.error('<%= j error_messages_for(@post) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@post) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $("#user_<%= current_user.id %>_posts").prepend('<%= j render "nimbos/posts/feed", post: @post %>');
+  $('#new_post').each(function() { this.reset(); });
+<% end %>

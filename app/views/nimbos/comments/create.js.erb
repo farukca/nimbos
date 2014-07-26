@@ -1,3 +1,10 @@
-<% normalized_model_name = normalize_model_name(@comment.commentable_type) %>
-$("#<%= normalized_model_name %>_<%= @comment.commentable_id %>_commentlist").append('<%= j render(@comment) %>');
-$("#<%= normalized_model_name %>_<%= @comment.commentable_id %>_commentform").each (function(){ this.reset(); });
+<% if @comment.errors.present? %>
+  toastr.error('<%= j error_messages_for(@comment) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@comment) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  <% normalized_model_name = normalize_model_name(@comment.commentable_type) %>
+  $("#<%= normalized_model_name %>_<%= @comment.commentable_id %>_commentlist").append('<%= j render(@comment) %>');
+  $("#<%= normalized_model_name %>_<%= @comment.commentable_id %>_commentform").each (function(){ this.reset(); });
+<% end %>

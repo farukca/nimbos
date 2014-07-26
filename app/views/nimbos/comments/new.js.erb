@@ -1,4 +1,11 @@
-$("#new_<%= normalize_model_name(@commentable.class.name) %>_<%= @commentable.id %>_comment_div").html("<%= escape_javascript(render 'nimbos/comments/form', object: @commentable) %>");
+<% if @comment.errors.present? %>
+  toastr.error('<%= j error_messages_for(@comment) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@comment) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $("#new_<%= normalize_model_name(@commentable.class.name) %>_<%= @commentable.id %>_comment_div").html("<%= escape_javascript(render 'nimbos/comments/form', object: @commentable) %>");
+<% end %>
 jQuery(document).ready(function() {       
   App.initAjax();
 });

@@ -1,5 +1,12 @@
-$("#modalWindow").html("<%= escape_javascript(render 'nimbos/reminders/form') %>");
-$("#modalWindow").modal();
+<% if @reminder.errors.present? %>
+  toastr.error('<%= j error_messages_for(@reminder) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@reminder) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $("#modalWindow").html("<%= escape_javascript(render 'nimbos/reminders/form') %>");
+  $("#modalWindow").modal();
+<% end %>
 jQuery(document).ready(function() {       
   App.initAjax();
   ComponentsPickers.init();
