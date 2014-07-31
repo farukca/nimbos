@@ -8,7 +8,7 @@ module Nimbos
 	  has_many :comments, as: :commentable, class_name: "Nimbos::Comment", dependent: :destroy
 
 	  validates :task_text, presence: true, length: { minimum: 2, maximum: 255 }
-	  validates :cruser_id, presence: true
+	  #validates :cruser_id, presence: true
 	  validates :todolist_id, presence: true
 	  validates :task_code, :i18n_code, length: { maximum: 50 }
 	  #validates_associated :todolist

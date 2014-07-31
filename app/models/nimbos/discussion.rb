@@ -7,7 +7,7 @@ module Nimbos
 
 	  attr_accessor :related_user_ids, :target_name
 
-	  validates :user_id, presence: true
+	  #validates :user_id, presence: true
 	  validates :title, presence: true, length: { maximum: 255 }
 	  validates :content, length: { maximum: 1000 }
 	  

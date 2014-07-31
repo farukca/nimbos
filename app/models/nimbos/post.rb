@@ -9,7 +9,7 @@ module Nimbos
 
 	  attr_accessor :related_user_ids
 
-	  validates :user_id, presence: true
+	  #validates :user_id, presence: true
 	  validates :message, presence: true, length: { maximum: 1000 }
 	  
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }

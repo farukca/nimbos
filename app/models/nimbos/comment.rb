@@ -4,7 +4,7 @@ module Nimbos
 	  belongs_to :user, class_name: "Nimbos::User"
 	  belongs_to :commentable, polymorphic: true, touch: true, counter_cache: true
 
-	  validates :user_id, presence: true
+	  #validates :user_id, presence: true
 	  validates :comment_text, presence: true
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }

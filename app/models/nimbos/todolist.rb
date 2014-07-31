@@ -8,7 +8,7 @@ module Nimbos
 	  accepts_nested_attributes_for :tasks
 
 	  validates :name, presence: true, length: { minimum: 2, maximum: 255 }
-	  validates :user_id, presence: true
+	  #validates :user_id, presence: true
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
