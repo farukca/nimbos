@@ -25,7 +25,7 @@ module Nimbos
 	  end
 
 	  before_create :set_initials
-	  after_create  :create_head_office, :create_patron_user#, :create_company #, :create_admin_user
+	  after_create  :create_head_office, :create_patron_user#, :create_samples
 
 	  validates :name, presence: true, length: { in: 2..40 }
 	  validates :email, check_registered: { message: I18n.t("patrons.messages.mailexists"), on: :create}, 
@@ -135,19 +135,11 @@ module Nimbos
 	    #user.add_role :admin
 	  end
 
-#	  def create_company
-#	    branch = Branch.where(patron_id: self.id).first
-#	    user   = User.where(patron_id: self.id).last
-#	    company = Company.new
-#	    company.name = self.name
-#	    company.tel = self.tel
-#	    company.fax = self.fax
-#	    company.country_id = self.country_id
-#	    company.patron_id = self.id
-#	    company.branch_id  = branch.id
-#	    company.user_id = user.id
-#	    company.save!
-#	  end
+	  def create_samples
+	    Resque.enqueue(SampleRecordsWorker, self.id)
+		end
+
+
 
     def self.generate_random_token
       SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
