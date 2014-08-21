@@ -1,0 +1,13 @@
+<% if @counter.errors.present? %>
+	toastr.error('<%= j error_message_for(@counter)%>' );
+	$("#messages").show();
+	$("#messages").html('<div id="flash_notice" class= "alert alert-error"><%= j error_message_for(@counter)%></div>');
+	$("#messages").fadeOut(4000);
+<% else %>
+	$("#counter_<%=counter.id%>_id").replaceWith('<%= j render @counter %>');
+	$('#edit_counter_<%=@counter.id%>').remove();
+	toastr.info('<%= j flash[:notice] %>')
+	$("#messages").show();
+	$("#messages").html('<div id="flash[:notice]" class="alert alert-notice"><%= j flash[:notice] %></div>');
+	$("#messages").fadeOut(5000);
+<%end%>
