@@ -1,0 +1,39 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+      <h4 class="modal-title"><%= Nimbos::Counter.model_name.human %></h4>
+    </div>
+    <%= simple_form_for @counter, html: { class: 'horizontal-form'}, validate: true, remote: true do |f| %>
+      <%= f.error_notification %>
+      <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.input :prefix %>
+              </div>
+              <div class="col-md-3">
+                <%= f.input :count %>
+              </div>
+              <div class="col-md-3">
+                <%= f.input :suffix %>
+              </div>
+              <div class="col-md-3">
+              </div>
+            </div>
+            <%= f.input :period, as: :select, collection: [:year], include_blank: false, input_html: { readonly: true } %>
+            <%= f.input :counter_type, as: :hidden %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit t("simple_form.helpers.submit.defaults.create"), class: 'btn btn-info' %>
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true"><%= t("simple_form.helpers.defaults.close") %></a>
+      </div>
+    <% end %>
+  </div>
+</div>

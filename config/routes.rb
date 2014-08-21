@@ -51,6 +51,7 @@ Nimbos::Engine.routes.draw do
   resources :listitems
   resources :countries
   resources :currencies
+  resources :counters
 
   #root :to => "posts#index"
   

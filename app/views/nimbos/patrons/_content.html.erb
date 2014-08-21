@@ -24,6 +24,9 @@
         <li>
           <a href="#patron_<%= current_patron.id %>_branches" data-toggle="tab"><i class="fa fa-random"></i> <%= t("branches.title.branches") %></a>
         </li>
+        <li>
+          <a href="#patron_<%= current_patron.id %>_counters" data-toggle="tab"><i class="fa fa-spinner"></i> <%= Nimbos::Counter.model_name.human(count: 2) %></a>
+        </li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="patron_<%= current_patron.id %>_users">
@@ -37,6 +40,9 @@
           <%= link_to nimbos.new_branch_path, class: "btn blue btn-block margin-bottom-20" do %>
             <i class="fa fa-hospital-o"></i> <%= t("branches.link.add_branch") %>
           <% end %>
+        </div>
+        <div class="tab-pane" id="patron_<%= current_patron.id %>_counters">
+          <%= render "nimbos/counters/list", objects: current_patron.counters %>
         </div>
       </div>
     </div>
