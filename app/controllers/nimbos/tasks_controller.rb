@@ -31,8 +31,13 @@ module Nimbos
 	  	@task.cruser_id = current_user.id
 	    @task.user_id   = 0
 
-	    @task.save!
-	    respond_with @task, notice: t("simple_form.messages.defaults.created", model: Nimbos::Task.model_name.human)
+	    if @task.save!
+	    	respond_to do |format|
+          format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.created", model: Nimbos::Task.model_name.human) }
+          format.json { head :ok }
+          format.js { flash.now[:notice] = t("simple_form.messages.defaults.created", model: Nimbos::Task.model_name.human) }
+        end
+	    end
 	  end
 
 	  def update
@@ -46,19 +51,25 @@ module Nimbos
 	    	@task.closed_date = nil
 	    end
 
-	    @task.update_attributes!(task_params)
-	    respond_with @task, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Task.model_name.human)
+	    if @task.update_attributes!(task_params)
+	    	respond_to do |format|
+          format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Task.model_name.human) }
+          format.json { head :ok }
+          format.js { flash.now[:notice] = t("simple_form.messages.defaults.updated", model: Nimbos::Task.model_name.human) }
+        end	    	
+	    end
 	  end
 
 	  def destroy
 	  	@task = Task.find(params[:id])
 	  	@todolist = @task.todolist
-      @task.destroy
-
-      respond_to do |format|
-        format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
-        format.json { head :ok }
-        format.js { flash.now[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
+	  	
+      if @task.destroy
+	      respond_to do |format|
+	        format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
+	        format.json { head :ok }
+	        format.js { flash.now[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
+	      end
       end
 	  end
 
