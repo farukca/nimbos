@@ -9,6 +9,11 @@ en:
         avatar: "Profile Picture"
         last_login_at: "Last login time"
         confirm_password: "Confirm Password"
+      counter:
+        prefix: "Prefix"
+        count: "Count"
+        suffix: "Suffix"
+        period: "Priod"
     helpers:
       user:
         invite_users: "Invite your teammates"
