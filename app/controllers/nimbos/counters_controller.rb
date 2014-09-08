@@ -30,15 +30,19 @@ module Nimbos
     	@counter = Nimbos::Counter.find(params[:id])
     	respond_to do |format|
     		if @counter.update_attributes(counter_params)
-    			format.html { redirect_to @counter, notice: t("simple_form.default.message.update", model: Nimbo::Counter.model_name.human) }
+    			format.html { redirect_to @counter, notice: t("simple_form.default.message.update", model: Nimbos::Counter.model_name.human) }
     			format.json { head :ok}
-    			format.js { flash.now[:notice] = t("simple_form.default.message.update", model: Nimbo::Counter.model_name.human) }
+    			format.js { flash.now[:notice] = t("simple_form.default.message.update", model: Nimbos::Counter.model_name.human) }
     		else
     			format.html { render action: "edit" }
     			format.json { render json: @counter.errors }
     			format.js
             end
         end
+    end
+    private
+    def counter_params
+        params.require(:counter).permit( :prefix, :suffix, :period, :count, :confirmed )
     end
 
   end

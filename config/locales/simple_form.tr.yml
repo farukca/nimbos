@@ -9,6 +9,11 @@ tr:
         avatar: "Profil Resminiz"
         last_login_at: "Son giriş tarihi"
         confirm_password: "Şifreyi Tekrar Giriniz"
+      counter:
+        prefix: "Ön Eki"
+        count: "Rakam Sayısı"
+        suffix: "Son Eki"
+        period: "Periyot"
     helpers:
       user:
         invite_users: "Ekip arkadaşlarınızı davet edin"
