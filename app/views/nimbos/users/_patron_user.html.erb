@@ -23,7 +23,7 @@
         <% if current_user.has_role? :admin %>
           <div class="row">
             <div class="col-md-6">
-              <%= f.association :roles, as: :check_boxes %>
+              <%= f.association :roles, as: :check_boxes, collection: Nimbos::Role.where.not(name: 'superadmin') %>
             </div>
             <div class="col-md-6">
               <%= f.input :user_status, as: :select, collection: Nimbos::User.user_status.map { |k| [k, k] }, include_blank: false %>
