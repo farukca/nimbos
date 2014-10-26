@@ -39,7 +39,7 @@ module Nimbos
 	  end
 
 	  def show
-	    @user = current_patron.users.find(params[:id])
+	    @user = Nimbos::User.find(params[:id])
 	  end
 
 	  def create

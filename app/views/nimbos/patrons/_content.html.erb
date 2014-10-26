@@ -19,21 +19,21 @@
     <div class="tabbable-custom">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#patron_<%= current_patron.id %>_users" data-toggle="tab"><i class="fa fa-group"></i> <%= t("users.title.users") %></a>
+          <a href="#patron_<%= patron.id %>_users" data-toggle="tab"><i class="fa fa-group"></i> <%= t("users.title.users") %></a>
         </li>
         <li>
-          <a href="#patron_<%= current_patron.id %>_branches" data-toggle="tab"><i class="fa fa-random"></i> <%= t("branches.title.branches") %></a>
+          <a href="#patron_<%= patron.id %>_branches" data-toggle="tab"><i class="fa fa-random"></i> <%= t("branches.title.branches") %></a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active" id="patron_<%= current_patron.id %>_users">
-          <%= render "nimbos/users/related_list", objects: current_patron.users %>
+        <div class="tab-pane active" id="patron_<%= patron.id %>_users">
+          <%= render "nimbos/users/related_list", objects: patron.users %>
           <%= link_to nimbos.invite_coworkers_users_path, class: "btn blue btn-block margin-bottom-20" do %>
             <i class="fa fa-group"></i> <%= t("users.label.invite_users") %>
           <% end %>
         </div>
-        <div class="tab-pane" id="patron_<%= current_patron.id %>_branches">
-          <%= render "nimbos/branches/list", objects: current_patron.branches %>
+        <div class="tab-pane" id="patron_<%= patron.id %>_branches">
+          <%= render "nimbos/branches/list", objects: patron.branches %>
           <%= link_to nimbos.new_branch_path, class: "btn blue btn-block margin-bottom-20" do %>
             <i class="fa fa-hospital-o"></i> <%= t("branches.link.add_branch") %>
           <% end %>
