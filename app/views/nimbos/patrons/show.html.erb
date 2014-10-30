@@ -26,8 +26,8 @@
       <div class="portlet-body">
         <blockquote>
         <p class="text-success">
-          Hi, it seems that you did not upload your company logo, 
-          <%= link_to "to change your picture click here", nimbos.edit_patron_path(@patron) %>
+          <%= t("simple_form.messages.patron.didnot_changed_company_logo") %>, 
+          <%= link_to t("simple_form.helpers.patron.change_logo"), nimbos.edit_patron_path(@patron) %>
         </p>
         </blockquote>
       </div>

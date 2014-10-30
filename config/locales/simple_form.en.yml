@@ -17,3 +17,11 @@ en:
     helpers:
       user:
         invite_users: "Invite your teammates"
+        change_profile_picture: "to change your picture click here"
+      patron:
+        change_logo: "please click here to change your company logo"
+    messages:
+      user:
+        didnot_changed_profile_picture: "Hi, it seems that you did not upload your profile picture"
+      patron:
+        didnot_changed_company_logo: "Hi, it seems that you did not upload your company logo"

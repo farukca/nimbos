@@ -1,0 +1,15 @@
+<div class="portlet box green">
+  <%= render "shared/portlet_title", title: t("patrons.title.patron_info") %>
+  <%= link_to patron_logo, "#", id: "patron_logo_change_link", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Logoyu Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+  <div class="portlet-body form">
+    <%= simple_form_for patron, html: {multipart: true, class: 'form-inline'} do |f| %>
+      <%= f.input :logo_cache, as: :hidden %>
+      <%= f.input :logo, as: :file, label: false %>
+      <%= f.submit "Firma Logosunu Değiştir", :class => "btn btn-success" %>
+      <%= link_to "Vazgeç", "#", class: "togglebutton btn", "data-href" => "#logo_change_div" %>
+      <%#if patron.logo? %>
+        <%#= f.input :remove_logo, as: :check_boxes %><!--&nbsp;Resmi Sil-->
+      <%# end %>
+    <% end %>
+  </div>
+</div>

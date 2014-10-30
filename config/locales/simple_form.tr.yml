@@ -17,3 +17,11 @@ tr:
     helpers:
       user:
         invite_users: "Ekip arkadaşlarınızı davet edin"
+        change_profile_picture: "değiştirmek için lütfen buraya tıklayınız"
+      patron:
+        change_logo: "firma logonuzu güncellemek için tıklayınız"
+    messages:
+      user:
+        didnot_changed_profile_picture: "Merhaba, profil resminizi halen değiştirmediniz"
+      patron:
+        didnot_changed_company_logo: "Merhaba, firmanıza ait logoyu halen değiştirmediniz"
