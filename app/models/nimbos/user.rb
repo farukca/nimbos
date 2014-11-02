@@ -94,8 +94,13 @@ module Nimbos
 	    @social_posts = Nimbos::Post.includes(:user).includes(:comments).limit(10).order("created_at desc")
 	  end
 
-	  #def active_tasks
-	    #@tasks = Nimbos::Task.includes(:user).active.where(user_id: self.id)
-	  #end
+	  def active_tasks_count
+	    self.tasks.where(status: "active").count
+	  end
+
+	  def next_week_reminders_count
+	  	self.reminders.where(start_date: Time.zone.today..(Time.zone.today + 1.week)).count
+	  end
+
   end
 end

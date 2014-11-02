@@ -1,2 +1,21 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<div id="tasks_index" class="row">
+
+  <%= render "shared/page_title", page_title: Nimbos::Task.model_name.human(count: 2), page_small_title: "", model_name: "tasks", model_path: "nimbos/tasks" %>
+
+	<div class="col-md-6" id="tasks_list_div">
+    <%= render "nimbos/tasks/list", objects: @tasks %>
+  </div>
+
+  <div class="col-md-6">
+  	<div id="todolist_todop">
+
+  	</div>
+  	<div id="todolist_detail">
+  	
+  	</div>
+    <div id="task_details">
+      
+    </div>
+  </div>
+
+</div>

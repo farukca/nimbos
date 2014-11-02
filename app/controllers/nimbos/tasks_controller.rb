@@ -6,7 +6,7 @@ module Nimbos
 	  respond_to :js, :json
 
 	  def index
-	  	@tasks = current_user.tasks
+	  	@tasks = current_user.tasks.includes(:todolist).includes(:cruser).where(status: "active")
 	  end
 
 	  def new

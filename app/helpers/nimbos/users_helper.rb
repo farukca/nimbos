@@ -23,6 +23,11 @@ module Nimbos
 	    cl_image_tag(user.avatar_url, width: 128, height: 128, crop: :fill, class: "avatar")
 	  end
 
+	  def user_dashboard_avatar(user = @user)
+	    #user.avatar_url(:mini)
+	    cl_image_tag(user.avatar_url, width: 80, height: 80, crop: :fill, class: "avatar img-circle")
+	  end
+
 	  def users_active_tasks_count(user = @user)
 	    user.tasks.active.count
 	  end

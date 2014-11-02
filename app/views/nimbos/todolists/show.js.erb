@@ -1,0 +1,7 @@
+<% if @todolist.todop %>
+  $('#todolist_todop').html('<%= j render partial: "#{@todolist.todop.to_partial_path}", locals: { :"#{@todolist.todop.class.name.split("""::""").last.downcase}" => @todolist.todop } %>');
+<% else %>
+  $('#todolist_todop').html('');
+<% end %>
+$('#task_detail').html('');
+$('#todolist_detail').html('<%= j render @todolist %>');

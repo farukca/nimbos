@@ -1,1 +1,7 @@
-$('#task_<%= @task.id %>').html('<%= escape_javascript(render @task) %>');
+if ($('#task_details').length) {
+	$('#task_details').html('<%= j render "nimbos/tasks/task_detail", task: @task %>');
+	$('#todolist_todop').html('');
+	$('#todolist_detail').html('');
+} else {
+  $('#task_<%= @task.id %>').html('<%= escape_javascript(render @task) %>');
+}

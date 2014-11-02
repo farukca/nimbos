@@ -14,6 +14,9 @@ tr:
         count: "Rakam Sayısı"
         suffix: "Son Eki"
         period: "Periyot"
+      task:
+        todolist: "Görev Grubu"
+        comments: "Yorumlar"
     helpers:
       user:
         invite_users: "Ekip arkadaşlarınızı davet edin"

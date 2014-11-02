@@ -1,0 +1,31 @@
+<div class="scroller" style="max-height: 600px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
+	<div class="todo-tasklist">
+		<% @tasks.each do |task| %>
+			<div class="todo-tasklist-item todo-tasklist-item-border-green">
+				<%= cl_image_tag(task.cruser.avatar_url, width: 27, height: 27, crop: :fill, class: "todo-userpic pull-left") %>
+				<!--div class="todo-tasklist-item-title">
+					<%#= link_to task.todolist.name, nimbos.todolist_path(task.todolist), remote: true %>
+				</div-->
+				<div class="todo-tasklist-item-text">
+					<%= link_to task.task_text, nimbos.todolist_task_path(task.todolist, task), remote: true %>
+				</div>
+				<div class="todo-tasklist-controls pull-left">
+					<span class="todo-tasklist-date"><i class="fa fa-calendar"></i><%= local_time(task.created_at) %></span>
+					<span class="text-muted">
+						<% if task.comments_count > 0 %>
+						  <%= t("simple_form.labels.task.comments") %><%= "(#{task.comments_count})" %>
+						<% end %>
+					</span>
+					<span class="todo-tasklist-badge badge badge-roundless">
+						<i class="fa fa-tag"></i>
+						<%= link_to task.todolist.todop.to_s, resolve_engine_path(task.todolist.todop) if task.todolist.todop %>
+					</span>
+					<span class="todo-tasklist-badge badge badge-roundless">
+						<i class="fa fa-tasks"></i>
+						<%= link_to t("simple_form.labels.task.todolist"), nimbos.todolist_path(task.todolist), remote: true %>
+					</span>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
