@@ -9,6 +9,9 @@ en:
         avatar: "Profile Picture"
         last_login_at: "Last login time"
         confirm_password: "Confirm Password"
+        language: "Language"
+        user_status: "Active/InActive"
+        roles: "User Roles"
       counter:
         prefix: "Prefix"
         count: "Count"
@@ -17,6 +20,11 @@ en:
       task:
         todolist: "Todolist"
         comments: "Comments"
+    options:
+      user:
+        user_status:
+          active: "Active"
+          nonactive: "Non Active"
     helpers:
       user:
         invite_users: "Invite your teammates"

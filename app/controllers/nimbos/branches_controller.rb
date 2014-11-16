@@ -23,7 +23,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @branch.save
-	        format.html { redirect_to @branch.patron, notice: t("simple_form.messages.defaults.created", model: Nimbos::Branch.model_name.human) }
+	        format.html { redirect_to nimbos.branches_path, notice: t("simple_form.messages.defaults.created", model: Nimbos::Branch.model_name.human) }
 	        format.json { render json: @branch, status: :created, location: @branch }
 	      else
 	        format.html { render action: "new" }

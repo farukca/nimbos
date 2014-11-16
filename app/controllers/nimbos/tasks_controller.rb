@@ -31,11 +31,15 @@ module Nimbos
 	  	@task.cruser_id = current_user.id
 	    @task.user_id   = 0
 
-	    if @task.save!
-	    	respond_to do |format|
+	    respond_to do |format|
+  	    if @task.save
           format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.created", model: Nimbos::Task.model_name.human) }
           format.json { head :ok }
           format.js { flash.now[:notice] = t("simple_form.messages.defaults.created", model: Nimbos::Task.model_name.human) }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+          format.js
         end
 	    end
 	  end
@@ -51,12 +55,16 @@ module Nimbos
 	    	@task.closed_date = nil
 	    end
 
-	    if @task.update_attributes!(task_params)
-	    	respond_to do |format|
+	    respond_to do |format|
+	      if @task.update_attributes(task_params)
           format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Task.model_name.human) }
           format.json { head :ok }
           format.js { flash.now[:notice] = t("simple_form.messages.defaults.updated", model: Nimbos::Task.model_name.human) }
-        end	    	
+        else
+        	format.html { render action: "edit" }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+          format.js
+        end
 	    end
 	  end
 
@@ -64,11 +72,15 @@ module Nimbos
 	  	@task = Task.find(params[:id])
 	  	@todolist = @task.todolist
 	  	
-      if @task.destroy
-	      respond_to do |format|
+	    respond_to do |format|
+      	if @task.destroy
 	        format.html { redirect_to @todolist, notice: t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
 	        format.json { head :ok }
 	        format.js { flash.now[:notice] = t("simple_form.messages.defaults.deleted", model: Nimbos::Task.model_name.human) }
+	      else
+	      	flash[:error] = @task.errors.full_messages.to_s
+          format.html { redirect_to @todolist }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
 	      end
       end
 	  end

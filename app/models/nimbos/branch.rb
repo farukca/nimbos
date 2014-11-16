@@ -6,6 +6,9 @@ module Nimbos
 	  belongs_to :country
 
 	  validates :name, presence: true, length: { maximum: 100 }
+	  validates :tel, :fax, length: { maximum: 15 }
+	  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }, allow_blank: true
+	  validates :address, :city, length: { maximum: 80 }
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 

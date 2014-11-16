@@ -9,6 +9,9 @@ tr:
         avatar: "Profil Resminiz"
         last_login_at: "Son giriş tarihi"
         confirm_password: "Şifreyi Tekrar Giriniz"
+        language: "Dil Ayarı"
+        user_status: "Aktif/Pasif"
+        roles: "Kullanıcı Rolleri"
       counter:
         prefix: "Ön Eki"
         count: "Rakam Sayısı"
@@ -17,6 +20,11 @@ tr:
       task:
         todolist: "Görev Grubu"
         comments: "Yorumlar"
+    options:
+      user:
+        user_status:
+          active: "Aktif"
+          nonactive: "Pasif"
     helpers:
       user:
         invite_users: "Ekip arkadaşlarınızı davet edin"
