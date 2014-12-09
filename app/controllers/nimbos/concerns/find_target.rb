@@ -19,6 +19,8 @@ private
 	    return Logistics::Lead.find(params[:lead_id])
 	  elsif params[:transport_id]
 	    return Logistics::Transport.find(params[:transport_id])
+	  elsif params[:company_id]
+	    return Network::Company.find(params[:company_id])
 	  elsif params[:vehicle_id]
 	    return Fleet::Vehicle.find(params[:vehicle_id])
 	  elsif params[:document_id]
@@ -31,6 +33,12 @@ private
 	  	return Financor::Invoice.find(params[:invoice_id])
 	  elsif params[:memo_id]
 	  	return Messenger::Memo.find(params[:memo_id])
+	  elsif params[:notice_id]
+	  	return Network::Notice.find(params[:notice_id])
+	  elsif params[:dispatch_id]
+	  	return Arsiv::Dispatch.find(params[:dispatch_id])
+	  elsif params[:driver_id]
+	  	return Fleet::Driver.find(params[:driver_id])
 	  else
 	    params.each do |name, value|
 	      if name =~ /(.+)_id$/
