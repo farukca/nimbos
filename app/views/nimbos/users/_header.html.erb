@@ -1,9 +1,9 @@
 <div id="User_#{user.id}_profile_header">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 col-xs-3 col-sm-3">
       <%= link_to user_avatar, "#", id: "user_avatar_change_link", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => t("users.messages.click_to_change_avatar"), "data-href" => "#logo_change_div" %>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 col-xs-9 col-sm-9">
       <div class="row">
         <div class="col-md-8 profile-info">
           <h1><%= user.name %></h1>
@@ -16,8 +16,9 @@
             <% if user.has_role?(:manager) %>
               <li><i class="fa fa-star"></i> <%= t("users.label.manager") %></li>
             <% end %>
-            <% if user.has_role?(:patron_admin) %>
+            <% if user.has_role?(:admin) %>
               <li><i class="fa fa-star"></i> Admin</li>
+              <li><%= link_to "Yetkilerini Ayarla", nimbos.edit_user_path(user, form_type: "auth") %></li>
             <% end %>
             <!--li><i class="fa fa-heart"></i> BASE Jumping</li-->
           </ul>

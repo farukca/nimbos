@@ -1,5 +1,9 @@
-<div id="user" class="row-fluid">
-  <%= render 'patron_user' %>
+<div id="user" class="row">
+	<% if params[:form_type] == "auth" %>
+	  <%= render 'form_auth' %>
+	<% else %>
+    <%= render 'patron_user' %>
+  <% end %>
 </div>
 
 

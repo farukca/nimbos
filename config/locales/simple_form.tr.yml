@@ -12,6 +12,7 @@ tr:
         language: "Dil Ayarı"
         user_status: "Aktif/Pasif"
         roles: "Kullanıcı Rolleri"
+        authorized: "Bütün Modüllere tam yetkili"
       counter:
         prefix: "Ön Eki"
         count: "Rakam Sayısı"
@@ -21,6 +22,17 @@ tr:
         todolist: "Görev Grubu"
         comments: "Yorumlar"
     options:
+      defaults:
+        controller:
+          positions: "Projeler"
+          loadings: "Yükler"
+          leads: "Teklifler"
+          vehicles: "Araçlar"
+          companies: "Şirketler"
+          contacts: "Kontaklar"
+          drivers: "Sürücüler"
+          invoices: "Faturalar"
+          dispatches: "İrsaliyeler"
       user:
         user_status:
           active: "Aktif"

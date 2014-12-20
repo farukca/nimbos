@@ -18,7 +18,9 @@ module Nimbos
     has_and_belongs_to_many :roles,  :join_table => :nimbos_users_roles
     has_and_belongs_to_many :groups, class_name: "Nimbos::Group", join_table: "nimbos_users_groups" #, foreign_key: "user_id"
 
-	  #has_one  :person
+	  has_many :authorizations, dependent: :destroy
+	  accepts_nested_attributes_for :authorizations, reject_if: lambda { |a| a[:controller].blank? }
+
 	  has_many :activities
 	  has_many :comments
 	  has_many :posts
@@ -41,6 +43,8 @@ module Nimbos
 	  scope :active,  -> { where(user_status: "active") }
 	  scope :online,  -> { where("last_activity_at > ?", 10.minutes.ago) }
 	  scope :offline, -> { where("last_activity_at < ?", 10.minutes.ago) }
+
+	  before_create :get_user_name_from_email
 
     def self.user_status
     	%w[active nonactive]
@@ -68,6 +72,12 @@ module Nimbos
 	    email
 	  end
 
+	  def get_user_name_from_email
+	  	if self.name.blank?
+	  		self.name = self.email.split("@").first.gsub(/[.-_]/, ' ').titleize 
+	  	end
+	  end
+
     def role_names
     	roles.map(&:name)
     end
@@ -77,6 +87,29 @@ module Nimbos
       self.role_names.include?(role_name.to_s)
     end
     alias_method :has_role?, :has_any_role?
+
+    def superadmin?
+    	self.rootuser
+    end
+
+    def authorized_for?(controller, action)
+    	is_authorized = true
+    	auth_rec = self.authorizations.find_by(controller: controller)
+    	if auth_rec
+    		if (auth_rec.can_manage) ||
+    		   (auth_rec.can_read   && (action == "show")) ||
+    		   (auth_rec.can_create && (action == "new")) ||
+       		 (auth_rec.can_update && (action == "edit")) ||
+       		 (auth_rec.can_delete && (action == "destroy"))
+    			is_authorized = true
+    		else
+    			is_authorized = false
+    		end
+    	else
+    		is_authorized = false
+    	end
+    	is_authorized
+    end
 
 	  def generate_temp_password
 	    self.password = generate_random_token#SecureRandom.base64(15).tr('+/=1I0Q','pqrsxyz')#"9516284"

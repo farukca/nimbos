@@ -12,6 +12,7 @@ en:
         language: "Language"
         user_status: "Active/InActive"
         roles: "User Roles"
+        authorized: "User has full control over system"
       counter:
         prefix: "Prefix"
         count: "Count"
@@ -21,6 +22,17 @@ en:
         todolist: "Todolist"
         comments: "Comments"
     options:
+      defaults:
+        controller:
+          positions: "Projeler"
+          loadings: "Yükler"
+          leads: "Teklifler"
+          vehicles: "Araçlar"
+          companies: "Şirketler"
+          contacts: "Kontaklar"
+          drivers: "Sürücüler"
+          invoices: "Faturalar"
+          dispatches: "İrsaliyeler"
       user:
         user_status:
           active: "Active"

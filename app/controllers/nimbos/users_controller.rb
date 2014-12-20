@@ -76,9 +76,16 @@ module Nimbos
 
 	  def edit
 	    @user = Nimbos::User.find(params[:id])
-	    #if current_user.has_role(:patron_admin) && (current_user.id != @user.id)
+	    
 	    if (current_user.id != @user.id)
-   	    render :layout => "admin"
+	    	if current_user.has_role? "admin"
+	    		[:positions, :loadings, :leads, :vehicles, :companies, :contacts, :drivers, :invoices, :dispatches].each do |resource|
+	    			@user.authorizations.build(controller: resource)
+	    		end
+   	      render :layout => "admin"
+   	    else
+   	    	redirect_to @user, notice: "You are not authorized for this action"
+   	    end
       end
 	  end
 

@@ -1,0 +1,56 @@
+<div class="portlet box green">
+  <%= render "shared/portlet_title", title: t("users.title.user_info") %>
+
+  <div class="portlet-body form">
+    <%= simple_form_for @user, html: { class: "horizontal-form" }, validate: true  do |f| %>
+      <%= f.error_notification %>
+      <%= f.error :base %>
+      <div class="form-body">
+          <%= f.input :authorized %>
+          <div class="row" id="user_authorization_div">
+            <div class="col-md-12">
+              <div class="tabbable-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#user_authorization_fields" data-toggle="tab">Yetkileri</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="user_authorization_fields">
+                    <div class="row">
+                      <div class="col-md-2">Kaynak</div>
+                      <div class="col-md-2">Tam Yetkili</div>
+                      <div class="col-md-2">Görüntülteyebilir</div>
+                      <div class="col-md-2">Kayıt Oluşturabilir</div>
+                      <div class="col-md-2">Kaydı Güncelleyebilir</div>
+                      <div class="col-md-2">Kaydı Silebilir</div>
+                    </div>
+                    <%= f.simple_fields_for :authorizations do |builder| %>
+                      <%= render 'authorizations_fields', :f => builder %>
+                    <% end %>
+                    <div class="pull-right">
+                      <%#= link_to_add_fields(iconed_link_label(Nimbos::Authorization.model_name.human, "fa-plus", "add"), f, :authorizations, "nimbos/users/authorizations_fields") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, t("users.action.save"), class: "btn btn-info" %>
+        <%= render "shared/cancel_button" %>
+      </div>
+  </div>
+<% end %>
+</div>
+
+<% content_for :init_scripts do %>
+<script>
+  jQuery(document).ready(function() {
+    if ($("#user_authorized").is(":checked")) {
+      $("#user_authorization_div").hide();
+    }
+  });
+</script>
+<% end %>

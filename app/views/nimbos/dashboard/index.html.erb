@@ -29,7 +29,7 @@
   </div>
 </div>
 
-<% if current_user.has_role? :superadmin %>
+<% if current_user.superadmin? %>
 <div class="row">
   <div class="col-md-12">
     <%= generate_tile("Feedbacks", "", "dashboard-stat double green", "fa fa-comments", surveyor.feedbacks_url) %>   
