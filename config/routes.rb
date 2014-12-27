@@ -25,7 +25,11 @@ Nimbos::Engine.routes.draw do
   resources :discussions, concerns: :commentable
   resources :groups
 
-  resources :patrons
+  resources :patrons do
+    member do
+      get :jump
+    end
+  end
   resources :branches
   resources :users do
     member do

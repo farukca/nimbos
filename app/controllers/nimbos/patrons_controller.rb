@@ -74,6 +74,17 @@ module Nimbos
 	    end
 	  end
 
+	  def jump	  	
+	  	unless current_user.superadmin?
+	  		redirect_to :back, notice: "You are not authorized"
+	  	else
+	  		@patron = Nimbos::Patron.find(params[:id])
+	  		current_user.update_attributes(patron_id: @patron.id)
+	  		force_authentication!(@patron, current_user)
+	  		redirect_to @patron
+	  	end
+	  end
+
 	  private
 	  def patron_params
 	  	params.require(:patron).permit(:name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo, :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, :title, :currency, :username, :password, :counters_attributes, :users_attributes, :branches_attributes)
