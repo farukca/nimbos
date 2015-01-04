@@ -6,6 +6,8 @@ module Nimbos
     def new
     	@user = User.new
     	@user.email = cookies[:socialfreight_mail].to_s
+    	@meta_title = "Login to Modaltrans, Cloud based logistics & transportation operations management software"
+      @meta_description = "Login to Modaltrans, start to manage your logistics & transportation operations on cloud."
     	render :layout => "register"
     end
 
