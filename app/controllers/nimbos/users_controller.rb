@@ -34,7 +34,7 @@ module Nimbos
 	    if current_user
 	      render layout: "admin"
 	    else
-	      render layout: "homepage"
+	      render layout: "register"
 	    end
 	  end
 
@@ -47,11 +47,13 @@ module Nimbos
 	    if current_patron
 	      @user.patron_id = current_patron.id
 	      @user.generate_temp_password
+	    else
+	    	@user.patron_id = 1
 	    end
 	    if @user.save
 	      redirect_to main_app.root_url, notice: t("users.messages.created")
 	    else
-	      render :new, layout: "admin"
+	      render :new, layout: "register"
 	    end
 	  end
 
@@ -162,7 +164,7 @@ module Nimbos
 
 	  private
 	  def user_params
-	  	if current_user.has_role? :admin
+	  	if current_user && (current_user.has_role? :admin)
 	  	  params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :branch_id, :user_status, :remember_me, :role_ids => [])
 	  	else
 	  	  params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :avatar, :remove_avatar, :region, :time_zone, :language, :locale, :mail_encoding, :remember_me)

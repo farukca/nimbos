@@ -10,7 +10,7 @@ class CreateNimbosPatrons < ActiveRecord::Migration
       t.string :fax, :limit => 20
       t.string :gsm, :limit => 20
       t.string :postcode, :limit => 5
-      t.string :address, :limit => 60
+      t.string :address, :limit => 255
       t.string :contact_name, :limit => 40
       t.string :contact_surname, :limit => 40
       t.string :city, :limit => 100

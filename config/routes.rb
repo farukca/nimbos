@@ -13,6 +13,7 @@ Nimbos::Engine.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   get "login"  => "sessions#new", as: "login"
   get "signup" => "patrons#new", as: "signup"
+  get "register" => "users#new", as: "register"
   get "dashboard" => "dashboard#index", as: "dashboard"
   get "calendar"  => "dashboard#calendar", as: "calendar"
   get "setup" => "setup#new", as: "setup"
