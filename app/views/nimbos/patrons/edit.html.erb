@@ -1,1 +1,27 @@
-<%= render "nimbos/patrons/form_edit" %>
+<div class="portlet box green">
+  <%= render "shared/portlet_title", title: t("patrons.title.patron_info") %>
+
+  <div class="portlet-body form">
+    <%= simple_form_for @patron, html: { class: 'horizontal-form'}, validate: true do |f| %>
+      <%= f.error_notification %>
+      <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+      <%= render "nimbos/patrons/form_edit" %>
+          <!--div class="page-header"><h5>Genel Ayarlar</h5></div>
+          <div class="row-fluid">
+            <div class="col-md-6">
+              <%#= f.input :time_zone, as: :time_zone %>
+              <%#= f.input :locale, as: :select, collection: Nimbos::Listitem.locales.map { |t| [t.name, t.code] }  %>
+            </div>
+            <div class="col-md-6">
+              <%#= f.input :language, as: :select, collection: Nimbos::Listitem.languages.map { |t| [t.name, t.code] } %>
+              <%#= f.input :currency, as: :select, collection: Nimbos::Currency.all, include_blank: false %>
+            </div>
+          </div-->
+      <div class="form-actions">
+        <%= f.button :submit, "Firma Bilgilerini Güncelle", class: 'btn btn-info' %>
+        <%#= link_to "Daha sonra tamamla", main_app.root_url, class: 'btn pull-right' %>    
+      </div>
+    <% end %>
+  </div>
+</div>
+

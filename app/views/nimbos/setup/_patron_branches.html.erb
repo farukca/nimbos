@@ -1,0 +1,20 @@
+<%= simple_form_for @patron, html: { class: 'horizontal-form'}, remote: true, id: "patron_setup_form", validate: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+
+  <div class="row">
+    <div class="col-md-4">Şube Adı</div>
+    <div class="col-md-4">Bulunduğu Ülke</div>
+    <div class="col-md-4">Bulunduğu Şehir</div>
+  </div>
+  <%= f.simple_fields_for :branches do |bf| %>
+    <%= render 'nimbos/setup/branch_fields', :f => bf %>
+  <% end %>
+  <div class="pull-right">
+    <span>Birden fazla şubeniz varsa, buradan şube bilgilerinizi girebilirsiniz;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <%= link_to_add_fields(iconed_link_label(Nimbos::Branch.model_name.human, "fa-plus", "add"), f, :branches, "nimbos/setup/branch_fields") %>
+  </div>
+  <hr>
+  <%= f.input :step, as: :hidden %>
+  <%= render "nimbos/setup/form_buttons", f: f %>
+<% end %>

@@ -8,18 +8,17 @@ module Nimbos
 
 	  def index
 	    if params[:q]
-	       q = "%#{params[:q]}%".to_s.downcase
-	       @users = current_patron.users.where("lower(name) like ?", q).order(:name).limit(10)
-	     elsif params[:all]
-	     	@users = User.all
+	      q = "%#{params[:q]}%".to_s.downcase
+	      @users = current_patron.users.where("lower(name) like ?", q).order(:name)
+	    elsif (params[:all].present? && current_user.superadmin?)
+	     	@users = User.order("last_login_at desc").includes(:branch).page(params[:page]).per(10)
+	    elsif params[:id].present?
+	      query_ids = params[:id].chomp.split(/,/).map { |x| x.to_i }
+	      @users = Nimbos::User.where(id: query_ids)
 	    else
-	      if params[:id].present?
-	      	query_ids = params[:id].chomp.split(/,/).map { |x| x.to_i }
-	        @users = Nimbos::User.where(id: query_ids)
-	      else
-	        @users = current_patron.users.all
-	      end
+	      @users = current_patron.users..order(:name).includes(:branch).page(params[:page]).per(10)
 	    end
+
 	    respond_to do |format|
 	      format.html { render :layout => "admin" } # index.html.erb
 	      format.json { render json: @users.map(&:token_inputs) }

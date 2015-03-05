@@ -225,8 +225,8 @@ en:
         one: "Branch"
         other: "Branches"
       nimbos/patron:
-        one: "Patron"
-        other: "Patrons"
+        one: "Firma Bilginiz"
+        other: "Firmalar"
       nimbos/comment:
         one: "Comment"
         other: "Comments"

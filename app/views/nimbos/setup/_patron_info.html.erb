@@ -1,0 +1,7 @@
+<%= simple_form_for @patron, html: { class: 'horizontal-form'}, id: "patron_setup_form", validate: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+  <%= render "nimbos/patrons/form_edit", f: f %>
+  <%= f.input :step, as: :hidden %>
+  <%= render "nimbos/setup/form_buttons", f: f %>
+<% end %>

@@ -14,6 +14,6 @@ module Nimbos
 	  #validates_associated :todolist
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
-	  scope :active, where(status: "active")
+	  scope :active, -> { where(status: "active") }
   end
 end

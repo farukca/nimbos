@@ -1,0 +1,41 @@
+<% if @patron.errors.present? %>
+  toastr.error('<%= j error_messages_for(@patron) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@patron) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  toastr.info('<%= j flash[:notice] %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');
+  $("#messages").fadeOut(5000);
+  <% if params[:patron][:step] == "1" %>
+    <% @patron.step = "2" %>
+    $("#tab2").html('<%= j render "nimbos/setup/patron_details" %>');
+    $('#nimbos_setup_nav a[href="#tab2"]').tab('show');
+    $('#form_wizard_1').find('.progress-bar').css({
+      width: '66%'
+    });
+    $('input[name=authenticity_token]').val($('meta[name=csrf-token]').attr('content'));
+  <% elsif params[:patron][:step] == "2" %>
+    <% @patron.step = "3" %>
+    $("#tab3").html('<%= j render "nimbos/setup/patron_logo" %>');
+    $('#nimbos_setup_nav a[href="#tab3"]').tab('show');
+    $('#form_wizard_1').find('.progress-bar').css({
+      width: '90%'
+    });
+  <%# elsif params[:patron][:step] == "3" %>
+    <%# @patron.step = "4" %>
+    //$("#tab4").html('<%= j render "nimbos/setup/patron_branches" %>');
+    //$('#nimbos_setup_nav a[href="#tab4"]').tab('show');
+    //$('#form_wizard_1').find('.progress-bar').css({
+    //  width: '80%'
+    //});
+  <%# elsif params[:patron][:step] == "4" %>
+    <%# @patron.step = "5" %>
+    //$("#tab5").html('<%= j render "nimbos/setup/get_started" %>');
+    //$('#nimbos_setup_nav a[href="#tab5"]').tab('show');
+    //$('#form_wizard_1').find('.progress-bar').css({
+    //  width: '100%'
+    //});
+  <% end %>
+<% end %>

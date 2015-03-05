@@ -13,8 +13,7 @@ module Nimbos
 	  has_many :users
 	  accepts_nested_attributes_for :users, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true  
 
-	  attr_accessor :username
-	  attr_accessor :password
+	  attr_accessor :username, :password, :step
 
 	  def self.current_id=(id)
 	    Thread.current[:patron_id] = id

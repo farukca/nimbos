@@ -13,7 +13,7 @@ module Nimbos
 	  validates :message, presence: true, length: { maximum: 1000 }
 	  
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
-	  scope :latests, order("created_at desc")
+	  scope :latests, -> { order("created_at desc") }
 
 	  after_create  :set_after_jobs
 

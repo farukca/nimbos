@@ -1,0 +1,27 @@
+<%= simple_form_for @patron, html: { class: 'horizontal-form'}, remote: true, id: "patron_setup_form" do |f| %>
+  <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+
+  <div id="patron_<%= @patron.id %>_profile_header" class="col-md-3 col-md-offset-4">
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+      <div class="fileinput-new thumbnail">
+        <%= patron_logo %>
+      </div>
+      <!--div class="fileinput-preview fileinput-exists thumbnail"></div-->
+    </div>
+
+    <%= f.input :logo, as: :file, label: false %>
+    <%= f.input :logo_cache, as: :hidden %>
+
+    <%#= f.input :remote_logo_url, label: "Remote URL" %>
+    <%#= f.submit "Firma Logosunu Değiştir", :class => "btn btn-success" %>
+    <%#if patron.logo? %>
+      <%#= f.input :remove_logo, as: :check_boxes %><!--&nbsp;Resmi Sil-->
+    <%# end %>
+    <input name="authenticity_token" type="hidden">
+
+  </div>
+
+  <%= f.input :step, as: :hidden %>
+  <%= render "nimbos/setup/form_buttons", f: f %>
+<% end %>

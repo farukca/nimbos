@@ -21,6 +21,13 @@ en:
       task:
         todolist: "Todolist"
         comments: "Comments"
+      patron:
+        currency: "Local Currency"
+        language: "Language"
+        general_info: "General Info"
+        change_logo: "Change Logo"
+        settings: "Settings"
+        get_start: "Let's Start"
     options:
       defaults:
         controller:

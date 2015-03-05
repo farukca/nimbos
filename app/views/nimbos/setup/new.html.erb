@@ -1,93 +1,62 @@
 <div class="row">
   <div class="col-md-10">
-  	<h5><%= "#{t("defaults.vocabulary.hello")} #{user_name(current_user)}; modaltrans uygulamasına hoş geldiniz." %></h5>
-  	<p>
+  	<h4><%= "#{t("defaults.vocabulary.hello")} #{user_name(current_user)}; Modaltrans uygulamasına hoş geldiniz." %></h4>
+  	<!--p>
       Firmanıza ait bilgileri tamamlamak için kısa süreli bir tura çıkalım. Tabii ki bu işlemi daha sonrada yapabilirsiniz.
-    </p>
-  	<div class="form-actions">
-      <%= link_to "Firma Bilgilerini Güncelleyeceğim", nimbos.edit_patron_path(current_patron), class: 'btn btn-danger' %>
-      <%= link_to "Daha sonra tamamlarım, profil bilgilerime gidelim", nimbos.edit_user_path(current_user), class: "btn pull-right" %>
-    </div>
-
-    <div class="alert alert-info">
+    </p-->
+    <!--div class="alert alert-info">
       <p>Herhangi bir öneri veya şikayetiniz olursa, sağ alt kısımda yer alan butonu kullanarak bize iletebilirsiniz.
-    </div>
+    </div-->
   </div>
 </div>
-<!--div class="row">
+
+<div class="row">
   <div class="col-md-12">
     <div class="portlet box blue" id="form_wizard_1">
       <div class="portlet-title">
         <div class="caption">
-          <i class="fa fa-gift"></i> Form Wizard - <span class="step-title">Step 1 of 4 </span>
+          <i class="fa fa-reorder"></i> Firma bilgilerinizi tamamlayalım
         </div>
       </div>
       <div class="portlet-body form">
-        <div class="form-wizard">
-          <div class="form-body">
-            <ul class="nav nav-pills nav-justified steps">
-              <li>
-                <a href="#tab1" data-toggle="tab" class="step">
-                  <span class="number">1 </span>
-                  <span class="desc"><i class="fa fa-check"></i> Account Setup </span>
-                </a>
-              </li>
-              <li>
-                <a href="#tab2" data-toggle="tab" class="step">
-                  <span class="number">2 </span>
-                  <span class="desc"><i class="fa fa-check"></i> Profile Setup </span>
-                </a>
-              </li>
-              <li>
-                <a href="#tab3" data-toggle="tab" class="step active">
-                  <span class="number">3 </span>
-                  <span class="desc"><i class="fa fa-check"></i> Billing Setup </span>
-                </a>
-              </li>
-              <li>
-                <a href="#tab4" data-toggle="tab" class="step">
-                  <span class="number">4 </span>
-                  <span class="desc"><i class="fa fa-check"></i> Confirm </span>
-                </a>
-              </li>
-            </ul>
-            <div id="bar" class="progress progress-striped" role="progressbar">
-              <div class="progress-bar progress-bar-success">
+
+          <div class="form-wizard">
+            <div class="form-body">
+              <%#= render "nimbos/setup/breadcrumb" %>
+              <!--div id="bar" class="progress progress-striped" role="progressbar">
+                <div class="progress-bar progress-bar-success">
+                </div>
+              </div-->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                  <%= render "nimbos/setup/patron_info" %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab2">
+                  <%#= render "nimbos/setup/change_logo", f: f %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab3">
+                  <%#= render "nimbos/patrons/form_details", f: f %>
+                </div>
+                <!--div role="tabpanel" class="tab-pane" id="tab4">
+                
+                </div-->
+                <!--div role="tabpanel" class="tab-pane" id="tab5">
+                
+                </div-->
               </div>
             </div>
-            <div class="tab-content">
-              <div class="tab-pane active" id="tab1">
-                <%#= render "nimbos/patrons/form_edit" %>
-              </div>
-              <div class="tab-pane" id="tab2">
-                <%#= render "nimbos/patrons/patron_logo", patron: @patron %>
-              </div>
-              <div class="tab-pane" id="tab3">
-                <h4 class="block">Provide your billing and credit card details</h4>
-              </div>
-              <div class="tab-pane" id="tab4">
-                <h4 class="block">Confirm your account</h4>
-              </div>
-            </div>
+            
           </div>
-          <div class="form-actions">
-            <div class="row">
-              <div class="col-md-offset-3 col-md-9">
-                <a href="javascript:;" class="btn default button-previous"><i class="m-icon-swapleft"></i> Back </a>
-                <a href="javascript:;" class="btn blue button-next">Continue <i class="m-icon-swapright m-icon-white"></i></a>
-                <a href="javascript:;" class="btn green button-submit">Submit <i class="m-icon-swapright m-icon-white"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+          
       </div>
     </div>
   </div>
-</div-->
-<%# content_for :init_scripts do %>
-  <!--script>
-    jQuery(document).ready(function() {       
-      FormWizard.init();
+</div>
+<script>
+  jQuery(document).ready(function() {
+    $('#nimbos_setup_nav a[href="#tab1"]').tab('show');
+    $('#form_wizard_1').find('.progress-bar').css({
+      width: '33%'
     });
-  </script-->
-<%# end %>
+  });
+</script>

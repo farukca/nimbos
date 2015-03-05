@@ -1,70 +1,42 @@
-<div class="portlet box green">
-  <%= render "shared/portlet_title", title: t("patrons.title.patron_info") %>
-
-  <div class="portlet-body form">
-    <%= simple_form_for @patron, html: { class: 'horizontal-form'}, validate: true do |f| %>
-      <%= f.error_notification %>
-      <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
-      
-      <div class="form-body">
+<div class="form-body">
+  <div class="row">
+      <div class="col-md-6">
+        <%= f.input :name, label: t("patrons.label.name") %>
+        <%= f.input :title, label: t("patrons.label.title") %>
         <div class="row">
-            <div class="col-md-6">
-              <%= f.input :name, label: t("patrons.label.name") %>
-              <%= f.input :title, label: t("patrons.label.title") %>
-              <div class="row">
-                <div class="col-md-6">
-                  <%= f.input :tel, as: :tel, input_html: { class: "mask_phone" } %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.input :fax, as: :tel, input_html: { class: "mask_phone" } %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <%= f.input :email, as: :email %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.input :website, as: :url %>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <%= f.input :logo, as: :file, label: t("patrons.label.logo") %>
-              <div class="row">
-                <div class="col-md-6">
-                  <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, label: t("simple_form.labels.defaults.country_id"), placeholder: t("patrons.placeholder.country"), input_html: { class: "country_select" } %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.input :city, label: t("simple_form.labels.defaults.city"), placeholder: t("patrons.placeholder.city") %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <%= f.input :district, label: t("patrons.label.district"), placeholder: t("patrons.placeholder.district") %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.input :postcode, label: t("patrons.placeholder.postcode"), placeholder: t("patrons.placeholder.postcode") %>
-                </div>
-              </div>
-              <%= f.input :address, as: :text, input_html: { rows: 2 }, label: t("patrons.label.address") %>
-            </div>
+          <div class="col-md-6">
+            <%= f.input :tel, as: :tel, input_html: { class: "mask_phone" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :fax, as: :tel, input_html: { class: "mask_phone" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :email, as: :email %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :website, as: :url %>
+          </div>
         </div>
       </div>
-          <!--div class="page-header"><h5>Genel Ayarlar</h5></div>
-          <div class="row-fluid">
-            <div class="col-md-6">
-              <%#= f.input :time_zone, as: :time_zone %>
-              <%#= f.input :locale, as: :select, collection: Nimbos::Listitem.locales.map { |t| [t.name, t.code] }  %>
-            </div>
-            <div class="col-md-6">
-              <%#= f.input :language, as: :select, collection: Nimbos::Listitem.languages.map { |t| [t.name, t.code] } %>
-              <%#= f.input :currency, as: :select, collection: Nimbos::Currency.all, include_blank: false %>
-            </div>
-          </div-->
-      <div class="form-actions">
-        <%= f.button :submit, "Firma Bilgilerini Güncelle", class: 'btn btn-info' %>
-        <%#= link_to "Daha sonra tamamla", main_app.root_url, class: 'btn pull-right' %>    
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, label: t("simple_form.labels.defaults.country_id"), placeholder: t("patrons.placeholder.country"), input_html: { class: "country_select" } %>
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :city, label: t("simple_form.labels.defaults.city"), placeholder: t("patrons.placeholder.city") %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :postcode, label: t("patrons.placeholder.postcode"), placeholder: t("patrons.placeholder.postcode") %>
+          </div>
+        </div>
+        <%= f.input :address, as: :text, input_html: { rows: 2 }, label: t("patrons.label.address") %>
       </div>
-    <% end %>
   </div>
 </div>

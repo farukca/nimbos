@@ -50,8 +50,7 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @patron.save
-	        #format.html { redirect_to @patron, notice: 'Patron was successfully created.' }
-	        format.html { render 'check_mail', notice: t("patrons.messages.created"), layout: 'homepage' }
+	        format.html { render 'check_mail', notice: t("simple_form.messages.defaults.created", model: Nimbos::Branch.model_name.human), layout: 'homepage' }
 	        format.json { render json: @patron, status: :created, location: @patron }
 	      else
 	        format.html { render action: "new", layout: "register" }
@@ -65,11 +64,19 @@ module Nimbos
 
 	    respond_to do |format|
 	      if @patron.update_attributes(patron_params)
-	        format.html { redirect_to @patron, notice: t("patrons.messages.updated"), layout: 'nimbos/admin' }
+	        format.html {
+	        	if params[:patron][:step].present?
+	        		redirect_to nimbos.start_path
+	        	else
+	        		redirect_to @patron, notice: t("simple_form.messages.defaults.updated", model: Nimbos::Patron.model_name.human), layout: 'nimbos/admin' 
+	        	end
+	       	}
 	        format.json { head :ok }
+	        format.js
 	      else
 	        format.html { render action: "edit", layout: 'nimbos/admin' }
 	        format.json { render json: @patron.errors, status: :unprocessable_entity }
+	        format.js
 	      end
 	    end
 	  end
@@ -87,7 +94,7 @@ module Nimbos
 
 	  private
 	  def patron_params
-	  	params.require(:patron).permit(:name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo, :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, :title, :currency, :username, :password, :counters_attributes, :users_attributes, :branches_attributes)
+	  	params.require(:patron).permit(:name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :logo_cache, :remove_logo, :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, :title, :currency, :username, :password, :step, :counters_attributes, :users_attributes, branches_attributes: [:id, :name, :country_id, :city])
 	  end
 
   end

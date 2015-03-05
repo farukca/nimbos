@@ -21,6 +21,13 @@ tr:
       task:
         todolist: "Görev Grubu"
         comments: "Yorumlar"
+      patron:
+        currency: "Lokal Para Birimi"
+        language: "Dil"
+        general_info: "Genel Bilgiler"
+        change_logo: "Logoyu Güncelleyelim"
+        settings: "Ayarlar"
+        get_start: "Başlayalım"
     options:
       defaults:
         controller:

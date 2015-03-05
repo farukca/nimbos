@@ -1,16 +1,28 @@
-<%= table_for objects, html: { class: "table table-bordered table-striped table-hover" } do -%>
-  <% column title: t("users.label.name"), html: { th: { class: "col-md-2" } } do |user| %>
-    <% link_to user.name, nimbos.user_path(user) %>
+<div id="users_list_div" class="table-responsive">
+  <table class="table table-striped table-bordered table-hover" id="users_list_table">
+    <thead>
+      <tr>
+        <th class="col-md-2"><%= t("users.label.name") %></th>
+        <th class="col-md-4"><%= t("users.label.last_login_at") %></th>
+        <th class="col-md-2"><%= t("simple_form.labels.defaults.branch_id") %></th>
+        <th class="col-md-1"><%= t("simple_form.labels.defaults.status") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% objects.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, nimbos.user_path(user) %></td>
+          <td><%= local_time(user.last_login_at) if user.last_login_at %></td>
+          <td><%= branch_name(user.branch) if user.branch %></td>
+          <td><%= t("simple_form.options.defaults.status.#{user.user_status}") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+   </table>
+
+  <% if objects.respond_to? :current_page %>
+    <ul class="pagination">
+      <%= paginate objects %>
+    </ul>
   <% end %>
-  <% column :email, html: { th: { class: "col-md-2" } } %>
-  <% column title: t("users.label.last_login_at"), html: { th: { class: "col-md-2" } } do |user| %>
-    <% local_time(user.last_login_at) if user.last_login_at %>
-  <% end %>
-  <% column title: t("simple_form.labels.defaults.branch_id"), html: { th: { class: "col-md-2" } } do |user| %>
-    <% branch_name(user.branch) if user.branch %>
-  <% end %>
-  <% column :user_status, title: t("simple_form.labels.defaults.status"), html: { th: { class: "col-md-1" } } %>
-  <% column title: "", html: { th: { class: "col-md-1" } } do |user| %>
-    <% link_to t("defaults.label.edit"), nimbos.edit_user_path(user) %>
-  <% end %>
-<% end %>
+</div>

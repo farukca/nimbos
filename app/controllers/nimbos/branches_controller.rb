@@ -46,6 +46,16 @@ module Nimbos
 	    end
 	  end
 
+	  def destroy
+	  	@branch = Nimbos::Branch.find(params[:id])
+      @branch.destroy
+
+      respond_to do |format|
+        format.html { redirect_to nimbos.branches_path, notice: t("simple_form.messages.defaults.deleted", model: Nimbos::Branch.model_name.human) }
+        format.json { head :ok }
+      end
+    end
+
 	  private
 	  def branch_params
 	  	params.require(:branch).permit(:name, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :patron_id)

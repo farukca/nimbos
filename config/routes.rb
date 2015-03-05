@@ -17,6 +17,7 @@ Nimbos::Engine.routes.draw do
   get "dashboard" => "dashboard#index", as: "dashboard"
   get "calendar"  => "dashboard#calendar", as: "calendar"
   get "setup" => "setup#new", as: "setup"
+  get "start" => "setup#start", as: "start"
 
   resources :sessions
   resources :password_resets

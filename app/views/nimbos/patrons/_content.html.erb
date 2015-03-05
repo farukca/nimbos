@@ -33,7 +33,11 @@
           <% end %>
         </div>
         <div class="tab-pane" id="patron_<%= patron.id %>_branches">
-          <%= render "nimbos/branches/list", objects: patron.branches %>
+          <% if current_user.superadmin? %>
+            <%= render "nimbos/branches/list", objects: Nimbos::Branch.unscoped.where(patron_id: patron.id) %>
+          <% else %>
+            <%= render "nimbos/branches/list", objects: patron.branches %>
+          <% end %>
           <%= link_to nimbos.new_branch_path, class: "btn blue btn-block margin-bottom-20" do %>
             <i class="fa fa-hospital-o"></i> <%= t("branches.link.add_branch") %>
           <% end %>

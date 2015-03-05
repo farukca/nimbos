@@ -1,15 +1,34 @@
-<div class="row">
-  <table class="table table-condensed">
-    <tr>
-      <th><%= t("patrons.label.name") %></th>
-      <th><%= t("defaults.label.tel") %></th>
-      <th><%= t("defaults.label.email") %></th>
-      <th><%= t("simple_form.labels.defaults.country_id") %></th>
-      <th><%= t("simple_form.labels.defaults.city") %></th>
-      <th></th>
-    </tr>
+<div id="patrons_list_div" class="table-responsive">
+  <table class="table table-striped table-bordered table-hover" id="patrons_list_table">
+    <thead>
+      <tr>
+        <th class="col-md-3"><%= t("patrons.label.name") %></th>
+        <th class="col-md-2"><%= t("defaults.label.email") %></th>
+        <th class="col-md-2"><%= t("patrons.label.contact_name") %></th>
+        <th class="col-md-1"><%= t("simple_form.labels.defaults.status") %></th>
+        <th class="col-md-1"><%= t("simple_form.labels.defaults.country_id") %></th>
+        <th class="col-md-1"><%= t("simple_form.labels.defaults.city") %></th>
+        <th class="col-md-2"><%= t("patrons.label.created_at") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patrons.each do |patron| %>
+        <tr>
+          <td><%= link_to patron.title, nimbos.patron_path(patron) %></td>
+          <td><%= patron.email %></td>
+          <td><%= patron.contact_name %></td>
+          <td><%= patron.status %></td>
+          <td><%= t("countries.#{patron.country_id}") if patron.country_id %></td>
+          <td><%= patron.city %></td>
+          <td><%= local_time(patron.created_at) if patron.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+   </table>
 
-    <%= render @patrons %>
-
-  </table>
+  <% if @patrons.respond_to? :current_page %>
+    <ul class="pagination">
+      <%= paginate @patrons, remote: true %>
+    </ul>
+  <% end %>
 </div>

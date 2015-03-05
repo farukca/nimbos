@@ -8,7 +8,7 @@ module Nimbos
 	  validates :comment_text, presence: true
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
-	  scope :recents, order("created_at desc")
+	  scope :recents, -> { order("created_at desc") }
 
 	  #after_create :add_post
 

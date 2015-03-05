@@ -6,6 +6,7 @@ module Nimbos
 
 	  def new
 	  	@patron = current_patron
+	  	@patron.step = "1"
 	  end
 	  
   end
