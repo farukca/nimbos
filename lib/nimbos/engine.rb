@@ -9,7 +9,7 @@ module Nimbos
     config.autoload_paths << "#{config.root}/lib/validators"
     
 		config.generators do |g|
-			g.test_framework :mini_test, spec: true, fixture: false
+			g.test_framework :minitest, spec: true, fixture: false
 		end
 
     config.to_prepare do

@@ -4,7 +4,9 @@ module Nimbos
   class CountersController < ApplicationController
 
     def new
-    	@counter = Nimbos::Counter.find_by(counter_type: params[:counter_type]) || Nimbos::Counter.new(counter_type: params[:counter_type])
+        counter_type = ""
+        counter_type = params[:counter_type].camelcase if params[:counter_type].present?
+    	@counter = Nimbos::Counter.find_by(counter_type: counter_type) || Nimbos::Counter.new(counter_type: counter_type)
     end
 
     def edit

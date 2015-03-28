@@ -41,6 +41,7 @@ module Nimbos
 	  def create
 	    @patron = Nimbos::Patron.new(patron_params)
 	    @country = Nimbos::Country.find(patron_params[:country_id]) unless patron_params[:country_id].blank?
+	    @patron.appname = Rails.application.secrets.app_name.downcase
 	    if @country
 		    @patron.language = @country.language
 		    @patron.locale   = @country.locale

@@ -10,7 +10,7 @@
   <%= f.simple_fields_for :branches do |bf| %>
     <%= render 'nimbos/setup/branch_fields', :f => bf %>
   <% end %>
-  <div class="pull-right">
+  <div class="pull-right new_record_button">
     <span>Birden fazla şubeniz varsa, buradan şube bilgilerinizi girebilirsiniz;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <%= link_to_add_fields(iconed_link_label(Nimbos::Branch.model_name.human, "fa-plus", "add"), f, :branches, "nimbos/setup/branch_fields") %>
   </div>

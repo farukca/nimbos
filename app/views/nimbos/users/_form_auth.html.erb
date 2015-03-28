@@ -28,7 +28,7 @@
                     <%= f.simple_fields_for :authorizations do |builder| %>
                       <%= render 'authorizations_fields', :f => builder %>
                     <% end %>
-                    <div class="pull-right">
+                    <div class="pull-right new_record_button">
                       <%#= link_to_add_fields(iconed_link_label(Nimbos::Authorization.model_name.human, "fa-plus", "add"), f, :authorizations, "nimbos/users/authorizations_fields") %>
                     </div>
                   </div>
