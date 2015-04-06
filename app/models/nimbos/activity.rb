@@ -11,7 +11,7 @@ module Nimbos
 
 	  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
-	  scope :latests, order("created_at desc")
+	  scope :latests, -> { order("created_at desc") }
 
 	  def self.log(user_id, target, branch_id)
 	    activity = Nimbos::Activity.new(target: target, user_id: user_id, target_name: target.to_s, branch_id: branch_id)
