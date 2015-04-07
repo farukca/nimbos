@@ -5,7 +5,7 @@
     <%= simple_form_for @patron, html: { class: 'horizontal-form'}, validate: true do |f| %>
       <%= f.error_notification %>
       <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
-      <%= render "nimbos/patrons/form_edit" %>
+      <%= render "nimbos/patrons/form_edit", f: f %>
           <!--div class="page-header"><h5>Genel Ayarlar</h5></div>
           <div class="row-fluid">
             <div class="col-md-6">
