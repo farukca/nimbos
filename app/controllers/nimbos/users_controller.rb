@@ -16,7 +16,7 @@ module Nimbos
 	      query_ids = params[:id].chomp.split(/,/).map { |x| x.to_i }
 	      @users = Nimbos::User.where(id: query_ids)
 	    else
-	      @users = current_patron.users..order(:name).includes(:branch).page(params[:page]).per(10)
+	      @users = current_patron.users.order(:name).includes(:branch).page(params[:page]).per(10)
 	    end
 
 	    respond_to do |format|

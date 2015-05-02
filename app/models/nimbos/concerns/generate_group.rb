@@ -5,7 +5,7 @@ module Nimbos::Concerns::GenerateGroup
 	included do
 		attr_accessor :group_user_ids
 
-		after_create  :generate_group, :notify_group_users
+		after_create  :generate_group, :notify_group_users, if: Proc.new { |group| group.group_user_ids.present? }
 	end
 
   def generate_group
