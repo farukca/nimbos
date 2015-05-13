@@ -52,7 +52,7 @@ module Nimbos
 
 	  private
 	  def listheader_params
-	  	params.require(:listheader).permit(:code, :description, :i18n_code, :name, :listitems_attributes)
+	  	params.require(:listheader).permit(:code, :description, :i18n_code, :name, listitems_attributes: [:id, :code, :name, :i18n_code, :_destroy])
 	  end
   end
 end

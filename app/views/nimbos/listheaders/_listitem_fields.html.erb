@@ -1,4 +1,4 @@
-<div class="">
+<div class="row">
   <div class="col-md-3">
     <%= f.input :code, label: false %>
   </div>
@@ -9,7 +9,7 @@
     <%= f.input :i18n_code, label: false %>
   </div>
   <div class="col-md-3">
-    <%= f.input :_destroy, as: :hidden %>
-    <%= link_to_remove_fields t("simple_form.helpers.defaults.delete"), f %>
+    <%= f.input :_destroy, as: :boolean, label: t("simple_form.helpers.defaults.delete") %>
+    <%#= link_to_remove_fields t("simple_form.helpers.defaults.delete"), f %>
   </div>
 </div>

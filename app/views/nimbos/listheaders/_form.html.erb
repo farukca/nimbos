@@ -16,29 +16,25 @@
           <%= f.input :i18n_code %>
           <%= f.input :description %>
           <div class="form-actions">
-            <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-info', :accesskey => "s" %>
+            <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-success', :accesskey => "s" %>
           </div>
         </div>
         <div class="col-md-8 col-md-offset-1">
           <legend>Liste Elemanları</legend>
           <div class="row">
-            <div id="listitems-form" class="">
-              <div class="">
-                <div class="col-md-3">Code</div>
-                <div class="col-md-3">Name</div>
-                <div class="col-md-3">i18n</div>
-                <div class="col-md-3">&nbsp;</div>
-              </div>
-              <%= f.fields_for :listitems do |subf| %>
-                <%= render 'listitem_fields', :f => subf %>
-              <% end %>
-            </div>
+            <div class="col-md-3">Code</div>
+            <div class="col-md-3">Name</div>
+            <div class="col-md-3">i18n</div>
+            <div class="col-md-3">&nbsp;</div>
           </div>
-              <div class="form-actions new_record_button">
-                <%= link_to_add_fields "Yeni Satır Ekle", f, :listitems %>
-              </div>
-
+          <%= f.simple_fields_for :listitems do |subf| %>
+            <%= render 'listitem_fields', :f => subf %>
+          <% end %>
+          <div class="form-actions new_record_button">
+            <%= link_to_add_fields "Yeni Satır Ekle", f, :listitems %>
+          </div>
         </div>
+
       </div>
     </div>
 <% end %>
