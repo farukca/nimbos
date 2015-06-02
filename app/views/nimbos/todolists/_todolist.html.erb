@@ -11,8 +11,8 @@
       <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list" class="list-unstyled task-list" style="margin-bottom: 10px;">
         <%= render partial: "nimbos/tasks/task", collection: todolist.incomplete_tasks %>
       </ul>
-      <div id="new_task_div_link">
-        <%= link_to t("simple_form.helpers.defaults.add", model: Nimbos::Task.model_name.human), "#", "data-href" => "#new_todolist_#{todolist.id}_task_div", class: "togglebutton" %>
+      <div id="<%= todolist.id %>_new_task_div_link">
+        <%= link_to t("simple_form.helpers.defaults.add", model: Nimbos::Task.model_name.human), "#", "data-href" => "#new_todolist_#{todolist.id}_task_div", class: "toggle_and_hide_button" %>
       </div>
       <div id="new_todolist_<%= todolist.id %>_task_div" class="slidingDiv">
         <%= render "nimbos/tasks/form", todolist: todolist, task: Nimbos::Task.new %>

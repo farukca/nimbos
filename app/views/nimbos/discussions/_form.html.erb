@@ -3,13 +3,13 @@
 
   <div class="portlet-body form">
 
-		<%= simple_form_for @discussion, html: { class: "form-horizontal" } do |f| %>
+		<%= simple_form_for @discussion, remote: true, html: { class: "form-horizontal" } do |f| %>
   		<%= f.error_notification %>
       <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
 
   		<div class="form-body">
 			  <%= f.input :title, label: t("discussions.label.title"), placeholder: t("discussions.placeholder.title"), input_html: { class: "input-xxlarge" } %>
-			  <%= f.input :content, label: t("discussions.label.content"), placeholder: t("discussions.placeholder.content"), input_html: { rows: "6", class: "wysihtml5" } %>
+			  <%= f.input :content, label: t("discussions.label.content"), placeholder: t("discussions.placeholder.content"), input_html: { rows: "4", class: "wysihtml5" } %>
         <%= f.input :target_type, as: :hidden, label: false %>
         <%= f.input :target_id, as: :hidden, label: false %>
         <%= f.input :target_name, as: :hidden, label: false %>
@@ -17,7 +17,8 @@
 
   		<div class="form-actions">
     		<%= f.submit t("discussions.action.submit"), class: "btn btn-success" %>
-    		<%= render "shared/cancel_button" %>
+    		<%#= render "shared/cancel_button" %>
+        <a href="#" data-href="#new_discussion_div" class="btn emptyDiv"><%= t("simple_form.helpers.defaults.close") %></a>
   		</div>
 		<% end %>
 	</div>

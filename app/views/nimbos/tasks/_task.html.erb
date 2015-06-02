@@ -5,9 +5,9 @@
     <span style="font-size:14px;"><%= link_to  task.task_text, nimbos.todolist_task_path(task.todolist, task) %></span>
     <% if task.status == "active" %>
       <span class="sub-info text-muted">
-        <% if task.user_id == 0 %>
-          <%= link_to t("tasks.label.not_assigned"), nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
-        <% else %>
+        <% if task.user_id > 0 %>
+          <%#= link_to t("tasks.label.not_assigned"), nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
+        <%# else %>
           <%= "#{task.user.to_s}-#{task.due_date}" %>
           <%= link_to "Change User", nimbos.edit_todolist_task_path(task.todolist, task), remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" %>
         <% end %>

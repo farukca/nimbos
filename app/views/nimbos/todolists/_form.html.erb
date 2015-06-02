@@ -1,16 +1,19 @@
 <div class="portlet">
-  <%= render "shared/portlet_title", title: t("todolists.title.new_todolist") %>
+  <%#= render "shared/portlet_title", title: t("todolists.title.new_todolist") %>
 
   <div class="portlet-body form">
 
-    <%= simple_form_for @todolist, html: { class: 'form-search' }, validate: true do |f| %>
+    <%= simple_form_for @todolist, remote: true, html: { class: 'form-search' }, validate: true do |f| %>
       <%= f.error_notification %>
       <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
 
       <div class="form-body">
       	<%= f.input :name, placeholder: t("todolists.placeholder.todolist_name"), label: false %>
       </div>
-      <%= f.submit(t("simple_form.helpers.submit.defaults.create"), class: 'btn btn-info') %>
+      <div class="form-actions">
+        <%= f.submit(t("simple_form.helpers.submit.defaults.create"), class: 'btn btn-info') %>
+        <a href="#" data-href="#new_todolist_div" class="btn emptyDiv"><%= t("simple_form.helpers.defaults.close") %></a>
+      </div>
       
 	    <%= f.input :todop_type, as: :hidden %>
 	    <%= f.input :todop_id, as: :hidden %>

@@ -1,0 +1,13 @@
+<% if @discussion.errors.present? %>
+  toastr.error('<%= j error_messages_for(@discussion) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@discussion) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  <% normalized_model_name = normalize_model_name(@discussion.target_type) %>
+  $("#<%= normalized_model_name %>_<%= @discussion.target_id %>_discussions").append('<%= j render(@discussion) %>');
+  $("#new_discussion").each (function(){ this.remove(); });
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');
+  $("#messages").fadeOut(5000);
+<% end %>

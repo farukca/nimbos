@@ -5,9 +5,8 @@
   $("#messages").fadeOut(4000);
 <% else %>
   $('#todolist_<%= @task.todolist_id %>_uncompleted_tasks_list').append("<%= j render @task %>");
-  $('#new_task').each(function() { this.reset(); });
+  $('.new_task_form').each(function() { this.reset(); });
   $("#task_task_text").focus();
-  
   toastr.info('<%= j flash[:notice] %>');
   $("#messages").show();
   $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');

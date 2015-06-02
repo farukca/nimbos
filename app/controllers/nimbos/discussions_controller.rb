@@ -49,9 +49,11 @@ module Nimbos
           #generate_post(current_user.id, "started_discussion", @discussion, @discussion.title, nimbos.discussion_url(@discussion), @target, @target.to_s, polymorphic_url([send(engine), @target]), "started_discussion", engine, false, true)
           format.html { redirect_to @discussion, notice: t("simple_form.messages.defaults.created", model: Nimbos::Discussion.model_name.human) }
           format.json { render json: @discussion, status: :created, location: @discussion }
+          format.js
         else
           format.html { render action: "new" }
           format.json { render json: @discussion.errors, status: :unprocessable_entity }
+          format.js
         end
       end
     end

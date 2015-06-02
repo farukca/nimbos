@@ -1,4 +1,4 @@
-  <%= form_for [todolist, task], url: nimbos.todolist_tasks_path(todolist), html: { class: "form-inline" }, remote: true do |f| %>
+  <%= form_for [todolist, task], url: nimbos.todolist_tasks_path(todolist), html: { class: "form-inline new_task_form" }, remote: true do |f| %>
     <%#= f.error_notification %>
     <!--div class="form-group">
       <%#= f.check_box :status, {}, "closed", "active" %>

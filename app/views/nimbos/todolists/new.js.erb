@@ -1,0 +1,13 @@
+<% if @todolist.errors.present? %>
+  toastr.error('<%= j error_messages_for(@todolist) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@todolist) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+	$("#new_todolist_div").html("<%= escape_javascript(render 'nimbos/todolists/form') %>");
+  $("#todolist_name").focus();
+<% end %>
+jQuery(document).ready(function() {       
+	App.initAjax();
+	ComponentsEditors.init();
+});
