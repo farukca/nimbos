@@ -1,15 +1,105 @@
 <div class="row">
-   <div class="col-md-offset-3 col-md-6 text-center">
-   	<h3>Tebrikler, firma parametreleriniz kaydedildi.</h3>
-   	<h4>
- 	  	Şimdi birlikte bir taşıma projesi oluşturabiliriz.<br>Halihazırda devam eden bir taşımanız varsa, bunu projelendirebiliriz.
-		</h4>
-		<div class="row">
-			<div class="col-md-6 text-left">
-				<h5><%= link_to "Evet, yeni bir proje oluşturalım", logistics.new_position_path(with_wizard: "i") %></h5>
-			</div>
-			<div class="col-md-6 text-right">
-				<h5><%= link_to "Hayır, ana sayfaya gidelim", main_app.root_url(with_wizard: "i") %></h5>
-			</div>
-   </div>
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="page-header">
+      <h2>Modaltrans'a hoşgeldiniz,</h2>
+    </div>
+    <div class="row">
+    	<div class="col-md-3 col-sm-3-col-xs-6 thumbnail no-border">
+      	<%= generate_tile("Başlarken", "", "bg-red-sunglo", "fa fa-coffee", nil) %>
+
+      	<p class="min-height-30">Excel ile takip ettiğiniz kayıtlarınızı sisteme yükleyebilirsiniz.</p>
+      	<ul class="ver-inline-menu tabbable margin-bottom-10">
+      		<li>
+      			<%= link_to arsiv.docimports_path(doc_type: "Network::Company") do %>
+      				<i class="fa fa-building-o"></i> Müşterilerinizi yükleyin
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to arsiv.docimports_path(doc_type: "Network::Contact") do %>
+      				<i class="fa fa-group"></i> Kontaklarınızı yükleyin
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to arsiv.new_docimport_path(doc_type: "Fleet::Vehicle") do %>
+      				<a href="#"><i class="fa fa-truck"></i> Araçlarınızı yükleyin
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to surveyor.new_feedback_path, remote: true, "data-toggle" => "modal", "data-target" => "#modalWindow" do %>
+      				<i class="fa fa-comments"></i> İsteklerinizi bize yazın
+      			<% end %>
+      		</li>
+      	</ul>
+      </div>
+      <div class="col-md-3 col-sm-3-col-xs-6 thumbnail no-border" style="margin: 0 auto">
+      	<%= generate_tile("Yükler", "", " bg-green-meadow", "fa fa-cubes", nil) %>
+      	<p class="min-height-30">Yüklemelere dair, koli, konteyner bilgilerini takip edebilir, ekibinize görevler atayabilirsiniz.</p>
+      	<ul class="ver-inline-menu tabbable margin-bottom-10">
+      		<li>
+      			<%= link_to logistics.new_loading_path(with_wizard: "yes") do %>
+      				<i class="fa fa-cubes"></i> Yük kaydı oluşturun
+      			<% end %>
+      		</li>
+      		<li><a href="#"><i class="fa fa-random"></i> Taşımalara yükleri bağlayın </a></li>
+      		<li><a href="#"><i class="fa fa-money"></i> Beklenen kalemleri girin </a></li>
+      		<li><a href="#"><i class="fa fa-truck"></i> Yük ile ilgili görevler atayın </a></li>
+      	</ul>
+      </div>
+      <div class="col-md-3 col-sm-3-col-xs-6 thumbnail no-border">
+      	<div class="row small-tiles">
+      		<%= generate_tile("", "", "small bg-red-sunglo", "fa fa-road", nil) %>
+      		<%= generate_tile("", "", "small bg-blue-madison", "fa fa-air", nil) %>
+      		<%= generate_tile("", "", "small bg-green-meadow", "fa fa-sea", nil) %>
+      		<%= generate_tile("", "", "small bg-grey-cascade", "fa fa-rail", nil) %>
+      	</div>
+      	<p class="min-height-30">Multimodal taşıma (kara-hava-deniz-tren) desteği ile, yüklerin taşıma süreçlerini görebilirsiniz.</p>
+      	<ul class="ver-inline-menu tabbable margin-bottom-10">
+      		<li>
+      			<%= link_to logistics.new_position_path(trans_method: "road", with_wizard: "yes") do %>
+      			  <i class="fa fa-road"></i> Kara taşıması başlatın
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to logistics.new_position_path(trans_method: "air", with_wizard: "yes") do %>
+      				<i class="fa fa-air"></i> Hava taşıması başlatın
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to logistics.new_position_path(trans_method: "sea", with_wizard: "yes") do %>
+      				<i class="fa fa-sea"></i> Deniz taşıması başlatın
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to logistics.new_position_path(trans_method: "road", with_wizard: "yes") do %>
+      				<i class="fa fa-rail"></i> Tren taşıması başlatın
+      			<% end %>
+      		</li>
+      	</ul>
+      </div>
+      <div class="col-md-3 col-sm-3-col-xs-6 thumbnail no-border">
+      	<%= generate_tile("Network", "", " bg-blue-hoki", "fa fa-building-o", nil) %>
+      	<p class="min-height-30">Firma ve kontak'larınıza ait sosyal medya hesaplarını takip edebilirsiniz.</p>
+      	<ul class="ver-inline-menu tabbable margin-bottom-10">
+      		<li>
+      			<%= link_to network.new_company_path(with_wizard: "yes") do %>
+      				<i class="fa fa-building-o"></i> Firma kaydı girin
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to network.new_contact_path(with_wizard: "yes") do %>
+      				<i class="fa fa-group"></i> Kontak bilgisi ekleyin
+      			<% end %>
+      		</li>
+      		<li>
+      			<%= link_to logistics.new_lead_path(with_wizard: "yes") do %>
+      				<i class="fa fa-gift"></i> Teklif gönderin
+      			<% end %>
+      		</li>
+      		<li><a href="#"><i class="fa fa-twitter"></i> Sosyal medyayı takip edin </a></li>
+      	</ul>
+      </div>
+    </div>
+
+  </div>
 </div>

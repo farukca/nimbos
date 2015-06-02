@@ -8,6 +8,9 @@ module Nimbos
 	  	@patron = current_patron
 	  	@patron.step = "1"
 	  end
+
+	  def start
+	  end
 	  
   end
 end
