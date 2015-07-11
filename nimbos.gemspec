@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Nimbos::VERSION
   s.authors     = ["Faruk Celik"]
   s.email       = ["farukca@yahoo.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/farukca/nimbos"
   s.summary     = "General nimbos auth engine."
   s.description = "User, Account, Role processes."
 
